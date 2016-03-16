@@ -1,0 +1,4 @@
+14:33:33:874###A stream is an abstract interface implemented by various objects in Node.
+14:33:33:874###You can load the Stream base classes by doing require('stream').
+14:33:33:874###This document is split up into 3 sections.
+14:33:33:874###The second section explains the parts of the API that you need to use.
