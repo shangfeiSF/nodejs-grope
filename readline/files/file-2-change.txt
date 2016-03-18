@@ -1,8 +1,0 @@
-10:12:19:554--A stream is an abstr
-10:12:19:555--You can load the Str
-10:12:19:555--This document is spl
-10:12:19:555--The second section e
-10:12:19:555--A   stream is an abs
-10:12:19:555--You   can load the S
-10:12:19:556--This  document is sp
-10:12:19:556--The   second section
