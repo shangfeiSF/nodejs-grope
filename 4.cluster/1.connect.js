@@ -93,7 +93,8 @@ Master.prototype.worker_monitor = function () {
         '---',
         msg.greeting,
         'with period',
-        msg.period
+        msg.period,
+        '\n'
       ]
       console.log((info.join(' ')).magenta)
     })

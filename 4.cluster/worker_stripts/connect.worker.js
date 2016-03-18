@@ -61,7 +61,7 @@ Worker.prototype.monitor = function (message) {
       msg.timestamp
     ]
     console.log((info.join(' ')).yellow)
-    self.wait(1000)
+    self.wait(2000)
     process.send({
       greeting: message + cluster.worker.id,
       period: [msg.timestamp, self.timestamp()]
