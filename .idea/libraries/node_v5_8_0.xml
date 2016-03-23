@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="node-v5.8.0" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/../node-v5.8.0" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../node-v5.8.0" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

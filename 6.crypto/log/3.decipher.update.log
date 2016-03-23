@@ -1,0 +1,232 @@
+0    CAST-cbc    rabbit    hex    some clear text data
+
+1    aes-128-cbc    rabbit    hex    some clear text data
+
+2    aes-128-ccm    rabbit    hex    3ae539d727b9808df9328cd577b49b1e10e2d720
+
+3    aes-128-cfb    rabbit    hex    some clear text data
+
+4    aes-128-cfb1    rabbit    hex    some clear text data
+
+5    aes-128-cfb8    rabbit    hex    some clear text data
+
+6    aes-128-ctr    rabbit    hex    some clear text data
+
+7    aes-128-ecb    rabbit    hex    some clear text data
+
+8    aes-128-gcm    rabbit    hex    049197966f4743830b4af9fb86f608b569b88691
+
+9    aes-128-ofb    rabbit    hex    some clear text data
+
+10    aes-128-xts    rabbit    hex    some clear text data
+
+11    aes-192-cbc    rabbit    hex    some clear text data
+
+12    aes-192-ccm    rabbit    hex    4d8aafd4c801e8f99e9351b23b700472068b85d1
+
+13    aes-192-cfb    rabbit    hex    some clear text data
+
+14    aes-192-cfb1    rabbit    hex    some clear text data
+
+15    aes-192-cfb8    rabbit    hex    some clear text data
+
+16    aes-192-ctr    rabbit    hex    some clear text data
+
+17    aes-192-ecb    rabbit    hex    some clear text data
+
+18    aes-192-gcm    rabbit    hex    36dceafab4f2c0d4d439db012b03b709af1b8cac
+
+19    aes-192-ofb    rabbit    hex    some clear text data
+
+20    aes-256-cbc    rabbit    hex    some clear text data
+
+21    aes-256-ccm    rabbit    hex    8541f9b00be05cba2dae77a0d41bb1a8ba2ae8a4
+
+22    aes-256-cfb    rabbit    hex    some clear text data
+
+23    aes-256-cfb1    rabbit    hex    some clear text data
+
+24    aes-256-cfb8    rabbit    hex    some clear text data
+
+25    aes-256-ctr    rabbit    hex    some clear text data
+
+26    aes-256-ecb    rabbit    hex    some clear text data
+
+27    aes-256-gcm    rabbit    hex    865a725ada22a564667b26a423ecf98fbc5bbaab
+
+28    aes-256-ofb    rabbit    hex    some clear text data
+
+29    aes-256-xts    rabbit    hex    some clear text data
+
+30    aes128    rabbit    hex    some clear text data
+
+31    aes192    rabbit    hex    some clear text data
+
+32    aes256    rabbit    hex    some clear text data
+
+33    bf    rabbit    hex    some clear text data
+
+34    bf-cbc    rabbit    hex    some clear text data
+
+35    bf-cfb    rabbit    hex    some clear text data
+
+36    bf-ecb    rabbit    hex    some clear text data
+
+37    bf-ofb    rabbit    hex    some clear text data
+
+38    blowfish    rabbit    hex    some clear text data
+
+39    camellia-128-cbc    rabbit    hex    some clear text data
+
+40    camellia-128-cfb    rabbit    hex    some clear text data
+
+41    camellia-128-cfb1    rabbit    hex    some clear text data
+
+42    camellia-128-cfb8    rabbit    hex    some clear text data
+
+43    camellia-128-ecb    rabbit    hex    some clear text data
+
+44    camellia-128-ofb    rabbit    hex    some clear text data
+
+45    camellia-192-cbc    rabbit    hex    some clear text data
+
+46    camellia-192-cfb    rabbit    hex    some clear text data
+
+47    camellia-192-cfb1    rabbit    hex    some clear text data
+
+48    camellia-192-cfb8    rabbit    hex    some clear text data
+
+49    camellia-192-ecb    rabbit    hex    some clear text data
+
+50    camellia-192-ofb    rabbit    hex    some clear text data
+
+51    camellia-256-cbc    rabbit    hex    some clear text data
+
+52    camellia-256-cfb    rabbit    hex    some clear text data
+
+53    camellia-256-cfb1    rabbit    hex    some clear text data
+
+54    camellia-256-cfb8    rabbit    hex    some clear text data
+
+55    camellia-256-ecb    rabbit    hex    some clear text data
+
+56    camellia-256-ofb    rabbit    hex    some clear text data
+
+57    camellia128    rabbit    hex    some clear text data
+
+58    camellia192    rabbit    hex    some clear text data
+
+59    camellia256    rabbit    hex    some clear text data
+
+60    cast    rabbit    hex    some clear text data
+
+61    cast-cbc    rabbit    hex    some clear text data
+
+62    cast5-cbc    rabbit    hex    some clear text data
+
+63    cast5-cfb    rabbit    hex    some clear text data
+
+64    cast5-ecb    rabbit    hex    some clear text data
+
+65    cast5-ofb    rabbit    hex    some clear text data
+
+66    des    rabbit    hex    some clear text data
+
+67    des-cbc    rabbit    hex    some clear text data
+
+68    des-cfb    rabbit    hex    some clear text data
+
+69    des-cfb1    rabbit    hex    some clear text data
+
+70    des-cfb8    rabbit    hex    some clear text data
+
+71    des-ecb    rabbit    hex    some clear text data
+
+72    des-ede    rabbit    hex    some clear text data
+
+73    des-ede-cbc    rabbit    hex    some clear text data
+
+74    des-ede-cfb    rabbit    hex    some clear text data
+
+75    des-ede-ofb    rabbit    hex    some clear text data
+
+76    des-ede3    rabbit    hex    some clear text data
+
+77    des-ede3-cbc    rabbit    hex    some clear text data
+
+78    des-ede3-cfb    rabbit    hex    some clear text data
+
+79    des-ede3-cfb1    rabbit    hex    some clear text data
+
+80    des-ede3-cfb8    rabbit    hex    some clear text data
+
+81    des-ede3-ofb    rabbit    hex    some clear text data
+
+82    des-ofb    rabbit    hex    some clear text data
+
+83    des3    rabbit    hex    some clear text data
+
+84    desx    rabbit    hex    some clear text data
+
+85    desx-cbc    rabbit    hex    some clear text data
+
+86    id-aes128-CCM    rabbit    hex    3ae539d727b9808df9328cd577b49b1e10e2d720
+
+87    id-aes128-GCM    rabbit    hex    049197966f4743830b4af9fb86f608b569b88691
+
+88    id-aes128-wrap    rabbit    hex    
+
+89    id-aes192-CCM    rabbit    hex    4d8aafd4c801e8f99e9351b23b700472068b85d1
+
+90    id-aes192-GCM    rabbit    hex    36dceafab4f2c0d4d439db012b03b709af1b8cac
+
+91    id-aes192-wrap    rabbit    hex    
+
+92    id-aes256-CCM    rabbit    hex    8541f9b00be05cba2dae77a0d41bb1a8ba2ae8a4
+
+93    id-aes256-GCM    rabbit    hex    865a725ada22a564667b26a423ecf98fbc5bbaab
+
+94    id-aes256-wrap    rabbit    hex    
+
+95    id-smime-alg-CMS3DESwrap    rabbit    hex    
+
+96    idea    rabbit    hex    some clear text data
+
+97    idea-cbc    rabbit    hex    some clear text data
+
+98    idea-cfb    rabbit    hex    some clear text data
+
+99    idea-ecb    rabbit    hex    some clear text data
+
+100    idea-ofb    rabbit    hex    some clear text data
+
+101    rc2    rabbit    hex    some clear text data
+
+102    rc2-40-cbc    rabbit    hex    some clear text data
+
+103    rc2-64-cbc    rabbit    hex    some clear text data
+
+104    rc2-cbc    rabbit    hex    some clear text data
+
+105    rc2-cfb    rabbit    hex    some clear text data
+
+106    rc2-ecb    rabbit    hex    some clear text data
+
+107    rc2-ofb    rabbit    hex    some clear text data
+
+108    rc4    rabbit    hex    some clear text data
+
+109    rc4-40    rabbit    hex    some clear text data
+
+110    rc4-hmac-md5    rabbit    hex    some clear text data
+
+111    seed    rabbit    hex    some clear text data
+
+112    seed-cbc    rabbit    hex    some clear text data
+
+113    seed-cfb    rabbit    hex    some clear text data
+
+114    seed-ecb    rabbit    hex    some clear text data
+
+115    seed-ofb    rabbit    hex    some clear text data
+
