@@ -1,5 +1,6 @@
 var http = require('http')
 var path = require('path')
+var colors = require('colors')
 var express = require('express')
 var socketio = require('socket.io')
 
@@ -16,28 +17,36 @@ app.get('/client.js', function (request, response) {
 var io = socketio(server)
 
 io.on('connection', function (socket) {
-  io.emit('greeting', {
-    message: 'Hello everyone'
+  socket.on('connected', function (data) {
+    socket.sign = data.sign
+
+    console.log('[Server] -- Client#' + socket.sign + ' emit greeting to erveryone'.green)
+
+    io.emit('join', {
+      message: socket.sign + ' has join in'
+    })
+
+    console.log('[Server] -- Client#' + socket.sign + ' greeting to self after 3 seconds...'.yellow)
+
+    setTimeout(function () {
+      console.log('[Server] -- Client#' + socket.sign + ' emit greeting to self'.green)
+      socket.emit('self', {
+        message: 'wellcome ' + socket.sign + ' at ' + (new Date().toTimeString())
+      })
+    }, 3000)
   })
 
-  socket.emit('greeting', {
-    message: 'Hello, how are you?'
-  })
-
-  socket.on('answer', function (data) {
-    console.log(data.message)
-  })
-
-  socket.on('execute', function(data, handle){
+  socket.on('answer', function (data, handle) {
     var servertime = new Date().getTime()
-    handle(data, servertime)
+    console.log('[Server] -- Client#' + socket.sign + ' handle'.green)
+    handle(data, servertime, socket.sign)
   })
 
   socket.on('disconnect', function () {
-    console.log('some one disconnect')
+    console.log(('[Server] -- Client#' + socket.sign + ' has disconnected').red)
   })
 })
 
 server.listen(8080, function () {
-  console.log('server listen 127.0.0.1:8080')
+  console.log(('[Server] -- Server listen 127.0.0.1:8080...').green)
 })
