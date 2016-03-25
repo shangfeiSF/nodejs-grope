@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e1247dd-996f-4e01-8fd6-51084f1f9f27" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\xiaoshao\emmamoon\nodejs-grope\7.net\socketio\2.Using-with-the-Express-framework\client.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\xiaoshao\emmamoon\nodejs-grope\7.net\socketio\2.Using-with-the-Express-framework\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\xiaoshao\emmamoon\nodejs-grope\7.net\socketio\2.Using-with-the-Express-framework\server.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/chat/chat.client.html" afterPath="$PROJECT_DIR$/7.net/chat/chat.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/client.js" afterPath="$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/5.Restricting-yourself-to-a-namespace/client.js" afterPath="$PROJECT_DIR$/7.net/socketio/5.Restricting-yourself-to-a-namespace/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/client.js" afterPath="$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js" afterPath="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js" afterPath="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/nodejs-grope.iml" afterPath="$PROJECT_DIR$/.idea/nodejs-grope.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/0.Using-with-Node-http-server/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/0.Using-with-Node-http-server/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/1.Using-with-Express-v3-or-v4/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/1.Using-with-Express-v3-or-v4/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/5.Restricting-yourself-to-a-namespace/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/5.Restricting-yourself-to-a-namespace/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js" afterPath="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nodejs-grope.iws" />
@@ -40,75 +30,81 @@
     <favorites_list name="nodejs-grope" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17307693" vertical-offset="0" max-vertical-offset="972">
-              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-              <folding>
-                <element signature="e#217#277#0" expanded="false" />
-                <element signature="e#331#390#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-              <folding>
-                <element signature="e#168#245#0" expanded="false" />
-                <element signature="e#222#242#0" expanded="false" />
-                <element signature="e#282#433#0" expanded="false" />
-                <element signature="e#611#641#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="1350">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="53" />
-              <folding>
-                <element signature="e#248#308#0" expanded="false" />
-                <element signature="e#361#420#0" expanded="false" />
-                <element signature="e#1258#1345#0" expanded="false" />
-                <element signature="e#1386#1472#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <element signature="e#168#245#0" expanded="false" />
-                <element signature="e#222#242#0" expanded="false" />
-                <element signature="e#282#433#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/server.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="292" max-vertical-offset="1215">
+                  <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="53" selection-end-column="2" />
+                  <folding>
+                    <element signature="e#248#308#0" expanded="false" />
+                    <element signature="e#362#421#0" expanded="false" />
+                    <element signature="e#671#701#0" expanded="false" />
+                    <element signature="e#836#887#0" expanded="false" />
+                    <element signature="e#1135#1226#0" expanded="false" />
+                    <element signature="e#1285#1372#0" expanded="false" />
+                    <element signature="e#1413#1499#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/server.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="972">
+                  <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="51" selection-end-column="2" />
+                  <folding>
+                    <element signature="e#248#308#0" expanded="false" />
+                    <element signature="e#361#420#0" expanded="false" />
+                    <element signature="e#531#1082#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.26868907" vertical-offset="211" max-vertical-offset="1215">
+                  <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="22" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#248#308#0" expanded="false" />
+                    <element signature="e#361#420#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="client.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.46153846" vertical-offset="0" max-vertical-offset="936">
+                  <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
+                  <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="9" selection-end-column="2" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -152,9 +148,6 @@
         <option value="$PROJECT_DIR$/7.net/socketio/0.Using-with-Node-http-server/0.server.js" />
         <option value="$PROJECT_DIR$/7.net/socketio/1.Using-with-Express-v3-or-v4/client.js" />
         <option value="$PROJECT_DIR$/7.net/socketio/1.Using-with-Express-v3-or-v4/index.html" />
-        <option value="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js" />
-        <option value="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js" />
-        <option value="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js" />
         <option value="$PROJECT_DIR$/7.net/chat/chat.client.html" />
         <option value="$PROJECT_DIR$/7.net/socketio/2.Using-with-the-Express-framework/server.js" />
         <option value="$PROJECT_DIR$/7.net/socketio/2.Using-with-the-Express-framework/Readme.md" />
@@ -166,7 +159,10 @@
         <option value="$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/client.js" />
         <option value="$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/server.js" />
         <option value="$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/server.js" />
+        <option value="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js" />
         <option value="$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/server.js" />
+        <option value="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js" />
+        <option value="$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js" />
       </list>
     </option>
   </component>
@@ -202,6 +198,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -224,9 +221,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-grope" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-grope" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="7.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socketio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="9.Using-it-just-as a-crossBrowser-WebSocket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-grope" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-grope" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="7.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socketio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-grope" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodejs-grope" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="7.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,14 +323,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="123" y="-8" width="1805" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32993776" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="735" y="437" width="74" height="25" />
-      <window_info id="Terminal" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.24690403" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="1049" y="123" width="815" height="428" />
+      <window_info id="Changes" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32993776" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="214" y="355" width="957" height="517" />
+      <window_info id="Terminal" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.24690403" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="1184" y="242" width="815" height="428" />
       <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22127901" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12054329" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32993776" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="511" y="304" width="1225" height="641" />
@@ -292,9 +342,9 @@
       <window_info id="Grunt" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -314,9 +364,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13089803" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -552,30 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="178" max-vertical-offset="1026">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#217#277#0" expanded="false" />
-            <element signature="e#330#389#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14407684" vertical-offset="0" max-vertical-offset="937">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="713">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -583,7 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31730768" vertical-offset="1917" max-vertical-offset="3483">
           <caret line="81" column="1" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -591,7 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17920354" vertical-offset="0" max-vertical-offset="904">
           <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -599,7 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="486">
           <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -607,21 +634,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31730768" vertical-offset="0" max-vertical-offset="936">
           <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/7.net/socketio/2.Using-with-the-Express-framework/Readme.md">
-      <provider selected="true" editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="905">
           <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="MultiMarkdownFxHtmlEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="MultiMarkdownFxPreviewEditor">
         <state />
       </provider>
     </entry>
@@ -629,31 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20192307" vertical-offset="0" max-vertical-offset="936">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding>
-            <element signature="n#!!block;n#ChatRoom#0" expanded="false" />
-            <element signature="e#392#587#0" expanded="false" />
-            <element signature="e#393#458#0" expanded="false" />
-            <element signature="e#460#521#0" expanded="false" />
-            <element signature="e#523#586#0" expanded="false" />
-            <element signature="e#677#872#0" expanded="false" />
-            <element signature="e#758#869#0" expanded="false" />
-            <element signature="e#804#864#0" expanded="false" />
-            <element signature="e#912#2608#0" expanded="false" />
-            <element signature="e#1048#2605#0" expanded="false" />
-            <element signature="e#1137#1734#0" expanded="false" />
-            <element signature="e#1305#1348#0" expanded="false" />
-            <element signature="e#1431#1511#0" expanded="false" />
-            <element signature="e#1557#1653#0" expanded="false" />
-            <element signature="e#1777#2379#0" expanded="false" />
-            <element signature="e#1888#2062#0" expanded="false" />
-            <element signature="e#1948#2032#0" expanded="false" />
-            <element signature="e#2116#2280#0" expanded="false" />
-            <element signature="e#2200#2272#0" expanded="false" />
-            <element signature="e#2423#2600#0" expanded="false" />
-            <element signature="e#2649#2814#0" expanded="false" />
-            <element signature="e#2714#2811#0" expanded="false" />
-            <element signature="e#2829#2845#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -661,14 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52654386" vertical-offset="0" max-vertical-offset="923">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="e#178#429#0" expanded="false" />
-            <element signature="e#248#426#0" expanded="false" />
-            <element signature="e#267#364#0" expanded="false" />
-            <element signature="e#588#754#0" expanded="false" />
-            <element signature="e#672#749#0" expanded="false" />
-            <element signature="e#801#862#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,7 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.95557964" vertical-offset="171" max-vertical-offset="1404">
           <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -684,7 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35840708" vertical-offset="0" max-vertical-offset="904">
           <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,14 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29867256" vertical-offset="0" max-vertical-offset="999">
           <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -707,19 +689,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.063921995" vertical-offset="562" max-vertical-offset="1782">
           <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23052295" vertical-offset="0" max-vertical-offset="937">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="26" selection-end-column="2" />
+          <folding>
+            <element signature="e#168#245#0" expanded="false" />
+            <element signature="e#222#242#0" expanded="false" />
+            <element signature="e#282#433#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26298702" vertical-offset="0" max-vertical-offset="1026">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="16" selection-end-column="2" />
+          <folding>
+            <element signature="e#222#242#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33766234" vertical-offset="363" max-vertical-offset="1404">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
           <folding>
             <element signature="e#248#308#0" expanded="false" />
             <element signature="e#361#420#0" expanded="false" />
-            <element signature="e#1181#1272#0" expanded="false" />
-            <element signature="e#1315#1405#0" expanded="false" />
-            <element signature="e#2043#2115#0" expanded="false" />
+            <element signature="e#1386#1472#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/7.net/socketio/5.Restricting-yourself-to-a-namespace/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028846154" vertical-offset="162" max-vertical-offset="1107">
+        <state vertical-scroll-proportion="0.029882604" vertical-offset="161" max-vertical-offset="1107">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="e#213#263#0" expanded="false" />
@@ -730,65 +739,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5673077" vertical-offset="549" max-vertical-offset="1539">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="972">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="51" selection-end-column="2" />
+          <folding>
+            <element signature="e#248#308#0" expanded="false" />
+            <element signature="e#361#420#0" expanded="false" />
+            <element signature="e#531#1082#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="9" selection-end-column="2" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/7.net/socketio/7.Sending-and-getting-data/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#168#245#0" expanded="false" />
-            <element signature="e#222#242#0" expanded="false" />
-            <element signature="e#282#433#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="e#168#245#0" expanded="false" />
-            <element signature="e#222#242#0" expanded="false" />
-            <element signature="e#282#433#0" expanded="false" />
-            <element signature="e#611#641#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/7.net/socketio/4.Sending-and-receiving-events/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="1350">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="53" />
-          <folding>
-            <element signature="e#248#308#0" expanded="false" />
-            <element signature="e#361#420#0" expanded="false" />
-            <element signature="e#1258#1345#0" expanded="false" />
-            <element signature="e#1386#1472#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/7.net/socketio/8.Broadcasting messages/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17307693" vertical-offset="0" max-vertical-offset="972">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="292" max-vertical-offset="1215">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="53" selection-end-column="2" />
           <folding>
-            <element signature="e#217#277#0" expanded="false" />
-            <element signature="e#331#390#0" expanded="false" />
+            <element signature="e#248#308#0" expanded="false" />
+            <element signature="e#362#421#0" expanded="false" />
+            <element signature="e#671#701#0" expanded="false" />
+            <element signature="e#836#887#0" expanded="false" />
+            <element signature="e#1135#1226#0" expanded="false" />
+            <element signature="e#1285#1372#0" expanded="false" />
+            <element signature="e#1413#1499#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46153846" vertical-offset="0" max-vertical-offset="936">
+          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7.net/socketio/9.Using-it-just-as a-crossBrowser-WebSocket/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26868907" vertical-offset="211" max-vertical-offset="1215">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#248#308#0" expanded="false" />
+            <element signature="e#361#420#0" expanded="false" />
           </folding>
         </state>
       </provider>
