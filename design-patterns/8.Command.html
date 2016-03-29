@@ -1,0 +1,95 @@
+<!-- 命令模式 -->
+<script type="text/javascript">
+  // 一般的JS类方法
+  function Car(model) {
+    this.model = model
+  }
+  Car.prototype.drive = function (driver) {
+    console.info(driver + " is driving")
+  }
+  Car.prototype.stop = function (address) {
+    console.info("This car is stop at " + address)
+  }
+  Car.prototype.fix = function (component) {
+    console.info("This car need fix its " + component)
+  }
+
+  function Plane(type) {
+    this.type = type
+  }
+  Plane.prototype.launch = function (time) {
+    console.warn("This Plane will launch at " + time)
+  }
+  Plane.prototype.wait = function () {
+    console.warn("Please wait patiently")
+  }
+  Plane.prototype.land = function (airport) {
+    console.warn("This Plane will land at " + airport)
+  }
+
+  // 一般的JS类实例
+  var car = new Car('Tesla')
+
+  console.log('一般的JS对象方法调用')
+  car.drive('Tony')
+  car.stop('Beijing')
+  car.fix('Engine')
+
+  // 命令化类实例的通用方法Command：将一般的JS类实例作为命令的接受者
+  // 命令化的类实例：excute作为命令解析器，将‘命令’和‘参数’传递给命令的接受者来执行
+  function Command(receiver) {
+    this.receiver = receiver
+  }
+  Command.prototype.excute = function (action) {
+    var receiver = this.receiver
+    receiver[action] && receiver[action].apply(receiver, [].slice.call(arguments, 1))
+  }
+
+  // 命令化的JS类实例
+  var carCmd = new Command(car)
+
+  console.log('通过命令化的JS类实例的excute调用')
+  carCmd.excute('drive', 'Tony')
+  carCmd.excute('stop', 'Beijing')
+  carCmd.excute('fix', 'Engine')
+
+  // Invoker 将命令化的JS类实例的集合统一为一个接口对象
+  function Invoker(config) {
+    for (var p in config) {
+      if (config.hasOwnProperty(p)) {
+        this[p] = config[p]
+      }
+    }
+    this.controlInit(config)
+  }
+  Invoker.prefix = '_'
+  Invoker.prototype.controlInit = function (config) {
+    for (var p in config) {
+      if (config.hasOwnProperty(p)) {
+        var control = Invoker.prefix + p
+        this[control] = function (cmd) {
+          return function(action){
+            var o = this[cmd]
+            o.excute.apply(o, [].slice.call(arguments, 0))
+          }
+        }(p)
+      }
+    }
+  }
+
+  // 命令化的JS类实例的集合
+  var config = {
+    'car': new Command(new Car('Ferrari')),
+    'plane': new Command(new Plane('Mordent'))
+  }
+
+  var invoker = new Invoker(config)
+  console.log('通过invoker对象发出命令')
+  invoker._car('drive', 'Tony')
+  invoker._car('stop', 'Beijing')
+  invoker._car('fix', 'Engine')
+
+  invoker._plane('launch', '2015-09-09')
+  invoker._plane('wait')
+  invoker._plane('land', 'BaiYun')
+</script>

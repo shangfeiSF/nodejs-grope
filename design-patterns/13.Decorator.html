@@ -1,0 +1,296 @@
+<script type="text/javascript">
+  // 使用一种近似于其他编程语言中“接口”的概念来实现JS装饰器
+  // 接口（Interface）定义了对象应该具备哪些方法，但是没有指定这些方法的具体实现
+  // 接口（Interface）还应当具备一个 ensureImplements 方法
+  // 用于判定一个实（instance）是否符合某些接口（Interface）的定义
+  // 采用的是”辨鸭“方式：基于实例具备的方法来判定其是否符合某些接口（Interface）的定义
+
+  function Interface(name, methods) {
+    // methods 定义了接口应该具备哪些方法
+    if (arguments.length != 2) {
+      throw new Error("Interface constructor called with " + arguments.length + "arguments, but expected exactly 2.")
+    }
+    // this.name 声明了接口的名称
+    this.name = name
+    // this.methods 声明了接口具备的方法
+    this.methods = []
+    for (var i = 0, len = methods.length; i < len; i++) {
+      if (typeof methods[i] !== "string") {
+        throw new Error("Interface constructor expects methods names to be passed in string type.");
+      }
+      this.methods.push(methods[i])
+    }
+  }
+
+  Interface.ensureImplements = function (instance) {
+    if (arguments.length < 2) {
+      throw new Error("Function Interface.ensureImplements called with " + arguments.length + "arguments,but expected at least 2.")
+    }
+    // 从第二个arguments开始是接口对象
+    // 一个 instance 在”辨鸭“方式下，可以符合多个接口的定义
+    // 只要完整地具备一个接口的全部方法，就是符合该接口的 instance
+    for (var i = 1, len = arguments.length; i < len; i++) {
+      var inf = arguments[i]
+
+      if (inf.constructor !== Interface) {
+        throw new Error("Function Interface.ensureImplementsexpects arguments two and above to be instances of Interface.")
+      }
+
+      for (var j = 0, mlen = inf.methods.length; j < mlen; j++) {
+        var method = inf.methods[j]
+
+        if (!instance[method] || typeof instance[method] !== 'function') {
+          throw new Error(
+                  "Function Interface.ensureImplements: instance passed " +
+                  "does not implements the " +
+                  inf.name +
+                  " interface.Method " +
+                  method +
+                  " was not found."
+          )
+        }
+      }
+    }
+  }
+
+  function extend(subClass, superClass) {
+    var F = function () {
+    }
+    F.prototype = superClass.prototype
+    subClass.prototype = new F()
+
+    subClass.prototype.constructor = subClass
+    subClass.superclass = superClass.prototype
+
+    // 防止 superClass 是采用字面量的方式重写 superClass.prototype
+    if (superClass.prototype.constructor == Object.prototype.constructor) {
+      superClass.prototype.constructor = superClass
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  // 一般的JS类对象
+  function macAir() {
+  }
+
+  // 类实例的接口实现
+  macAir.prototype = {
+    assemble: function () {
+      console.log('Assemble has finished')
+    },
+    wash: function () {
+    },
+    repair: function () {
+      console.warn('Need repair')
+    },
+    getPrice: function () {
+      return 399
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  // 接口定义
+  var Computer = new Interface('Computer', ['assemble', 'wash', 'repair', 'getPrice'])
+
+  // 接口装饰器包装
+  function ComputerDecorator(pc) {
+    Interface.ensureImplements(pc, Computer)
+
+    this.computer = pc
+
+    // 避免装饰器新增方法丢失
+    this.interface = Computer
+    loop: for (var key in this.computer) {
+      if (key == 'constructor') {
+        continue loop
+      }
+
+      if (typeof this.computer[key] !== 'function') {
+        continue loop
+      }
+
+      for (var i = 0, len = this.interface.methods.length; i < len; i++) {
+        if (key === this.interface.methods[i]) {
+          continue loop
+        }
+      }
+
+      (function (scope, name) {
+        scope[name] = function () {
+          return scope.computer[name]()
+        }
+      })(this, key)
+    }
+  }
+
+  // 通过装饰器间接调用封装对象的接口方法
+  ComputerDecorator.prototype = {
+    assemble: function () {
+      return this.computer.assemble()
+    },
+    wash: function () {
+      return this.computer.wash()
+    },
+    repair: function () {
+      return this.computer.repair()
+    },
+    getPrice: function () {
+      return this.computer.getPrice()
+    }
+  }
+
+  // 扩展装饰器包装-1：在原有 getPrice 执行之【后】新增行为（加价）
+  function ROMDecorator(pc) {
+    ROMDecorator.superclass.constructor.call(this, pc)
+  }
+  extend(ROMDecorator, ComputerDecorator)
+
+  // 栈式调用接口方法：
+  ROMDecorator.prototype.getPrice = function () {
+    return this.computer.getPrice() + 25
+  }
+
+  // 扩展装饰器包装-2：在原有 getPrice 执行之【后】新增行为（加价）
+  function EngravingDecorator(pc) {
+    EngravingDecorator.superclass.constructor.call(this, pc)
+  }
+  extend(EngravingDecorator, ComputerDecorator)
+
+  // 栈式调用接口方法
+  EngravingDecorator.prototype.getPrice = function () {
+    return this.computer.getPrice() + 5
+  }
+
+  // 扩展装饰器包装-3：在原有 assemble 执行之【前】新增行为（配色）
+  function FrameDecorator(pc, color) {
+    FrameDecorator.superclass.constructor.call(this, pc)
+    this.frameColor = color
+  }
+  extend(FrameDecorator, ComputerDecorator)
+
+  FrameDecorator.prototype.assemble = function () {
+    console.info("use " + this.frameColor + " to the book ")
+    this.computer.assemble()
+  }
+
+  // 扩展装饰器包装-4：条件执行原有 repair 或者替换 原有的 wash
+  function CheckedDecorator(pc, checked) {
+    CheckedDecorator.superclass.constructor.call(this, pc)
+    this.checked = checked
+  }
+  extend(CheckedDecorator, ComputerDecorator)
+
+  // 条件执行 this.computer.repair
+  CheckedDecorator.prototype.repair = function () {
+    if (this.checked) {
+      console.info('No need repair')
+    } else {
+      this.computer.repair()
+    }
+  }
+
+  //替换 wash
+  CheckedDecorator.prototype.wash = function () {
+    console.info('There is no wash serve now!')
+  }
+
+  // 扩展装饰器包装-5：新增方法
+  function UpdateDecorator(pc, model) {
+    CheckedDecorator.superclass.constructor.call(this, pc)
+    this.model = model
+  }
+  extend(UpdateDecorator, ComputerDecorator)
+
+  UpdateDecorator.prototype.transform = function () {
+    console.log(this.model)
+  }
+
+  // 验证：http://www.tuicool.com/articles/6J73E3
+  function TestDecorator(pc) {
+    TestDecorator.superclass.constructor.call(this, pc)
+  }
+  extend(TestDecorator, ComputerDecorator)
+</script>
+
+<script type="text/javascript">
+  debugger
+  var book = new macAir()
+  console.log(book.getPrice())
+
+  book = new ComputerDecorator(book)
+  console.log(book.getPrice())
+
+  book = new ROMDecorator(book)
+  console.log(book.getPrice())
+
+  book = new EngravingDecorator(book)
+  console.log(book.getPrice())
+
+  book = new FrameDecorator(book, 'red')
+  book.assemble()
+
+  book = new CheckedDecorator(book, true)
+  book.repair()
+  book.wash()
+
+  book = new UpdateDecorator(book, 'keyboard')
+  book.transform()
+
+  book = new TestDecorator(book)
+  book.transform()
+</script>
+
+<script type="text/javascript">
+  function Factory(interface) {
+    this.types = {}
+    this.decorators = {}
+    this.interface = interface
+  }
+
+  Factory.prototype.register = function (types) {
+    for (var t in types) {
+      if (types.hasOwnProperty(t)) {
+        this.types[t] = types[t].builder
+        this.decorators[t] = types[t].decorators
+      }
+    }
+  }
+
+  Factory.prototype.create = function (type, args) {
+    var pro = new this.types[type]()
+
+    var decorators = this.decorators[type]
+    for (var i = 0, len = decorators.length; i < len; i++) {
+      var decorator = decorators[i]
+      if (typeof decorator !== 'function') {
+        throw new Error('Decorator is not found')
+      }
+      var argument = args[i]
+      pro = new decorator(pro, argument)
+    }
+
+    Interface.ensureImplements(pro, this.interface)
+    return pro
+  }
+
+  var types = {
+    'Air': {
+      'builder': macAir,
+      'decorators': [
+        ROMDecorator,
+        EngravingDecorator,
+        FrameDecorator,
+        CheckedDecorator,
+        UpdateDecorator,
+        TestDecorator
+      ]
+    }
+  }
+
+  var factory = new Factory(Computer)
+  factory.register(types)
+
+  var pro = factory.create('Air', [, , 'red', true, 'keyboard', ,])
+</script>

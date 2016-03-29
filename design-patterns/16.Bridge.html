@@ -1,0 +1,112 @@
+<script type="text/javascript">
+  var singleton = function (task) {
+    var instance
+    return function () {
+      return instance || (instance = task.apply(this, arguments))
+    }
+  }
+
+  var code = '200'
+  var context = {
+    code: '404'
+  }
+
+  var mission_1 = singleton(function (code) {
+    // mission_1 的 task 是简单任务，没有返回结果，不会实例化单例（instance = undefined）
+    // this 指向 window
+    console.log(this[code])
+  })
+  // mission_2 的 task 与 mission_1 的 task 唯一区别是 this 指向 context
+  var mission_2 = mission_1.bind(context)
+
+  console.log(mission_1('code'))   // 200, undefined
+  console.log(mission_2('code'))   // 404, undefined
+
+  var mission_3 = singleton(function (code) {
+    // mission_3 的 task 是有返回结果，实例化单例（instance = 'singleton instance code is 200'）
+    // this 指向 window
+    console.log(this[code])
+    return 'singleton instance code is ' + this[code]
+  })
+  // mission_4 虽然 this 指向 context，但是直接返回 instance
+  var mission_4 = mission_3.bind(context)
+
+  console.log(mission_3('code'))    // 200, singleton instance code is 200
+  console.log(mission_4('code'))    // singleton instance code is 200
+</script>
+
+<script type="text/javascript">
+  // 桥接模式的方向：单向的，只能让 抽象逻辑部分 去套用 具体实现部分
+  // 桥接模式的表现：分离了抽象逻辑部分与具体实现部分，程序结构两者是分离的，如此抽象逻辑部分和具体实现部分都可以独立变化，互不影响
+  // 桥接的作用：让抽象逻辑部分通过【桥函数】可以调用到具体实现部分，两者在调用【桥函数】时动态组合
+  // 如何桥接：【桥函数】维护一个接口【桥接口】，抽象逻辑部分 可以通过此接口来调用 具体实现部分
+  // 解耦：抽象逻辑部分 与 具体实现部分 是松散的，解耦的，1vN的关系
+
+  // foreach 是桥函数，filter 是桥接口，桥函数的函数体一般是抽象逻辑代码
+  // 抽象逻辑代码通过 filter 调用 具体实现的代码
+  var foreach = function (array, filter) {
+    for (var index = 0, len = array.length; index < len; index ++) {
+      var item = array[index]
+      if (filter.call(item, item, index) == false) {
+        return 'invalid'
+      }
+    }
+    return 'valid'
+  }
+  var validate = foreach([1, 2, 3, /*10*/],
+    // 具体实现的代码
+    function(item, index){
+      var result = false
+      if(index + 1 == item){
+        result = true
+      }
+      return result
+    }
+  )
+  console.log(validate)
+</script>
+
+<script type="text/javascript">
+  var type = 'GET'
+  var object = {
+    type: 'POST'
+  }
+
+  function ajax(type, callback){
+    var data = null
+    if(type == 'GET'){
+      data = 'OK'
+    }else if(type == 'POST'){
+      data = 'NOT MODIFIED'
+    }
+    callback(data)
+  }
+
+  var send = function(context){
+    var type = context.type
+    // send 与 ajax 之间需要【桥接模式】解耦
+    // ajax的回调需要用传参的方式与 ajax 和 send 解耦
+    ajax(type, function(data){
+      console.info(data)
+    })
+  }
+
+  send(window)
+  send(object)
+
+  var callback = function(data){
+    console.warn(data)
+  }
+  var bridge = function(type, callback){
+    ajax(type, function(data){
+      callback(data)
+    })
+  }
+  var sendMore = function(context, callback){
+    var type = context.type
+    bridge(type, callback)
+  }
+
+  sendMore(window, callback)
+  sendMore(object, callback)
+</script>

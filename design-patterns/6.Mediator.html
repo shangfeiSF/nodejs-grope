@@ -1,0 +1,66 @@
+<script>
+  var mediator = (function () {
+
+    var topics = {};
+
+    var subscribe = function (topic, fn) {
+      if (!topics[topic]) {
+        topics[topic] = [];
+      }
+      topics[topic].push({context: this, callback: fn});
+      return this;
+    };
+
+    var publish = function (topic) {
+      if (!topics[topic]) {
+        return false;
+      }
+      var args = Array.prototype.slice.call(arguments, 1);
+      for (var i = 0, l = topics[topic].length; i < l; i++) {
+        var subscription = topics[topic][i];
+        subscription.callback.apply(subscription.context, args);
+      }
+      return this;
+    };
+
+    return {
+      publish: publish,
+      subscribe: subscribe,
+      installTo: function (obj) {
+        obj.subscribe = subscribe;
+        obj.publish = publish;
+      }
+    };
+  }());
+
+  function Plane(name, code) {
+    this.name = name
+    this.code = code
+  }
+
+  Plane.prototype.launch = function (code, time) {
+    if (this.code === code) {
+      console.log('name---' + this.name)
+      console.log('code---' + code)
+      console.log('time---' + time)
+    }else {
+      console.warn(this.name + ' will not launch!')
+    }
+  }
+
+  var plane_1 = new Plane('supper_man', 'HK-9527')
+  var plane_2 = new Plane('bat_man', 'AS-0000')
+  var tower = {}
+
+  mediator.installTo(plane_1)
+  mediator.installTo(plane_2)
+  mediator.installTo(tower)
+
+  plane_1.subscribe('T_launch', plane_1.launch)
+  plane_2.subscribe('T_launch', plane_2.launch)
+
+  var planes = ['HK-9527', 'AS-0000', 'TW-1234']
+  var random = (+new Date()) % 3
+
+  tower.publish('T_launch', planes[random], '16:52')
+</script>

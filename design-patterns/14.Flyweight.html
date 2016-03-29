@@ -1,0 +1,271 @@
+<script type="text/javascript">
+  Function.prototype.implementsFor = function (parentClassOrObject) {
+    if (parentClassOrObject.constructor === Function) {
+      this.prototype = new parentClassOrObject()
+      this.prototype.constructor = this
+      this.prototype.parent = parentClassOrObject.prototype
+    } else {
+      this.prototype = parentClassOrObject
+      this.prototype.constructor = this
+      this.prototype.parent = parentClassOrObject
+    }
+    return this
+  }
+</script>
+
+<script type="text/javascript">
+
+  function Flavor(flavor) {
+    var flavor = flavor
+    if (typeof this.get === "function") {
+      this.get = function () {
+        return flavor
+      }
+    }
+    if (typeof this.serve === "function") {
+      this.serve = function (actions) {
+        console.log("Serving flavor " + flavor + " show " + actions.show()
+        )
+      }
+    }
+  }
+
+  var abstractInerface = {
+    serve: function (data) {
+    },
+    get: function () {
+    }
+  }
+  // implementsFor 中 this 指向构造器，接受一个父类(函数or对象)
+  // 构造器.implementsFor 时，将继承父类
+  // 构造器.prototype 指向传入对象或者传入函数构造的实例
+  // 构造器.prototype 新添 parent 属性指向父类的原型
+  Flavor.implementsFor(abstractInerface)
+
+  function Action(args) {
+    return {
+      show: function () {
+        return args
+      },
+      hide: function(){
+        return null
+      }
+    }
+  }
+
+  function Factory() {
+    var uniqueList = {}
+    var length = 0
+
+    return {
+      getFlavor: function (name) {
+        if (uniqueList[name] === undefined) {
+          uniqueList[name] = new Flavor(name)
+          length++
+        }
+        return uniqueList[name]
+      },
+      getFlavorsLength: function () {
+        return length
+      },
+      getUniqueList: function(){
+        return uniqueList
+      }
+    }
+  }
+
+  function test() {
+    var index = 0
+
+    var flavors = new Flavor()
+    var actions = new Action()
+    var factory = Factory()
+
+    function register(name, agrs) {
+      flavors[index] = factory.getFlavor(name)
+      actions[index++] = new Action(agrs)
+    }
+
+    register("Tesla", 1)
+    register("Tesla", 1)
+    register("123", 2)
+    register("123", 2)
+    register("@", 3)
+    register("@", 3)
+    register("Tesla", 10)
+    register("Tesla", 10)
+    register("123", 200)
+    register("123", 200)
+    register("@", 300)
+    register("@", 300)
+    register("Tesla", 4)
+    register("123", 5)
+    register("@", 6)
+
+    for (var i = 0; i < index; ++i) {
+      flavors[i].serve(actions[i])
+    }
+    console.log(" ")
+    console.log("total Flavors length: " + factory.getFlavorsLength())
+    console.log("total Flavors objects: " + factory.getUniqueList())
+  }
+
+  test()
+</script>
+
+<script type="text/javascript">
+  // 一般的书籍管理系统模型
+  function _Book(id, title, author, genre, pageCount, publisherID, ISBN, checkoutDate, checkoutMember, dueReturnDate, availability) {
+    this.id = id
+    this.title = title
+    this.author = author
+    this.genre = genre
+    this.pageCount = pageCount
+    this.publisherID = publisherID
+    this.ISBN = ISBN
+
+    this.checkoutDate = checkoutDate
+    this.checkoutMember = checkoutMember
+    this.dueReturnDate = dueReturnDate
+    this.availability = availability
+  }
+
+  _Book.prototype = {
+    getTitle: function () {
+      return this.title;
+    },
+    getAuthor: function () {
+      return this.author;
+    },
+    getISBN: function () {
+      return this.ISBN;
+    },
+    updateCheckoutStatus: function (bookID, newStatus, checkoutDate, checkoutMember, newReturnDate) {
+      this.id = bookID;
+      this.availability = newStatus;
+      this.checkoutDate = checkoutDate;
+      this.checkoutMember = checkoutMember;
+      this.dueReturnDate = newReturnDate;
+    },
+    extendCheckoutPeriod: function (bookID, newReturnDate) {
+      this.id = bookID;
+      this.dueReturnDate = newReturnDate;
+    },
+    isPastDue: function (bookID) {
+      var currentDate = new Date();
+      return currentDate.getTime() > Date.parse(this.dueReturnDate);
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  // 数据分离成为内在和外在的状态（模拟关系数据库）
+  // 内在的：与书籍对象（id, title, author, genre, pageCount, publisherID, ISBN）相关的数据
+  // 外在的：与借出行为（checkoutDate, checkoutMember, dueReturnDate, availability）相关的数据
+
+  // 采用享元模式实现的书籍管理系统模型
+  function Book(ISBN, details) {
+    this.ISBN = ISBN
+
+    this.title = details.title
+    this.author =details.author
+    this.genre = details.genre
+    this.pageCount = details.pageCount
+    this.publisherID = details. publisherID
+  }
+
+  function BookFactory() {
+    var books = {}
+    var count = 0
+
+    return {
+      getBook: function (ISBN, details) {
+        if(books[ISBN] == undefined){
+          books[ISBN] = new Book(ISBN, details)
+          count ++
+        }
+        return books[ISBN]
+      },
+      getCount: function(){
+        return count
+      },
+      _: function(){
+        return books
+      }
+    }
+  }
+
+  function BookRecordManager() {
+    var Records = {}
+    var factory = BookFactory()
+    var rid = 0
+    var unit = 24 * 60 * 60 * 1000
+
+    function RIDGenerater(){
+      return rid++
+    }
+
+    return {
+      addRecord: function (ISBN, details, checkout) {
+        var book = factory.getBook(ISBN, details)
+
+        Records[RIDGenerater()] = {
+          checkoutMember: checkout.checkoutMember,
+          checkoutDate: checkout.checkoutDate,
+          dueReturnDate: checkout.checkoutDate + checkout.dueReturnDate * unit,
+          availability: checkout.availability || true,
+          ISBN: book.ISBN
+        }
+      },
+
+      updateRecord: function (rid, checkout) {
+        var record = Records[rid]
+
+        record.checkoutMember = checkout.checkoutMember || record.checkoutMember
+        record.checkoutDate = checkout.checkoutDate || record.checkoutDate
+        record.dueReturnDate = checkout.dueReturnDate || record.dueReturnDate
+        record.availability = checkout.availability || record.availability
+      },
+
+      extendCheckoutPeriod: function (rid, dueReturnDate) {
+        Records[rid].dueReturnDate = dueReturnDate
+      },
+
+      isPastDue: function (rid) {
+        var currentDate = new Date()
+        return currentDate.getTime() > Records[rid].dueReturnDate
+      },
+
+      _: function(){
+        return {
+          records: Records,
+          factory: factory
+        }
+      }
+    }
+  }
+
+  var manager = BookRecordManager()
+  manager.addRecord('123', {
+    title: 'test',
+    author: 'tester',
+    genre: 'science',
+    pageCount: 100,
+    publisherID: 'xinhua'
+  }, {
+    checkoutMember: 'tony',
+    checkoutDate: +new Date(),
+    dueReturnDate: 15
+  })
+  manager.addRecord('123', {
+    title: 'test',
+    author: 'tester',
+    genre: 'science',
+    pageCount: 100,
+    publisherID: 'xinhua'
+  }, {
+    checkoutMember: 'john',
+    checkoutDate: +new Date(),
+    dueReturnDate: 30
+  })
+</script>

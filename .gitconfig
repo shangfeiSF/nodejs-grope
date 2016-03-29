@@ -1,0 +1,80 @@
+[alias]
+	cf = config
+	cfg = config --global
+	cfs = config --system
+	cfl = config --local
+	cfgl = config --global -l
+	cfge = config --global -e
+
+	gp1 = grep -n -C 5 --full-name
+	gp2 = grep -n -C 5 --full-name --word-regexp
+
+	df1 = diff
+	df2 = diff --cached
+	df3 = diff HEAD
+
+	dd = add
+	ii = add -i
+	mm = commit -m
+	ss = status
+	sss = status -s
+	sg = status --ignored
+	sgg = status --ignored -s
+
+	re = reset
+	hard = reset --hard
+	soft = reset --soft
+
+	ch = checkout
+	chb = checkout -b
+
+	bh = branch
+	bhv = branch -v
+	bhd = branch -d
+
+	cln = clone
+	rem = remote
+
+	ps = push
+	pl = pull
+	fe = fetch
+	me = merge
+
+	ar = archive -o
+
+	rf = reflog -20
+	ls  = log --pretty=format:'%C(yellow)%ad %C(magenta)[%an] %C(green) %h %C(white)%s %C(reset)[%cr]' --date=short -15
+	lsd = log --pretty=format:'%C(yellow)%ad %C(magenta)[%an] %C(green) %h %C(white)%s %C(reset)[%cr]' --stat --date=short -10
+  lsg = log --pretty=format:'%C(yellow)%ad %C(magenta)[%an] %C(green) %h %C(white)%s %C(reset)[%cr]' --graph --date=short -20
+  lst = log --oneline --decorate
+
+  his = log --pretty=format:'%C(yellow)%ad %C(magenta)[%an] %C(green) %h %C(white)%s %C(reset)[%cr]' --graph --topo-order --date=short -20
+  his1 = log --pretty=format:'%C(yellow)%ad %C(green) %h %C(red)%d %C(white)%s' --graph --topo-order --date=short -20
+  his2 = log --pretty=format:'%C(yellow)%ad %C(magenta)[%an] %C(green) %h %C(red)%d %C(white)%s %C(reset)[%cr]' --graph --topo-order --date=short -20
+	last = log -1 HEAD
+
+	clt = clean -nd
+	cl = clean -fd
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = auto
+[color "branch"]
+	current = green
+	local = magenta
+	remote = blue
+[color "diff"]
+	meta = white
+	frag = yellow
+	old = magenta
+	new = green
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+[gui]
+	recentrepo = D:/chuangyi/creative-center
+[user]
+	name = '萧稍'
+	email = shangfei.sf@alibaba-inc.com

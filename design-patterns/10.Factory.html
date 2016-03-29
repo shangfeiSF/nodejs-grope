@@ -1,0 +1,54 @@
+<script>
+  function Car(options) {
+    this.state = options.state || "new"
+    this.doors = options.doors || 4
+    this.color = options.color || "silver"
+  }
+
+  function Truck(options) {
+    this.state = options.state || "used"
+    this.wheelSize = options.wheelSize || "large"
+    this.color = options.color || "blue"
+  }
+
+  function Factory(types) {
+    this.types = types
+  }
+
+  Factory.prototype.buil = function (options) {
+    var type = options.type
+    var types = this.types
+    for (var t in types) {
+      if (types.hasOwnProperty(t) && t == type && typeof types[t] == 'function') {
+        return new this.types[t](options)
+      }
+    }
+  }
+
+  var types = {
+    'car': Car,
+    'truck': Truck
+  }
+
+  var factory = new Factory(types)
+
+  var carOptions = {
+    type: 'car',
+    state: 'used',
+    doors: 2,
+    color: 'red'
+  }
+
+  var car = factory.build(carOptions)
+  console.log(car)
+
+  var truckOptions = {
+    type: 'truck',
+    state: 'new',
+    wheelSize: 'medium',
+    color: 'black'
+  }
+
+  var truck = factory.build(truckOptions)
+  console.log(truck)
+</script>

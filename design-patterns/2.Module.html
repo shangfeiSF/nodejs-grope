@@ -1,0 +1,89 @@
+<script>
+  var module = (function () {
+
+    var private_var = 'This is a private var'
+    var private_counter = 0
+
+    var private_mothed = function (adder) {
+      private_counter += adder
+    }
+
+    bug_private_method = function(data){
+      return +data * private_counter
+    }
+    // var name = 'test_module_mode_private_name'
+    return {
+      name: 'test_module_mode_public_name',
+
+      getName: function(){
+        return name
+      },
+
+      public_var: 'This is a public var',
+
+      public_method: function (adder, reset) {
+        if (reset) {
+          private_counter = 0
+        }
+        private_mothed(adder)
+        console.info(private_counter)
+      },
+
+      test_method: function(data){
+        var result = bug_private_method(data)
+        console.log(result)
+      }
+    }
+  })()
+
+  // Module mode优点：公共代码可以访问私有代码，但是在模块外部，严格地不能访问私有代码
+  console.log(module.public_var)
+  module.public_method(3, false)    // private_counter is 3
+  module.public_method(5, false)   // private_counter is 8
+  module.public_method(5, true)    // private_counter is 5
+  module.public_method(5, false)   // private_counter is 10
+
+  // Module mode缺点-1：改变模块成员可见性（public/private）后，所有访问成员的代码都要修改方式
+  var test_name = console.info(module.name)
+  // 如果将 name 的可见性由 public 改为 private, module.name 需要替换为 module.getName()
+  // var test_name = console.info(module.getName())
+
+  // Module mode缺点-2：模块的新增API可能无法访问私有代码
+  // 相对好些的情况：模块提供了 private_counter 的 get/set 方法
+  // 相对复杂的情况：private_counter 不能在之后添加的 module 公共方法里面访问到（报错）
+  module.new_API = function(reducer){
+    private_counter -= reducer
+    console.log(private_counter)
+  }
+  try{
+    module.new_API(3)
+  }catch(err){
+    console.log(err)
+  }
+
+  // Module mode缺点-3：私有代码存在的bug无法以补丁的方式紧急修复，只能覆盖调用私有代码的公共代码，但是存在额外的复杂性
+  module.test_method(2)         // 正常
+  module.test_method('abc')   // BUG output NaN
+
+  // 其中额外的复杂性就是 bug_private_method 中引用的 private_counter 是动态的
+  // 覆盖调用私有代码的公共代码时，需要关注 private_counter 的快照
+  // 相对好些的情况：模块提供了 private_counter 的 get/set 方法
+  // 相对复杂的情况：private_counter 无法通过公共代码返回快照
+  module.test_method = function(data, private_counter){
+    var num = parseInt(data)
+    var result = data
+    if ((typeof num).toLowerCase() === 'number' && !Number.isNaN(num)) {
+      result = num * private_counter
+    }
+    console.log(result)
+  }
+
+  module.public_method(10, true)       // private_counter is 10
+  module.test_method(3, 10)
+  module.test_method('abc', 10)         // 调用时与 private_counter的快照 10 是人肉耦合的
+
+  module.public_method(100, true)    // private_counter is 100
+
+  module.test_method(3, 100)
+  module.test_method('abc', 100)      // 调用时与 private_counter的快照 100 是人肉耦合的
+ </script>
