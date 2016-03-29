@@ -28,7 +28,8 @@ app.use(express.static('options', {
   'maxAge': '1m',
   'redirect': false,
   'setHeaders': function (req, res, stat) {
-    console.log(arguments[0])
+    console.log(res)
+    console.log(res)
   }
 }))
 
