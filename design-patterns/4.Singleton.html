@@ -1,81 +1,78 @@
 <script>
-  var mySingleton = (function () {
+    var Singleton = (function () {
 
-    var instance
+        var instance = null
 
-    // 单例模式只是定义了 模块的初始化逻辑代码
-    // 将 模块的声明 和 模块的初始化 分离
-    // 模块的部分细节 依赖 模块初始化时刻的输入
-    function basic_init(type, desc) {
-      // 模块的只读属性 type 依赖模块初始化时刻的 type输入
-      var type = type
+        // 单例模式只是定义了 模块的初始化逻辑代码
+        // 将 模块的声明 和 模块的初始化 分离
+        // 模块的部分细节 依赖 模块初始化时刻的输入
+        function basic(type, desc) {
+            // 模块的只读属性 type 依赖模块初始化时刻的 type输入
+            var type = type
 
-      function getType() {
-        return type
-      }
+            function getType() {
+                return type
+            }
 
-      return {
-        // 模块的读写属性 public_desc 的初始值依赖初始化时刻的 desc 输入
-        public_desc: desc,
+            return {
+                // 模块的读写属性 public_desc 的初始值依赖初始化时刻的 desc 输入
+                public_desc: desc,
 
-        public_check: function (check) {
-          var type = getType()
-          return check === type ? true : 'Module Type is ' + type
-        }
-      }
-
-    }
-
-    function advanced_int(type, desc, rest) {
-      var type = type
-
-      function getType() {
-        return type
-      }
-
-      return {
-        public_desc: desc,
-
-        public_check: function (check) {
-          var type = getType()
-          var result
-          if (check === type) {
-            result = rest.join('---')
-          } else {
-            result = rest.join('***')
-          }
-          return result
-        }
-      }
-    }
-
-    return {
-      getInstance: function (type, desc, style) {
-        if (!instance) {
-          if (!style) {
-            instance = basic_init(type, desc);
-          } else {
-            instance = advanced_int(type, desc, [].slice.call(arguments, 3));
-          }
+                public_check: function (check) {
+                    var type = getType()
+                    return check === type ? true : 'Module Type is ' + type
+                }
+            }
 
         }
-        return instance;
-      }
-    }
 
-  })()
+        function advanced(type, desc, rest) {
+            var type = type
 
-  var module = mySingleton.getInstance('string', 'Singleton type is string!', true, 'alibaba', 'superman')
-  console.info(module.public_desc)
-  module.public_desc = 'nothing!'
-  console.info(module.public_desc)
-  console.info(module.public_check('string'))
-  console.info(module.public_check('number'))
+            function getType() {
+                return type
+            }
 
-  var another = mySingleton.getInstance('number', 'Singleton type is number!')
-  console.log(module.public_desc)
-  module.public_desc = 'something!'
-  console.log(module.public_desc)
-  console.log(module.public_check('string'))
-  console.log(module.public_check('number'))
+            return {
+                public_desc: desc,
+
+                public_check: function (check) {
+                    var type = getType()
+                    var result
+                    if (check === type) {
+                        result = rest.join('---')
+                    } else {
+                        result = rest.join('***')
+                    }
+                    return result
+                }
+            }
+        }
+
+        return {
+            getInstance: function (type, desc, advance) {
+                return instance ?
+                        instance :
+                        (advance ?
+                                        advanced(type, desc, [].slice.call(arguments, 3)) :
+                                        basic(type, desc)
+                        )
+            }
+        }
+
+    })()
+
+    var module = Singleton.getInstance('string', 'Singleton type is string!', true, 'alibaba', 'superman')
+    console.info(module.public_desc)
+    module.public_desc = 'nothing!'
+    console.info(module.public_desc)
+    console.info(module.public_check('string'))
+    console.info(module.public_check('number'))
+
+    var another = Singleton.getInstance('number', 'Singleton type is number!')
+    console.log(another.public_desc)
+    another.public_desc = 'something!'
+    console.log(another.public_desc)
+    console.log(another.public_check('number'))
+    console.log(another.public_check('string'))
 </script>

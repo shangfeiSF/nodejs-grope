@@ -1,55 +1,56 @@
 <script>
-  var module = (function () {
-    // 私有域中定义所有的模块成员（方法 or 属性）
-    var privateVar = "Ben Cherry"
-    var publicVar  = "Hey there!"
+    var module = (function () {
+        var name = "Ben Cherry"
+        var version = "0.0.1"
 
-    function privateFunction() {
-      console.log( "Name:" + privateVar );
-      // 私有方法 调用 公共方法
-      publicDebug(privateVar)
+        function setName(newName) {
+            name = newName
+        }
+
+        function getName() {
+            return name
+        }
+
+        function log() {
+            var combine = [name, version].join('#')
+            info(combine)
+        }
+
+        function info(data) {
+            console.info(data.toLowerCase())
+        }
+
+        // 返回匿名对象包含一些标准化接口，指向期望暴露出来的私有成员，使这些私有成员公有化
+        return {
+            greet: name,
+            set: setName,
+            get: getName,
+            detail: log,
+            transform: info
+        }
+    })()
+
+    // 启发式模块 Reveal module mode 的优点：
+    // 模块接口标准化，模块内部逻辑更集中
+
+    console.log(module.greet)
+    debugger
+    console.log(module.get())
+    module.set('Jeep')
+    console.log(module.get())
+    module.detail()
+
+    console.log('==========================')
+
+    // 启发式模块 Reveal module mode 的缺点：
+    // 通过重载公共方法，期望改变 私有方法 的逻辑是行不通的
+    module.transform = function (data) {
+        console.warn(data.toUpperCase())
     }
-
-    function publicSetName( strName ) {
-      privateVar = strName;
-    }
-
-    function publicGetName() {
-      privateFunction();
-    }
-
-
-    function publicDebug(p){
-      console.warn(p.toLowerCase())
-    }
-
-    // 返回匿名对象包含一些标准化'指针'
-    // 标准化'指针'指向期望暴露出来的私有成员，使这些私有成员公有化
-    return {
-      greeting: publicVar,
-      setName: publicSetName,
-      getName: publicGetName,
-      debug: publicDebug
-    };
-  })()
-
-  // 启发式模块 Reveal module mode 的优点：
-  // 模块接口标准化（匿名指针对象标准化），模块内部逻辑更集中（私有域中就是全部逻辑）
-
-  console.log(module.greeting)
-  module.getName()
-  module.setName('EmmaMoon')
-  module.getName()
-
-  console.log('==========================')
-
-  // 启发式模块 Reveal module mode 的缺点：
-  // 存在 私有方法 调用 公共方法 时， 通过重载公共方法，期望改变 私有方法 的逻辑是行不通的
-  module.debug = function(p){
-    console.warn(p.toUpperCase())
-  }
-  // 私有方法 依旧使用的是 模块中 公共方法 的私有实现
-  console.log(module.greeting)
-  module.setName('XiaoShao')
-  module.getName()                       // xiaoshao
- </script>
+    // 私有方法 依旧使用的是 模块中 公共方法 的私有实现
+    console.log(module.greet)
+    console.log(module.get())
+    module.set('QQ')
+    console.log(module.get())
+    module.detail()
+</script>
