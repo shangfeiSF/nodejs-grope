@@ -29,7 +29,6 @@
             transform: info
         }
     })()
-
     // 启发式模块 Reveal module mode 的优点：
     // 模块接口标准化，模块内部逻辑更集中
 
@@ -39,11 +38,9 @@
     module.set('Jeep')
     console.log(module.get())
     module.detail()
-
-    console.log('==========================')
-
     // 启发式模块 Reveal module mode 的缺点：
     // 通过重载公共方法，期望改变 私有方法 的逻辑是行不通的
+
     module.transform = function (data) {
         console.warn(data.toUpperCase())
     }

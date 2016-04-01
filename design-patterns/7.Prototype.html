@@ -1,140 +1,160 @@
 <script>
-  var someCar = {
-    model: "Ford",
-    owner: "someone",
-    getModel: function () {
-      console.info("This vehicle model is....." + this.model);
-    },
-    getOwner: function () {
-      console.info("This vehicle owner is....." + this.owner);
+    // Object.create 是ES5提供的原型继承方式
+    var someCar = {
+        model: "Ford",
+        owner: "someone",
+        getModel: function () {
+            console.info("This vehicle model is....." + this.model)
+        },
+        getOwner: function () {
+            console.info("This vehicle owner is....." + this.owner)
+        }
     }
-  };
 
-  var myCar = Object.create(someCar);
-  myCar.owner = 'shangfei'
+    var myCar = Object.create(someCar)
+    myCar.owner = 'shangfei'
 
-  myCar.getModel()
-  myCar.getOwner()
+    myCar.getModel()  // Ford
+    myCar.getOwner()  // shangfei
+    // myCar 的 __proto__中看到 owner: 'someone'，但是无法访问
 </script>
-
 <script>
-  var originID = 10
+    function extend() {
+        var args = Array.prototype.slice.call(arguments)
+        var fn = typeof args[args.length - 1] == 'function' && args.pop()
+        var to = args.shift()
 
-  var IDgeneration = function () {
-    return originID++
-  }
+        for (var i = 0; i < args.length; i++) {
+            var from = args[i]
 
-  var test = function (obj, data) {
-    var props = []
-    for (var p  in obj) {
-      props.push(p)
+            for (var p in from) {
+                to[p] = fn ? fn(to[p], from[p]) : from[p]
+            }
+        }
+        return to
     }
-    console.log('---------------------')
-    console.log(props)
-    obj.id = data.id
-    obj.model = data.model
-    obj.color = data.color
-    obj.owner = data.owner
-    obj.getId()
-    obj.getModel()
-    obj.getOwner()
-  }
-
-  var extend = function() {
-    var args = Array.prototype.slice.call(arguments)
-    var fn = typeof args[args.length - 1] == 'function' && args.pop()
-    var to = args.shift()
-
-    for (var i = 0; i < args.length; i++) {
-      var from = args[i]
-
-      for (var p in from) {
-        to[p] = fn ? fn(to[p], from[p]) : from[p]
-      }
-    }
-    return to
-  }
-
-  var descriptor = function (model, color, owner) {
-    return {
-      "id": {
-        // configurable:false,  // default
-        // writable:false,          // defalut
-        enumerable: false,
-        value: IDgeneration()
-      },
-      "model": {
-        enumerable: true,
-        value: model
-      },
-      "color": {
-        writable: true,
-        enumerable: true,
-        value: color
-      },
-      "owner": {
-        configurable: true,
-        writable: true,
-        enumerable: true,
-        value: owner
-      }
-    }
-  }
 </script>
-
 <script>
-  var vehicle = {
-    init: function (Descriptor) {
-      Object.defineProperties(this, Descriptor)
-    },
-    getId: function () {
-      console.info("This vehicle id is....." + this.id);
-    },
-    getModel: function () {
-      console.info("This vehicle model is....." + this.model);
-    },
-    getOwner: function () {
-      console.info("This vehicle owner is....." + this.owner);
+    function Create() {
+        this.origin = 10
     }
-  }
+    extend(Create.prototype, {
+        generator: function () {
+            return ++this.origin
+        },
+        modify: function (instance, data, fns) {
+            var properties = []
+            for (var p in instance) {
+                instance.hasOwnProperty(p) && properties.push(p)
+            }
+            console.log('-------------------------------------------------')
+            console.log(properties)
+            for (var q in data) {
+                if (data.hasOwnProperty(q) && instance.hasOwnProperty(q)) {
+                    instance[q] = data[q]
+                }
+            }
+            for (var i = 0; i < fns.length; i++) {
+                instance[fns[i]]()
+            }
+        },
+        descriptor: function (data) {
+            // configurable、enumerable、writable特性默认都是false
+            // configurable: false时，Object.defineProperty(obj, property, descriptor)会报错：
+            // Uncaught TypeError: Cannot redefine property: property
+            return {
+                "id": {
+                    // configurable:false,       // default 不可以再配置或者删除
+                    // writable:false,               // defalut 不可以修改
+                    // enumerable: false,          // defalut 无法for-in遍历
+                    value: this.generator()    // 属性的初始值
+                },
+                "model": {
+                    // configurable:false,   // default 不可以再配置或者删除
+                    // writable:false,          // defalut 不可以修改
+                    enumerable: true,       // 可以for-in遍历
+                    value: data.model       // 属性的初始值
+                },
+                "color": {
+                    // configurable:false,   // default 不可以再配置或者删除
+                    writable: true,              // 可以修改
+                    enumerable: true,       // 可以for-in遍历
+                    value: data.color         // 属性的初始值
+                },
+                "owner": {
+                    configurable: true,      // 可以再配置，或者删除
+                    writable: true,              // 可以修改
+                    enumerable: true,       // 可以for-in遍历
+                    value: data.owner       // 属性的初始值
+                }
+            }
+        }
+    })
+    var factory = new Create()
 </script>
-
 <script>
-  // JS原生的原型模式
-  var build = Object.create
-  var proto = vehicle
-
-  var tesla = build(proto, descriptor('Tesla', 'white', ''))
-
-  test(tesla, {
-    id: '123',
-    model: 'Buick',
-    color: 'yellow',
-    owner: 'tony'
-  })
+    var vehicle = {
+        init: function (Descriptor) {
+            Object.defineProperties(this, Descriptor)
+        },
+        getId: function () {
+            console.info("This vehicle id is....." + this.id)
+        },
+        getModel: function () {
+            console.info("This vehicle model is....." + this.model)
+        },
+        getColor: function () {
+            console.info("This vehicle color is....." + this.color)
+        },
+        getOwner: function () {
+            console.info("This vehicle owner is....." + this.owner)
+        }
+    }
 </script>
-
 <script>
-  // 模拟JS原生的原型模式
-  var _build = function(obj, Descriptor){
-    function F() {}
+    // JS原生的原型模式
+    var build = Object.create
+    var proto = vehicle
 
-    F.prototype =obj
+    var tesla = build(proto, factory.descriptor({
+        model: 'Tesla',
+        color: 'white',
+        owner: ''
+    }))
 
-    var f = new F()
+    factory.modify(tesla, {
+        id: '123',
+        model: 'Buick',
+        color: 'yellow',
+        owner: 'tony'
+    }, ['getId', 'getModel', 'getColor', 'getOwner'])
+</script>
+<script>
+    // 模拟JS原生的原型模式
+    function _build(obj, Descriptor) {
+        function F() {
+        }
 
-    f.init(Descriptor);
+        F.prototype = obj
 
-    return f;
-  }
-  var _proto = extend({}, vehicle)
+        var f = new F()
 
-  var ferrari = _build(_proto, descriptor('Ferrari', 'black', ''));
+        f.init(Descriptor)
 
-  test(ferrari, {
-    id: '456',
-    model: 'Toyota',
-    color: 'red',
-    owner: 'john'
-  })
+        return f
+    }
+    var _proto = extend({}, vehicle)
+
+    var ferrari = _build(_proto, factory.descriptor({
+        model: 'Ferrari',
+        color: 'black',
+        owner: ''
+    }))
+
+    factory.modify(ferrari, {
+        id: '456',
+        model: 'Toyota',
+        color: 'red',
+        owner: 'john'
+    }, ['getId', 'getModel', 'getColor', 'getOwner'])
 </script>

@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-grope",
+  "version": "1.0.0",
+  "description": "nodejs grope",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^0.6.2",
+    "express": "^4.13.4",
+    "grunt-cli": "^1.1.0",
+    "nopt": "^3.0.6",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:shangfei.sf/nodejs-grope.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "nopt",
+    "grunt-cli",
+    "tap"
+  ],
+  "author": "shangfei.sf",
+  "license": "ISC"
+}
