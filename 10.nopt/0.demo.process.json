@@ -1,0 +1,51 @@
+{
+  "boolean": false,
+  "mix-1": "null",
+  "mix-2": null,
+  "mix-3": 0,
+  "mix-4": "null",
+  "mix-5": null,
+  "mix-6": null,
+  "mix-7": null,
+  "argv": {
+    "remain": [],
+    "cooked": [
+      "--boolean",
+      "false",
+      "--env",
+      "daily",
+      "--mix-1",
+      "null",
+      "--mix-2",
+      "null",
+      "--mix-3",
+      "null",
+      "--mix-4",
+      "null",
+      "--mix-5",
+      "null",
+      "--mix-6",
+      "null",
+      "--mix-7",
+      "null"
+    ],
+    "original": [
+      "--no",
+      "--env-dail",
+      "--mix-1",
+      "null",
+      "--mix-2",
+      "null",
+      "--mix-3",
+      "null",
+      "--mix-4",
+      "null",
+      "--mix-5",
+      "null",
+      "--mix-6",
+      "null",
+      "--mix-7",
+      "null"
+    ]
+  }
+}
