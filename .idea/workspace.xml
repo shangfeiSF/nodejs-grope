@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/10.nopt/1.test.js" line="110" />
+    <bookmark url="file://$PROJECT_DIR$/10.nopt/1.test.js" line="161" />
+    <bookmark url="file://$PROJECT_DIR$/10.nopt/1.test.js" line="75" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6f1478a4-4cf8-4fda-a5dd-6c015abed08e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/10.nopt/0.demo.list.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/10.nopt/0.demo.process.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/10.nopt/1.test.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/10.nopt/0.demo.js" afterPath="$PROJECT_DIR$/10.nopt/0.demo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/10.nopt/0.demo.list.json" afterPath="$PROJECT_DIR$/10.nopt/0.demo.list.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/10.nopt/0.demo.process.json" afterPath="$PROJECT_DIR$/10.nopt/0.demo.process.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/10.nopt/1.test.js" afterPath="$PROJECT_DIR$/10.nopt/1.test.js" />
     </list>
     <ignored path="nodejs-grope.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,135 +30,64 @@
     <favorites_list name="nodejs-grope" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.71479183">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="0.demo.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-351">
-                  <caret line="71" column="11" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
-                  <folding>
-                    <element signature="n#!!block;n#Option#0" expanded="false" />
-                    <element signature="e#201#684#0" expanded="false" />
-                    <element signature="e#708#1479#0" expanded="false" />
-                    <element signature="e#1482#1625#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="0.demo.list.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.list.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="560">
-                  <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-                  <folding>
-                    <element signature="n#!!block;n#argv#0;n#!!top" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="1.cipher.update.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/6.crypto/1.cipher.update.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name=".gitconfig" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/.gitconfig">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/.gitignore">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="56">
-                  <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="5.ECDH.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/6.crypto/5.ECDH.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-336">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="0.autocomplete.aync.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/3.readline/0.autocomplete.aync.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="2.line.treminal.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/3.readline/2.line.treminal.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-168">
-                  <caret line="3" column="12" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="_write.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/1.stream/3.write/_write.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-336">
-                  <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="1.test.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/10.nopt/1.test.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="168">
-                  <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="0.demo.process.json" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.process.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="50" column="1" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
-                  <folding>
-                    <element signature="n#!!block;n#argv#0;n#!!top" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="1.test.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/10.nopt/1.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1889">
+              <caret line="289" column="21" selection-start-line="289" selection-start-column="17" selection-end-line="289" selection-end-column="21" />
+              <folding>
+                <element signature="e#207#349#0" expanded="false" />
+                <element signature="e#229#250#0" expanded="false" />
+                <element signature="e#397#503#0" expanded="false" />
+                <element signature="e#419#440#0" expanded="false" />
+                <element signature="e#577#774#0" expanded="false" />
+                <element signature="e#849#1172#0" expanded="false" />
+                <element signature="e#871#894#0" expanded="false" />
+                <element signature="e#1234#1531#0" expanded="false" />
+                <element signature="e#1256#1356#0" expanded="false" />
+                <element signature="e#1276#1304#0" expanded="false" />
+                <element signature="e#1324#1352#0" expanded="false" />
+                <element signature="e#1605#1777#0" expanded="false" />
+                <element signature="e#1627#1646#0" expanded="false" />
+                <element signature="e#4664#4736#0" expanded="false" />
+                <element signature="e#6581#6740#0" expanded="false" />
+                <element signature="e#6591#6634#0" expanded="false" />
+                <element signature="e#6691#6739#0" expanded="false" />
+                <element signature="e#6746#6926#0" expanded="false" />
+                <element signature="e#6790#6871#0" expanded="false" />
+                <element signature="e#6932#7190#0" expanded="false" />
+                <element signature="e#6963#7091#0" expanded="false" />
+                <element signature="e#7093#7189#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0.demo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+              <folding>
+                <element signature="e#201#684#0" expanded="false" />
+                <element signature="e#1482#1625#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0.demo.list.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.list.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="644">
+              <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -175,9 +107,10 @@
         <option value="$PROJECT_DIR$/design-patterns/15.Publish+Subscribe/index.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/10.nopt/0.demo.process.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/10.nopt/0.demo.list.json" />
         <option value="$PROJECT_DIR$/10.nopt/0.demo.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/10.nopt/1.test.js" />
       </list>
     </option>
   </component>
@@ -256,20 +189,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-grope" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodejs-grope" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="6.crypto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -288,8 +207,14 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
-  <component name="RunManager" selected="Node.js.0.assert.js">
+  <component name="RunManager" selected="Node.js.1.test.js">
     <configuration default="false" name="0.assert.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="0.assert.js" working-dir="$PROJECT_DIR$/5.assert">
+      <method />
+    </configuration>
+    <configuration default="false" name="1.test.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:\Program Files\nodejs\node" path-to-js-file="1.test.js" working-dir="$PROJECT_DIR$/10.nopt">
+      <method />
+    </configuration>
+    <configuration default="false" name="0.demo.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:\Program Files\nodejs\node" path-to-js-file="0.demo.js" working-dir="$PROJECT_DIR$/10.nopt">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -345,12 +270,16 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Node.js.0.assert.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.1.test.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.0.demo.js" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.0.assert.js" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.1.test.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.0.demo.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.0.assert.js" />
       </list>
     </recent_temporary>
   </component>
@@ -373,12 +302,12 @@
       <workItem from="1459341894181" duration="5540000" />
       <workItem from="1459432012734" duration="4450000" />
       <workItem from="1459514108951" duration="1255000" />
-      <workItem from="1459515710516" duration="5268000" />
+      <workItem from="1459515710516" duration="15004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25881000" />
+    <option name="totallyTimeSpent" value="35617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="96" y="-8" width="1352" height="916" extended-state="6" />
@@ -390,9 +319,9 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.47576532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="750" y="309" width="675" height="373" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39958376" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39923468" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -406,18 +335,18 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908162" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24885845" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.47576532" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="750" y="309" width="675" height="373" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14079148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39958376" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39923468" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -436,7 +365,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -740,14 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.stream/3.write/_write.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/6.crypto/0.cipher.readable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -764,43 +685,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/10.nopt/1.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.process.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="50" column="1" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+        <state relative-caret-position="56">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding>
             <element signature="n#!!block;n#argv#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.list.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="n#!!block;n#argv#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351">
-          <caret line="71" column="11" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!block;n#Option#0" expanded="false" />
-            <element signature="e#201#684#0" expanded="false" />
-            <element signature="e#708#1479#0" expanded="false" />
-            <element signature="e#1482#1625#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -818,6 +708,64 @@
         <state relative-caret-position="56">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.stream/3.write/_write.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-336">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.list.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10.nopt/0.demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+          <folding>
+            <element signature="e#201#684#0" expanded="false" />
+            <element signature="e#1482#1625#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10.nopt/1.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1889">
+          <caret line="289" column="21" selection-start-line="289" selection-start-column="17" selection-end-line="289" selection-end-column="21" />
+          <folding>
+            <element signature="e#207#349#0" expanded="false" />
+            <element signature="e#229#250#0" expanded="false" />
+            <element signature="e#397#503#0" expanded="false" />
+            <element signature="e#419#440#0" expanded="false" />
+            <element signature="e#577#774#0" expanded="false" />
+            <element signature="e#849#1172#0" expanded="false" />
+            <element signature="e#871#894#0" expanded="false" />
+            <element signature="e#1234#1531#0" expanded="false" />
+            <element signature="e#1256#1356#0" expanded="false" />
+            <element signature="e#1276#1304#0" expanded="false" />
+            <element signature="e#1324#1352#0" expanded="false" />
+            <element signature="e#1605#1777#0" expanded="false" />
+            <element signature="e#1627#1646#0" expanded="false" />
+            <element signature="e#4664#4736#0" expanded="false" />
+            <element signature="e#6581#6740#0" expanded="false" />
+            <element signature="e#6591#6634#0" expanded="false" />
+            <element signature="e#6691#6739#0" expanded="false" />
+            <element signature="e#6746#6926#0" expanded="false" />
+            <element signature="e#6790#6871#0" expanded="false" />
+            <element signature="e#6932#7190#0" expanded="false" />
+            <element signature="e#6963#7091#0" expanded="false" />
+            <element signature="e#7093#7189#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

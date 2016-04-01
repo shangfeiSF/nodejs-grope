@@ -2,11 +2,12 @@
   "string": "nopt",
   "boolean": true,
   "number": 200,
-  "date": "2016-04-01T14:27:41.593Z",
+  "date": "2016-04-01T18:15:30.009Z",
   "array": [
     "1",
     "2",
-    "3"
+    "3",
+    "4"
   ],
   "path": "d:\\xiaoshao\\nodejs-grope\\10.nopt",
   "env": "develop",
@@ -19,6 +20,7 @@
   "isnull": null,
   "debug": true,
   "wrap": false,
+  "price": "100.10",
   "argv": {
     "remain": [],
     "cooked": [
@@ -29,21 +31,24 @@
       "--number",
       "200",
       "--date",
-      "2016-04-01T14:27:41.593Z",
+      "2016-04-01T18:15:30.009Z",
       "--array",
       "1",
       "--array",
       "2",
       "--array",
       "3",
+      "--array",
+      "4",
       "--path",
       "./",
       "--url",
-      "https:/github.com",
+      "https://github.com",
       "--NaN",
       "try to use backdoor?",
       "--env",
       "develop",
+      "--no-url",
       "--mix-1",
       null,
       "--mix-2",
@@ -61,19 +66,23 @@
       "--isnull",
       "null",
       "--debug",
-      "--no-wrap"
+      "--no-wrap",
+      "--price",
+      "100.10"
     ],
     "original": [
-      "--str",
-      "nopt",
+      "-str=nopt",
       "--yes",
-      "--n200",
-      "--now",
+      "---n200",
+      "----now",
       "--array3",
+      "--array",
+      "4",
       "--cwd",
       "--github",
       "--backdoor",
       "--env-dev",
+      "--no-url",
       "--mix-1",
       null,
       "--mix-2",
@@ -90,7 +99,8 @@
       null,
       "--isnull=null",
       "--debug",
-      "--no-wrap"
+      "--no-wrap",
+      "--price=100.10"
     ]
   }
 }

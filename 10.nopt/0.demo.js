@@ -70,16 +70,18 @@ function Option(list) {
 }
 
 new Option([
-  '--str', 'nopt',
-  '--yes',
-  '--n200',
-  '--now',
+  '-str=nopt', // 终端可以使用'='赋值
+  '--yes', // 选项的前缀'-'多于一个无所谓
+  '---n200',
+  '----now',
   '--array3',
+  '--array', '4',  // 终端也可以使用空格赋值
   '--cwd',
   '--github',
   //'--log',
   '--backdoor',
   '--env-dev',
+  '--no-url', // url字段不会出现在最终的解析对象中
   '--mix-1', null,  // mix-1 配置失败: 列表中是 'null' 而不是 null
   '--mix-2', null,  // null  配置成功: 列表中的确是 null
   '--mix-3', null,  // 0 配置虽然成功，强制转换（列表中 Numebr 位置更靠前）Number(null) = 0
@@ -89,7 +91,8 @@ new Option([
   '--mix-7', null,  // null  配置成功: 列表中的确有 null
   '--isnull=null',  // null
   '--debug',  // true
-  '--no-wrap'  // false
+  '--no-wrap',  // false
+  '--price=100.10'
 ])
 /*
  * 脚本中配置的list可以输入更多的数据类型，如null
