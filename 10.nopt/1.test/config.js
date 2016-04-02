@@ -9,24 +9,31 @@ module.exports = [
     remain: [],
   },
   {
-    argvs: '----v',
+    argvs: '---v',
     expected: {
       version: true
     },
     remain: [],
   },
   {
-    argvs: 'build --no-v -s',
+    argvs: '--no-v',
     expected: {
-      version: false,
+      version: false
+    },
+    remain: [],
+  },
+
+
+  {
+    argvs: 'build -s',
+    expected: {
       loglevel: 'silent'
     },
     remain: ['build'],
   },
   {
-    argvs: 'build --no-version -s connect -d',
+    argvs: 'build -s connect -d',
     expected: {
-      version: false,
       loglevel: 'info'
     },
     remain: ['build', 'connect'],
@@ -54,7 +61,7 @@ module.exports = [
     remain: ['connect'],
   },
   {
-    argvs: 'connect --no-reg https://github.com/',
+    argvs: 'connect --no-registry https://github.com/',
     expected: {
       registry: 'undefined'
     },

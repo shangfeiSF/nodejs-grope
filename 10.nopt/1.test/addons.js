@@ -19,6 +19,7 @@ module.exports = [
       l: '--length'
     }
   },
+  
   {
     argvs: '--as 1 -o 1',
     expected: {
@@ -38,6 +39,7 @@ module.exports = [
       o: '--options'
     }
   },
+  
   {
     argvs: '--clear -cle -no-a -no-r',
     expected: {
