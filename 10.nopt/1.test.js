@@ -1,39 +1,39 @@
-var path = require("path")
-var nopt = require("nopt")
-var task = require('tap').test
+var path = require('path')
+var nopt = require('nopt')
+var UNIT = require('tap').test
 
-task("Pass a string", function (test) {
+UNIT('Pass a string', function (test) {
   var parsed = nopt({
     key: String
-  }, {}, ["--key", "This is a string"], 0)
+  }, {}, ['--key', 'This is a string'], 0)
 
-  test.same(parsed.key, "This is a string")
+  test.same(parsed.key, 'This is a string')
   test.end()
 })
 
-task("Pass an empty string", function (test) {
+UNIT('Pass an empty string', function (test) {
   var parsed = nopt({
     key: String
-  }, {}, ["--key"], 0)
+  }, {}, ['--key'], 0)
 
-  test.same(parsed.key, "")
+  test.same(parsed.key, '')
   test.end()
 })
 
-task("~ is resolved to the value of process.env.HOME", function (test) {
-  if (!process.env.HOME) process.env.HOME = "/tmp"
+UNIT('~ is resolved to the value of process.env.HOME', function (test) {
+  if (!process.env.HOME) process.env.HOME = '/tmp'
 
   var parsed = nopt({
     key: path
-  }, {}, ["--key=~/val"], 0)
+  }, {}, ['--key=~/val'], 0)
 
-  test.same(parsed.key, path.resolve(process.env.HOME, "val"))
+  test.same(parsed.key, path.resolve(process.env.HOME, 'val'))
   test.end()
 })
 
-task("Unknown options are parsed based on itself type", function (test) {
+UNIT('Unknown options are parsed based on itself type', function (test) {
   var parsed = nopt({
-    "key": Number
+    'key': Number
   }, {}, ['--unknown-1=null', '--unknown-2=this is a string', '--no-unknown-3', '--key=1.20'], 0)
 
   test.equal(parsed['unknown-1'], null)
@@ -43,13 +43,13 @@ task("Unknown options are parsed based on itself type", function (test) {
   test.end()
 })
 
-task("Check type based on name in config", function (test) {
+UNIT('Check type based on name in config', function (test) {
   var parsed = nopt({
-    "key-string": {
-      name: "String"
+    'key-string': {
+      name: 'String'
     },
-    "key-number": {
-      name: "Number"
+    'key-number': {
+      name: 'Number'
     }
   }, {}, ['--key-string=this is a string', '--key-number=1.20'], 0)
 
@@ -58,9 +58,9 @@ task("Check type based on name in config", function (test) {
   test.end()
 })
 
-task("Option that miss name in config are not parsed", function (test) {
+UNIT('Option that miss name in config are not parsed', function (test) {
   var parsed = nopt({
-    "key": {}
+    'key': {}
   }, null, ['--key=1.20'], 0)
 
   test.equal(Object.keys(parsed).length, 1)
@@ -68,33 +68,36 @@ task("Option that miss name in config are not parsed", function (test) {
   test.end()
 })
 
-task("Other tests", function (test) {
+UNIT('Other tests', function (test) {
   var known = require('./1.test/known')
   var short = require('./1.test/short')
 
-  require('./1.test/config').forEach(function (config) {
-    // config：[list, check_map, remain, known, short]
+  require('./1.test/config').forEach(function (item) {
+    var parser = nopt(
+      item.known || known,
+      item.short || short,
+      item.argvs.split(/\s+/),
+      0
+    )
 
-    var list = config[0].split(/\s+/)
-    var wanted_map = config[1]
-    var remain = config[2]
+    var expected = item.expected
 
-    var parser = nopt(config[3] || known, config[4] || short, list, 0)
+    for (var prop in expected) {
+      var expected_value = parser[prop] !== undefined ?
+        JSON.stringify(expected[prop]) :
+        expected[prop]
+      var parse_value = parser[prop] !== undefined ?
+        JSON.stringify(parser[prop]) :
+        'undefined'
 
-    for (var prop in wanted_map) {
-      var wanted = wanted_map[prop]
-
-      var wanted_value = JSON.stringify(wanted)
-      var parse_value = JSON.stringify(parser[prop] === undefined ? null : parser[prop])
-
-      if (wanted_value && typeof wanted_value === "object") {
-        test.deepEqual(parse_value, wanted_value)
+      if (expected_value && typeof expected_value === 'object') {
+        test.deepEqual(parse_value, expected_value)
       } else {
-        test.equal(parse_value, wanted_value)
+        test.equal(parse_value, expected_value)
       }
     }
 
-    test.deepEqual(parser.argv.remain, remain)
+    test.deepEqual(parser.argv.remain, item.remain)
   })
   test.end()
 })

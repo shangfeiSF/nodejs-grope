@@ -1,12 +1,12 @@
-var url = require("url")
-var path = require("path")
-var Stream = require("stream")
+var url = require('url')
+var path = require('path')
+var Stream = require('stream')
 
 module.exports = {
   version: Boolean,
-  loglevel: ["silent", "win", "error", "warn", "info", "verbose", "silly"],
+  loglevel: ['silent', 'win', 'error', 'warn', 'info', 'verbose', 'silly'],
   registry: url,
-  color: ["always", Boolean],
+  color: ['inherit', Boolean],
   logfd: [Number, Stream],
 
   aoa: Array,
@@ -25,16 +25,16 @@ module.exports = {
   group: [String, Number],
   gzipbin: String,
   long: Boolean,
-  "node-version": [false, String],
+  'node-version': [false, String],
   npaturl: url,
   npat: Boolean,
-  "onload-script": [false, String],
+  'onload-script': [false, String],
   outfd: [Number, Stream],
   parseable: Boolean,
   pre: Boolean,
   prefix: path,
   proxy: url,
-  "rebuild-bundle": Boolean,
+  'rebuild-bundle': Boolean,
   searchopts: String,
   searchexclude: [null, String],
   shell: path,
@@ -42,7 +42,7 @@ module.exports = {
   tag: String,
   tar: String,
   tmp: path,
-  "unsafe-perm": Boolean,
+  'unsafe-perm': Boolean,
   usage: Boolean,
   user: String,
   username: String,
