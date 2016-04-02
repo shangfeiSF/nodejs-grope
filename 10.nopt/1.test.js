@@ -71,8 +71,10 @@ UNIT('Option that miss name in config are not parsed', function (test) {
 UNIT('Other tests', function (test) {
   var known = require('./1.test/known')
   var short = require('./1.test/short')
+  var config = require('./1.test/config')
+  var addons = require('./1.test/addons')
 
-  require('./1.test/config').forEach(function (item) {
+  config.concat(addons).forEach(function (item) {
     var parser = nopt(
       item.known || known,
       item.short || short,
