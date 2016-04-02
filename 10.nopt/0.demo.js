@@ -1,54 +1,12 @@
 #!/usr/bin/env node
 
 var fs = require("fs")
-var url = require("url")
-var path = require("path")
-var Stream = require("stream")
 var nopt = require("nopt")
 
 function Option(list) {
-  this.knownOptions = {
-    'string': [String],
-    'boolean': Boolean,
-    'number': Number,
-    'date': Date,
-    'array': Array,
-    'path': path,
-    'url': url,
-    // 'stream': Stream,
-    'NaN': NaN,
-    'env': ['develop', 'product'],
-    'mix-1': ['node', 'null'],
-    'mix-2': ['node', null],
-    'mix-3': [Number, 'node', null],
-    'mix-4': [String, 'node', null],
-    'mix-5': [null, String, 'node'],
-    'mix-6': ['null', null, String, 'node'],
-    'mix-7': [null, 'null', String, 'node']
-  }
+  this.knownOptions = require('./0.demo/known')
 
-  this.shortOptions = {
-    // short 中的配置参数必须是字符串，否则会报错
-    'str': '--string',
-    'yes': ['--boolean', 'true'],
-    'no': ['--boolean', 'false'],
-    'n200': ['--number', '200'],
-    'now': ['--date', (new Date()).toJSON()],
-    'array3': ['--array', '1', '--array', '2', '--array', '3'],
-    'cwd': ['--path', './'],
-    'github': ['--url', 'https://github.com'],
-    // 'log': ['--stream'],
-    'backdoor': ['--NaN', 'try to use backdoor?'],
-    'env-dev': ['--env', 'develop'],
-    'env-dail': ['--env', 'daily'],
-    'mix-1-null': ['--mix-1', 'null'],
-    'mix-2-null': ['--mix-2', 'null'],
-    'mix-3-null': ['--mix-3', 'null'],
-    'mix-4-null': ['--mix-4', 'null'],
-    'mix-5-null': ['--mix-5', 'null'],
-    'mix-6-null': ['--mix-6', 'null'],
-    'mix-7-null': ['--mix-7', 'null']
-  }
+  this.shortOptions = require('./0.demo/short')
   /*
    * nopt(known, short, args, sliceOffset)四个参数都是可选的：
    * known 默认是{}
@@ -58,51 +16,50 @@ function Option(list) {
    */
   this.listParser = nopt(this.knownOptions, this.shortOptions, list, 0)
 
-  var listLog = fs.openSync('./0.demo.list.json', 'w')
+  var listLog = fs.openSync('./0.demo/log/list.json', 'w')
   fs.writeSync(listLog, JSON.stringify(this.listParser, null, 2))
   fs.close(listLog)
 
   this.processParser = nopt(this.knownOptions, this.shortOptions, process.argv, 2)
 
-  var processLog = fs.openSync('./0.demo.process.json', 'w')
+  var processLog = fs.openSync('./0.demo/log/process.json', 'w')
   fs.writeSync(processLog, JSON.stringify(this.processParser, null, 2))
   fs.close(processLog)
 }
 
 new Option([
-  '-str=nopt', // 终端可以使用'='赋值
-  '--yes', // 选项的前缀'-'多于一个无所谓
-  '---n200',
-  '----now',
+  '-module=nopt', // 终端可以使用'='赋值
+  '--yes', // 选项的前缀'-'数量（>=1）
+  '---s200',
+  '----yesterday',
   '--array3',
-  '--array', '4',  // 终端也可以使用空格赋值
+  '--item', '4',  // 终端也可以使用空格赋值
   '--cwd',
   '--github',
-  //'--log',
-  '--backdoor',
+  //'--l',
+  '--dinosaurs',
   '--env-dev',
-  '--no-url', // url字段不会出现在最终的解析对象中
-  '--mix-1', null,  // mix-1 配置失败: 列表中是 'null' 而不是 null
-  '--mix-2', null,  // null  配置成功: 列表中的确是 null
-  '--mix-3', null,  // 0 配置虽然成功，强制转换（列表中 Numebr 位置更靠前）Number(null) = 0
-  '--mix-4', null,  // 'null' 配置虽然成功，强制转换（列表中 String 位置更靠前）String(null) = 'null'
-  '--mix-5', null,  // null 配置成功，列表中 null 位置更靠前
-  '--mix-6', null,  // null  配置成功: 列表中的确有 null
-  '--mix-7', null,  // null  配置成功: 列表中的确有 null
+  '--mix-1', null,  // mix-1字段不存在 ~~ Failed: 列表中是 'null' 而不是 null
+  '--mix-2', null,  // null ~~ Success: 列表中的确是 null
+  '--mix-3', null,  // 0 ~~ Half-Success，Number(null) = 0，强制转换（列表中 Numebr 位置更靠前）
+  '--mix-4', null,  // 'null' ~~ Half-Success，String(null) = 'null'，强制转换（列表中 String 位置更靠前）
+  '--mix-5', null,  // null ~~ Success，列表中 null 位置更靠前
+  '--mix-6', null,  // null ~~ Success: 列表中的确有 null
+  '--mix-7', null,  // null ~~ Success: 列表中的确有 null
   '--isnull=null',  // null
   '--debug',  // true
   '--no-wrap',  // false
-  '--price=100.10'
+  '--price=100.10' // '100.10'
 ])
 /*
  * 脚本中配置的list可以输入更多的数据类型，如null
- * 按照顺序呢检索，遇到类型时发生强制转换，严格区分对象null 和字符串'null'
+ * 按照顺序检索，遇到类型时发生强制转换，严格区分对象null 和字符串'null'
  * 终端输入的list只能是字符串（short中配置的参数也是只能是字符串）
  * 首先按照对象null顺序检索，遇到类型时发生强制转换，失败的话再按照字符串'null'顺序检索
  */
 
 // 方式1：使用脚本中提供的字符串 'null'
-// 0.demo.js --no --env-dail --mix-1-null --mix-2-null --mix-3-null --mix-4-null --mix-5-null --mix-6-null --mix-7-null
+// 0.demo.js --no --no-website --env-dail --mix-1-null --mix-2-null --mix-3-null --mix-4-null --mix-5-null --mix-6-null --mix-7-null
 // 方式2：使用来自终端输入的字符串 null
-// 0.demo.js --no --env-dail --mix-1 null --mix-2 null --mix-3 null --mix-4 null --mix-5 null --mix-6 null --mix-7 null
+// 0.demo.js --no --no-website --env-dail --mix-1 null --mix-2 null --mix-3 null --mix-4 null --mix-5 null --mix-6 null --mix-7 null
 // 方式1 与 方式2 在 0.demo.process.json 中输出一致
