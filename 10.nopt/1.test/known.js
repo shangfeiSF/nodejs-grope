@@ -4,21 +4,17 @@ var Stream = require('stream')
 
 module.exports = {
   version: Boolean,
-  loglevel: ['silent', 'win', 'error', 'warn', 'info', 'verbose', 'silly'],
+  detail: ['silent', 'info', 'verbose', 'error', 'warn'],
   registry: url,
   color: ['inherit', Boolean],
-  logfd: [Number, Stream],
-  tmp: path,
+  log: [Number, Stream],
+  path: path,
   tar: String,
-  t: [Array, String],
-  aoa: Array,
+  slot: [Array, String],
+  array: Array,
   nullstream: [null, Stream],
   date: Date,
-
   usage: Boolean,
   force: Boolean,
   global: Boolean,
-  long: Boolean,
-  description: Boolean,
-  parseable: Boolean
 }

@@ -23,18 +23,17 @@ module.exports = [
     remain: [],
   },
 
-
   {
     argvs: 'build -s',
     expected: {
-      loglevel: 'silent'
+      detail: 'silent'
     },
     remain: ['build'],
   },
   {
-    argvs: 'build -s connect -d',
+    argvs: 'build -s connect -i',
     expected: {
-      loglevel: 'info'
+      detail: 'info'
     },
     remain: ['build', 'connect'],
   },
@@ -126,25 +125,25 @@ module.exports = [
   },
 
   {
-    argvs: 'log --logfd=10',
+    argvs: 'open --log=10',
     expected: {
-      logfd: 10
+      log: 10
     },
-    remain: ['log'],
+    remain: ['open'],
   },
   {
-    argvs: '--logfd xxx',
+    argvs: '--log xxx',
     expected: {
-      logfd: 'undefined'
+      log: 'undefined'
     },
     remain: [],
   },
 
   {
-    argvs: '--tmp=./tmp -tar gtar',
+    argvs: '--path=./tmp -tar zip',
     expected: {
-      tmp: path.resolve(process.cwd(), './tmp'),
-      tar: 'gtar'
+      path: path.resolve(process.cwd(), './tmp'),
+      tar: 'zip'
     },
     remain: [],
   },
@@ -285,46 +284,46 @@ module.exports = [
   },
 
   {
-    argvs: '-t one -t 2 -t three',
+    argvs: '-slot one -slot 2 -slot three',
     expected: {
-      t: ['one', '2', 'three']
+      slot: ['one', '2', 'three']
     },
     remain: [],
   },
   {
-    argvs: '-t one -t null -t three -t 4 five 6 null',
+    argvs: '-slot one -slot null -slot three -slot 4 five 6 null',
     expected: {
-      t: ['one', 'null', 'three', '4']
+      slot: ['one', 'null', 'three', '4']
     },
     remain: ['five', '6', 'null'],
   },
 
   {
-    argvs: '-no-t one -t 2 -no-no-t null flag',
+    argvs: '-no-slot one -slot 2 -no-no-slot null flag',
     expected: {
-      t: ['one', '2', 'null']
+      slot: ['one', '2', 'null']
     },
     remain: ['flag'],
   },
   {
-    argvs: '----no-t',
+    argvs: '----no-slot',
     expected: {
-      t: ['false']
+      slot: ['false']
     },
     remain: [],
   },
   {
-    argvs: '---no-no-t',
+    argvs: '---no-no-slot',
     expected: {
-      t: ['true']
+      slot: ['true']
     },
     remain: [],
   },
 
   {
-    argvs: '-aoa one -aoa null -aoa 100',
+    argvs: '-array one -array null -array 100',
     expected: {
-      aoa: ['one', null, '100']
+      array: ['one', null, '100']
     },
     remain: [],
   },
