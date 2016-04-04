@@ -10,10 +10,10 @@
 | Ctrl+Shift+F4 | - | Alt+Shift+F4 | - | Ctrl+Alt+F4 | -  | | |
 | F5 | Move Right | Alt+F5 | Unsplit | Ctrl+F5 | File Path | Shift+F5 | File Structure |
 | Ctrl+Shift+F5 | - | Alt+Shift+F5 | - | Ctrl+Alt+F5 | -  | | |
-| F6 | Copy | Alt+F6 | Rename | Ctrl+F6 | Move | Shift+F6 | Navigation Bar |
+| F6 | Copy | Alt+F6 | Rename | Ctrl+F6 | Move | Shift+F6 | - |
 | Ctrl+Shift+F6 | Settings | Alt+Shift+F6 | - | Ctrl+Alt+F6 | -  | | |
-| F7 | Branch | Alt+F7 | Compare With | Ctrl+F7 | Compare With Branch | Shift+F7 | - |
-| Ctrl+Shift+F7 | - | Alt+Shift+F7 | - | Ctrl+Alt+F7 | -  | | |
+| F7 | Branch | Alt+F7 | Compare With | Ctrl+F7 | Compare With Branch | Shift+F7 | Show History |
+| Ctrl+Shift+F7 | Show History for Selection | Alt+Shift+F7 | - | Ctrl+Alt+F7 | -  | | |
 | F8 | Tag | Alt+F8 | Compare With SRV | Ctrl+F8 | Compare With LRV | Shift+F8 | - |
 | Ctrl+Shift+F8 | - | Alt+Shift+F8 | - | Ctrl+Alt+F8 | -  | | |
 | F9 | Local Changes | Alt+F9 | Add | Ctrl+F9 | Commit Changes | Shift+F9 | - |
@@ -33,6 +33,8 @@
 
 | key | spec | key | spec | key | spec |
 | ---- | ---- | ---- | ---- | ---- | ---- |
+| Ctrl+A | Select All | Alt+A | Project | | |
+| Ctrl+Shift+A | Version Control | Alt+Shift+A | Jump To Navigation Bar | Ctrl+Alt+A | - |
 | Ctrl+C | Copy | Alt+C | - | | |
 | Ctrl+Shift+C | Copy Path | Alt+Shift+C | - | Ctrl+Alt+C | - |
 | Ctrl+V | Paste | Alt+V | - | | |
@@ -48,7 +50,7 @@
 | Crtl+L | Select Line | Alt+L | Column Selection Mode | | | 
 | Ctrl+Shift+L | Reformat Code | Alt+Shift+L | Show Reformat File Dialog| Ctrl+Alt+L |  |
 | Ctrl+K | Surround With | Alt+K | - | | |
-| Ctrl+Shift+K | - | Alt+Shift+K | - | Ctrl+Alt+K | - |
+| Ctrl+Shift+K | Unwrap/Remove | Alt+Shift+K | - | Ctrl+Alt+K | - |
 | Ctrl+J | Insert Live Template | Alt+J | - | | | 
 | Ctrl+Shift+J | Join Lins | Alt+Shift+J | - | Ctrl+Alt+J | - |
 | Ctrl+G | Line | Alt+G | - | | |
@@ -62,6 +64,6 @@
 | Ctrl+H | Show Usages | Alt+U | Find Usages | | |
 | Ctrl+Shift+U | HightLight Usages in File | Alt+Shift+U | Find Usages in File | Ctrl+Alt+U | - |
 | Ctrl+I | Quick Definition | Alt+I | Parameter Info | | |
-| Ctrl+Shift+I | Quick Documentation | Alt+Shift+I | - | Ctrl+Alt+I | - |
+| Ctrl+Shift+I | Jump to Source | Alt+Shift+I | Quick Documentation | Ctrl+Alt+I | - |
 | Ctrl+B | Toggle Bookmark | Alt+B | Show Bookmarks | | |
 | Ctrl+Shift+B | Next Bookmark | Alt+Shift+B | Previous Bookmark | Ctrl+Alt+B | - |
