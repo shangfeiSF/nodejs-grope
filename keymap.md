@@ -10,13 +10,13 @@
 | Ctrl+Shift+F4 | - | Alt+Shift+F4 | - | Ctrl+Alt+F4 | -  | | |
 | F5 | Move Right | Alt+F5 | Unsplit | Ctrl+F5 | File Path | Shift+F5 | File Structure |
 | Ctrl+Shift+F5 | - | Alt+Shift+F5 | - | Ctrl+Alt+F5 | -  | | |
-| F6 | Copy | Alt+F6 | Rename | Ctrl+F6 | Move | Shift+F6 | - |
+| F6 | Copy | Alt+F6 | Rename | Ctrl+F6 | Move | Shift+F6 | Navigation Bar |
 | Ctrl+Shift+F6 | Settings | Alt+Shift+F6 | - | Ctrl+Alt+F6 | -  | | |
 | F7 | Branch | Alt+F7 | Compare With | Ctrl+F7 | Compare With Branch | Shift+F7 | - |
 | Ctrl+Shift+F7 | - | Alt+Shift+F7 | - | Ctrl+Alt+F7 | -  | | |
 | F8 | Tag | Alt+F8 | Compare With SRV | Ctrl+F8 | Compare With LRV | Shift+F8 | - |
 | Ctrl+Shift+F8 | - | Alt+Shift+F8 | - | Ctrl+Alt+F8 | -  | | |
-| F9 | Navigation Bar | Alt+F9 | Add | Ctrl+F9 | Commit Changes | Shift+F9 | - |
+| F9 | Local Changes | Alt+F9 | Add | Ctrl+F9 | Commit Changes | Shift+F9 | - |
 | Ctrl+Shift+F9 | Push | Alt+Shift+F9 | - | Ctrl+Alt+F9 | -  | | |
 | F10 | - | Alt+F10 | Fetch | Ctrl+F10 | Merge Changes | Shift+F10 | - |
 | Ctrl+Shift+F10 | - | Alt+Shift+F10 | - | Ctrl+Alt+F10 | -  | | |
@@ -57,8 +57,10 @@
 | Ctrl+Shift+Q | Use Soft Wraps | Alt+Shift+Q | - | Ctrl+Alt+Q | - |
 | Ctrl+E | Recent Files | Alt+E | - | | |
 | Ctrl+Shift+E | Recently Changed Files | Alt+Shift+E | - | Ctrl+Alt+E | - |
-| Ctrl+U | Toggle Case | Alt+U | - | | |
+| Ctrl+H | Toggle Case | Alt+U | - | | |
 | Ctrl+Shift+U | - | Alt+Shift+U | - | Ctrl+Alt+U | - |
+| Ctrl+H | Show Usages | Alt+U | Find Usages | | |
+| Ctrl+Shift+U | HightLight Usages in File | Alt+Shift+U | Find Usages in File | Ctrl+Alt+U | - |
 | Ctrl+I | Quick Definition | Alt+I | Parameter Info | | |
 | Ctrl+Shift+I | Quick Documentation | Alt+Shift+I | - | Ctrl+Alt+I | - |
 | Ctrl+B | Toggle Bookmark | Alt+B | Show Bookmarks | | |
