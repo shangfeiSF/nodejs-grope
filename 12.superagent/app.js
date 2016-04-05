@@ -25,7 +25,29 @@ var users = [{
 }]
 
 app.get('/users', function (req, res) {
-  res.send(JSON.stringify(users, null, 2))
+  var querys = req.query
+
+  var range = querys.range ? querys.range.split(',') : [0, users.length]
+  var result = users.filter(function (user) {
+    return user.id >= Number(range[0]) && user.id <= Number(range[1])
+  })
+
+  var order = querys.order
+  var format = querys.format ? querys.format.toLowerCase() === 'true' : false
+  var tag = querys.tag || 'none-tag'
+
+  if (order === 'desc') result.reverse()
+  result = format ?
+    JSON.stringify({
+      users: result,
+      tag: tag
+    }, null, 2) :
+    JSON.stringify({
+      users: result,
+      tag: tag
+    })
+
+  res.send(result)
 })
 
 app.post('/create', function (req, res) {

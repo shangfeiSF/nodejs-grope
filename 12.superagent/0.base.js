@@ -4,11 +4,17 @@ var superagent = require('superagent')
 // superagent GET 的使用方式：
 superagent
   .get('http://localhost:8080/users')
+  .query({order: 'desc'})
+  .query({range: '1, 2'})
+  .query({tag: 'express-superagent-GET-1'})
+  .query({format: 'true'})
   .end(function (err, res) {
     console.log('[GET #1] -- ' + res.text.green)
   })
 
 superagent('GET', 'http://localhost:8080/users')
+  .query({order: 'asc', range: '0, 1'})
+  .query('tag=express-superagent-GET-2&format=true')
   .end(function (err, res) {
     console.log('[GET #2] -- ' + res.text.green)
   })
@@ -24,7 +30,7 @@ superagent
   // superagent set方法设置header（服务端全部转换为小写的key, 即api-key）
   .set('API-KEY', 'express-superagent-POST#1')
   .send({
-    name: 'yuncong',
+    name: 'xiaoshao',
     authority: 'developer'
   })
   .end(function (err, res) {
@@ -38,10 +44,8 @@ superagent
   })
 
 superagent('POST', 'http://localhost:8080/create')
-  .send({
-    name: 'yuncong',
-    authority: 'admin'
-  })
+  .set('Content-Type', 'application/json')
+  .send('{"name": "yuncong", "authority": "admin"}')
   // superagent set方法设置header（服务端全部转换为小写的key, 即api-key）
   .set('API-KEY', 'express-superagent-POST#2')
   .end(function (err, res) {
