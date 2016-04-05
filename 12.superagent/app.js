@@ -8,13 +8,18 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+var current = 3
+
 var users = [{
+  id: 0,
   name: 'shangfei',
   authority: 'admin'
 }, {
+  id: 1,
   name: 'emmammon',
   authority: 'guest'
 }, {
+  id: 2,
   name: 'xixi',
   authority: 'developer'
 }]
@@ -24,28 +29,20 @@ app.get('/users', function (req, res) {
 })
 
 app.post('/create', function (req, res) {
-  function test() {
-    var items = [1, 2, 3]
-    items.forEach(function (item) {
-      item = item++
-    })
-    console.log(items.join('#'))
-  }
-
-  console.log('begin')
-  test()
   if (req.body) {
+    req.id = current++
     users.push(req.body)
     res.send(JSON.stringify(users, null, 2))
   }
-
-  console.log('456')
 })
 
 app.delete('/user/:id', function (req, res) {
-  console.log(req)
+  users = users.filter(function (user) {
+    return user.id !== req.params.id
+  })
+  res.send(JSON.stringify(users, null, 2))
 })
 
-var server = app.listen(8080, function () {
+app.listen(8080, function () {
   console.log('[Server] -- listening localhost:8080....'.green)
 })
