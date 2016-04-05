@@ -29,18 +29,26 @@ app.get('/users', function (req, res) {
 })
 
 app.post('/create', function (req, res) {
+  var key = req.headers['api-key'] || 'none'
   if (req.body) {
     req.body.id = current++
     users.push(req.body)
-    res.send(JSON.stringify(users, null, 2))
+    res.send(JSON.stringify({
+      users: users,
+      key: key
+    }, null, 2))
   }
 })
 
 app.delete('/user/:id', function (req, res) {
+  var tag = req.headers.tag || 'no-tag'
   users = users.filter(function (user) {
     return user.id !== Number(req.params.id)
   })
-  res.send(JSON.stringify(users, null, 2))
+  res.send(JSON.stringify({
+    users: users,
+    tag: tag
+  }, null, 2))
 })
 
 app.listen(8080, function () {
