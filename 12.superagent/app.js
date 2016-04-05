@@ -30,7 +30,7 @@ app.get('/users', function (req, res) {
 
 app.post('/create', function (req, res) {
   if (req.body) {
-    req.id = current++
+    req.body.id = current++
     users.push(req.body)
     res.send(JSON.stringify(users, null, 2))
   }
@@ -38,7 +38,7 @@ app.post('/create', function (req, res) {
 
 app.delete('/user/:id', function (req, res) {
   users = users.filter(function (user) {
-    return user.id !== req.params.id
+    return user.id !== Number(req.params.id)
   })
   res.send(JSON.stringify(users, null, 2))
 })
