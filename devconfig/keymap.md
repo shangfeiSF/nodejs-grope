@@ -34,7 +34,7 @@
 | key | spec | key | spec | key | spec |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Ctrl+A | Select All | Alt+A | Project | | |
-| Ctrl+Shift+A | Version Control | Alt+Shift+A | Jump To Navigation Bar | Ctrl+Alt+A | - |
+| Ctrl+Shift+A | Jump To Navigation Bar | Alt+Shift+A | Version Control | Ctrl+Alt+A | - |
 | Ctrl+C | Copy | Alt+C | - | | |
 | Ctrl+Shift+C | Copy Path | Alt+Shift+C | - | Ctrl+Alt+C | - |
 | Ctrl+V | Paste | Alt+V | - | | |
