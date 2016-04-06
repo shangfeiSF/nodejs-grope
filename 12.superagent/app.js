@@ -1,12 +1,23 @@
+var fs = require('fs')
+var path = require('path')
 var colors = require('colors')
 var express = require('express')
 var bodyParser = require('body-parser')
+var multipart = require('connect-multiparty')
+var multipartMiddleware = multipart()
 
 var app = express()
+
+app.use(express.static('asset'))
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+app.use('/users/formdata', multipartMiddleware, function (req, res, next) {
+  console.log(req.body)
+  next()
+})
 
 var Users = {
   count: 3,
@@ -23,6 +34,22 @@ var Users = {
     name: 'original--3',
     authority: 'guest'
   }]
+}
+
+var Forms = {
+  count: 0,
+  data: []
+}
+
+var FormDatas = {
+  data: {
+    count: 0,
+    list: []
+  },
+  files: {
+    count: 0,
+    list: []
+  }
 }
 
 app.get('/users/list', function (req, res) {
@@ -68,6 +95,48 @@ app.post('/users/advanced/add', function (req, res) {
   }
 })
 
+app.post('/users/form', function (req, res) {
+  req.body.id = Forms.count++
+  Forms.data.push(req.body)
+
+  var result = JSON.stringify({
+    count: Forms.count,
+    data: Forms.data
+  }, null, 2)
+
+  console.log((req.headers['user-agent'] + '-----' + req.url).bold.yellow)
+  res.send(result)
+})
+
+app.get('/pages/formdata.html', function (req, res) {
+  var file = path.join(__dirname, 'pages/formdata.html')
+
+  fs.readFile(file, function (error, data) {
+    res.writeHead(200)
+    res.end(data)
+  })
+})
+
+app.post('/users/formdata', function (req, res) {
+  if (req.body) {
+    req.body.id = FormDatas.data.count++
+    FormDatas.data.list.push(req.body)
+  }
+
+  if (req.files) {
+    FormDatas.files.count++
+    FormDatas.files.list = FormDatas.files.list.concat(req.files)
+  }
+
+  var result = JSON.stringify({
+    data: FormDatas.data,
+    files: FormDatas.files
+  }, null, 2)
+
+  console.log((req.headers['user-agent'] + '-----' + req.url).bold.yellow)
+  res.send(result)
+})
+
 app.get('/users/search', function (req, res) {
   var querys = req.query
 
@@ -101,7 +170,7 @@ app.delete('/users/remove/:id', function (req, res) {
     return user.id !== Number(req.params.id)
   })
   Users.count = Users.list.length
-  
+
   var result = JSON.stringify({
     count: Users.count,
     users: Users.list
