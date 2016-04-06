@@ -10,13 +10,13 @@
 | Ctrl+Shift+F4 | - | Alt+Shift+F4 | - | Ctrl+Alt+F4 | -  | | |
 | F5 | Move Right | Alt+F5 | Unsplit | Ctrl+F5 | File Path | Shift+F5 | File Structure |
 | Ctrl+Shift+F5 | - | Alt+Shift+F5 | - | Ctrl+Alt+F5 | -  | | |
-| F6 | Copy | Alt+F6 | Rename | Ctrl+F6 | Move | Shift+F6 | - |
+| F6 | - | Alt+F6 | Move | Ctrl+F6 | Copy | Shift+F6 | - |
 | Ctrl+Shift+F6 | Settings | Alt+Shift+F6 | - | Ctrl+Alt+F6 | -  | | |
-| F7 | Branch | Alt+F7 | Compare With | Ctrl+F7 | Compare With Branch | Shift+F7 | Show History |
-| Ctrl+Shift+F7 | Show History for Selection | Alt+Shift+F7 | - | Ctrl+Alt+F7 | -  | | |
-| F8 | Tag | Alt+F8 | Compare With SRV | Ctrl+F8 | Compare With LRV | Shift+F8 | - |
-| Ctrl+Shift+F8 | - | Alt+Shift+F8 | - | Ctrl+Alt+F8 | -  | | |
-| F9 | Local Changes | Alt+F9 | Add | Ctrl+F9 | Commit Changes | Shift+F9 | - |
+| F7 | Branch | Alt+F7 | Compare With | Ctrl+F7 | Compare With Branch | Shift+F7 | Tag |
+| Ctrl+Shift+F7 | -  | Alt+Shift+F7 | - | Ctrl+Alt+F7 | -  | | |
+| F8 | Show History | Alt+F8 |Show History for Selection | Ctrl+F8 | Compare With LRV | Shift+F8 | Compare With SRV |
+| Ctrl+Shift+F8 | -  | Alt+Shift+F8 | - | Ctrl+Alt+F8 | -  | | |
+| F9 | Show Local Changes | Alt+F9 | Add | Ctrl+F9 | Commit Changes | Shift+F9 | - |
 | Ctrl+Shift+F9 | Push | Alt+Shift+F9 | - | Ctrl+Alt+F9 | -  | | |
 | F10 | - | Alt+F10 | Fetch | Ctrl+F10 | Merge Changes | Shift+F10 | - |
 | Ctrl+Shift+F10 | - | Alt+Shift+F10 | - | Ctrl+Alt+F10 | -  | | |
