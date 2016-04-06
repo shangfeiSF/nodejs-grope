@@ -3,8 +3,7 @@ var path = require('path')
 var colors = require('colors')
 var express = require('express')
 var bodyParser = require('body-parser')
-var multipart = require('connect-multiparty')
-var multipartMiddleware = multipart()
+var multiparty = require('multiparty')
 
 var app = express()
 
@@ -14,10 +13,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-app.use('/users/formdata', multipartMiddleware, function (req, res, next) {
-  console.log(req.body)
-  next()
-})
 
 var Users = {
   count: 3,
@@ -118,6 +113,19 @@ app.get('/pages/formdata.html', function (req, res) {
 })
 
 app.post('/users/formdata', function (req, res) {
+  // http://www.cnblogs.com/kongxianghai/archive/2015/02/15/4293139.html
+  // http://www.open-open.com/lib/view/open1438700267473.html
+  var form = new multiparty.Form()
+
+  form.parse(req, function (err, fields, files) {
+    res.writeHead(200, {'content-type': 'text/plain'});
+    res.write('received upload:\n\n');
+    res.end(util.inspect({
+      fields: fields,
+      files: files
+    }))
+  })
+
   if (req.body) {
     req.body.id = FormDatas.data.count++
     FormDatas.data.list.push(req.body)
