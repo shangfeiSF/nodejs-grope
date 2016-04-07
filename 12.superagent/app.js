@@ -1,5 +1,6 @@
 var fs = require('fs')
 var path = require('path')
+var crypto = require('crypto')
 var colors = require('colors')
 var express = require('express')
 var bodyParser = require('body-parser')
@@ -8,6 +9,7 @@ var multiparty = require('multiparty')
 var app = express()
 
 app.use(express.static('asset'))
+app.use('/images', express.static('asset/images'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -36,16 +38,30 @@ var Forms = {
   data: []
 }
 
-var FormDatas = {
-  data: {
-    count: 0,
-    list: []
-  },
-  files: {
-    count: 0,
-    list: []
-  }
+function Hash(config) {
+  this.algorithms = config.algorithms
+  this.encoding = config.encoding
 }
+
+Hash.prototype.gen = function (filename) {
+  var self = this
+  var stamp = parseInt(
+    +new Date()
+    + Math.floor(Math.random() * 5E10)
+  )
+  var generator = crypto.createHash(self.algorithms)
+
+  var encrypted = ''
+  generator.update(filename + stamp)
+  encrypted += generator.digest(self.encoding)
+
+  return encrypted.length ? encrypted : stamp
+}
+
+var hash = new Hash({
+  algorithms: 'RSA-SHA1-2',
+  encoding: 'hex'
+})
 
 app.get('/users/list', function (req, res) {
   var result = JSON.stringify({
@@ -115,34 +131,35 @@ app.get('/pages/formdata.html', function (req, res) {
 app.post('/users/formdata', function (req, res) {
   // http://www.cnblogs.com/kongxianghai/archive/2015/02/15/4293139.html
   // http://www.open-open.com/lib/view/open1438700267473.html
-  var form = new multiparty.Form()
-
-  form.parse(req, function (err, fields, files) {
-    res.writeHead(200, {'content-type': 'text/plain'});
-    res.write('received upload:\n\n');
-    res.end(util.inspect({
-      fields: fields,
-      files: files
-    }))
+  var uploadDir = 'asset/images'
+  var form = new multiparty.Form({
+    'uploadDir': uploadDir
   })
 
-  if (req.body) {
-    req.body.id = FormDatas.data.count++
-    FormDatas.data.list.push(req.body)
-  }
+  form.parse(req, function (err, fields, files) {
+    var links = []
+    var base = 'http://localhost:8080/images/'
 
-  if (req.files) {
-    FormDatas.files.count++
-    FormDatas.files.list = FormDatas.files.list.concat(req.files)
-  }
+    files.files.forEach(function (file) {
+      var prefix = hash.gen(file.originalFilename)
+      var full = [prefix, file.originalFilename].join('_')
 
-  var result = JSON.stringify({
-    data: FormDatas.data,
-    files: FormDatas.files
-  }, null, 2)
+      links.push(base + full)
+      fs.rename(
+        path.join(__dirname, file.path),
+        path.join(__dirname, uploadDir, full),
+        function () {
+          console.log('[Image] --- '.green + full + ' has been uploaded'.green)
+        }
+      )
+    })
 
-  console.log((req.headers['user-agent'] + '-----' + req.url).bold.yellow)
-  res.send(result)
+    console.log((req.headers['user-agent'] + '-----' + req.url).bold.yellow)
+
+    res.send({
+      links: links
+    })
+  })
 })
 
 app.get('/users/search', function (req, res) {
