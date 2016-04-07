@@ -5,6 +5,10 @@ var colors = require('colors')
 var express = require('express')
 var bodyParser = require('body-parser')
 var multiparty = require('multiparty')
+// https://github.com/aheckmann/gm
+var gm = require('gm').subClass({
+  imageMagick: true
+})
 
 var app = express()
 
@@ -143,13 +147,25 @@ app.post('/users/formdata', function (req, res) {
     files.files.forEach(function (file) {
       var prefix = hash.gen(file.originalFilename)
       var full = [prefix, file.originalFilename].join('_')
+      var convert = [prefix, file.originalFilename.replace(/\.png$/, '.jpg')].join('_')
 
-      links.push(base + full)
+      links.push(base + convert)
+
+      var oldPath = path.join(__dirname, file.path)
+      var newPath = path.join(__dirname, uploadDir, full)
+      var convertPath = path.join(__dirname, uploadDir, convert)
+
       fs.rename(
-        path.join(__dirname, file.path),
-        path.join(__dirname, uploadDir, full),
+        oldPath,
+        newPath,
         function () {
-          console.log('[Image] --- '.green + full + ' has been uploaded'.green)
+          console.log('[Image Uploaded] --- '.green + full + ' has been uploaded'.green)
+          gm(newPath)
+            .resize(200, 200)
+            .noProfile()
+            .write(convertPath, function (err) {
+              console.log('[Image Converted] --- '.blue + convert + ' has been converted'.blue)
+            })
         }
       )
     })
