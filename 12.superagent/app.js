@@ -6,6 +6,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var multiparty = require('multiparty')
 // https://github.com/aheckmann/gm
+// http://www.imagemagick.org/script/binary-releases.php
 var gm = require('gm').subClass({
   imageMagick: true
 })
