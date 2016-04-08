@@ -1,13 +1,18 @@
 var fs = require('fs')
 var path = require('path')
 var crypto = require('crypto')
+
 var colors = require('colors')
+
 var express = require('express')
-var bodyParser = require('body-parser')
 var multiparty = require('multiparty')
-// https://github.com/aheckmann/gm
-// http://www.imagemagick.org/script/binary-releases.php
-var gm = require('gm').subClass({
+var bodyParser = require('body-parser')
+
+var promise = require("bluebird")
+promise.promisifyAll(fs)
+var gm = require('gm')
+
+var imageMagick = gm.subClass({
   imageMagick: true
 })
 
@@ -134,8 +139,6 @@ app.get('/pages/formdata.html', function (req, res) {
 })
 
 app.post('/users/formdata', function (req, res) {
-  // http://www.cnblogs.com/kongxianghai/archive/2015/02/15/4293139.html
-  // http://www.open-open.com/lib/view/open1438700267473.html
   var uploadDir = 'asset/images'
   var form = new multiparty.Form({
     'uploadDir': uploadDir
@@ -144,6 +147,8 @@ app.post('/users/formdata', function (req, res) {
   form.parse(req, function (err, fields, files) {
     var links = []
     var base = 'http://localhost:8080/images/'
+    var length = files.files.length
+    var current = 0
 
     files.files.forEach(function (file) {
       var prefix = hash.gen(file.originalFilename)
@@ -156,26 +161,24 @@ app.post('/users/formdata', function (req, res) {
       var newPath = path.join(__dirname, uploadDir, full)
       var convertPath = path.join(__dirname, uploadDir, convert)
 
-      fs.rename(
-        oldPath,
-        newPath,
-        function () {
-          console.log('[Image Uploaded] --- '.green + full + ' has been uploaded'.green)
-          gm(newPath)
-            .resize(200, 200)
-            .noProfile()
-            .write(convertPath, function (err) {
-              console.log('[Image Converted] --- '.blue + convert + ' has been converted'.blue)
-            })
-        }
-      )
+      fs.renameAsync(oldPath, newPath).then(function () {
+        console.log('[Uploaded] --- '.green + full + ' has been uploaded'.green)
+        imageMagick(newPath)
+          .resize(200, 200)
+          .noProfile()
+          .write(convertPath, function (err) {
+            console.log('[Converted] --- '.white + convert + ' has been converted'.white)
+            current++
+            if (current == length) {
+              res.send({
+                links: links
+              })
+            }
+          })
+      })
     })
 
     console.log((req.headers['user-agent'] + '-----' + req.url).bold.yellow)
-
-    res.send({
-      links: links
-    })
   })
 })
 
