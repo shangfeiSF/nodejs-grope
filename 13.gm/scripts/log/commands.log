@@ -1,0 +1,1 @@
+convert "-background" "#222" "..\imgs\src\lost.png" "..\imgs\src\original.jpg" "-append" "..\imgs\dst\01.append.png_relative.png"convert "-background" "#222" "d:\xiaoshao\emmamoon\nodejs-grope\13.gm\imgs\src\lost.png" "d:\xiaoshao\emmamoon\nodejs-grope\13.gm\imgs\src\original.jpg" "-append" "d:\xiaoshao\emmamoon\nodejs-grope\13.gm\imgs\dst\01.append.png"
