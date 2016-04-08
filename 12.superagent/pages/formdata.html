@@ -52,10 +52,10 @@
                 var linkDoms = $.map(data.links, function (link, index) {
                     var linkDom = $('<a></a>')
                     linkDom.addClass('img-wrap')
-                    linkDom.attr('href', link)
+                    linkDom.attr('href', link.url)
                     linkDom.attr('target', '_blank')
                     linkDom.attr('data-index', index)
-                    linkDom.append($('<img src="' + link + '" />'))
+                    linkDom.append($('<img src="' + link.url + '" />'))
                     return linkDom
                 })
                 $('#J_response').append(linkDoms)

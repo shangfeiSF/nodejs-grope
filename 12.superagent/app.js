@@ -1,4 +1,5 @@
 var fs = require('fs')
+var util = require('util')
 var path = require('path')
 var crypto = require('crypto')
 
@@ -8,45 +9,14 @@ var express = require('express')
 var multiparty = require('multiparty')
 var bodyParser = require('body-parser')
 
-var promise = require("bluebird")
-promise.promisifyAll(fs)
 var gm = require('gm')
+
+var Promise = require("bluebird")
+Promise.promisifyAll(fs)
 
 var imageMagick = gm.subClass({
   imageMagick: true
 })
-
-var app = express()
-
-app.use(express.static('asset'))
-app.use('/images', express.static('asset/images'))
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
-
-var Users = {
-  count: 3,
-  list: [{
-    id: 0,
-    name: 'original--1',
-    authority: 'admin'
-  }, {
-    id: 1,
-    name: 'original--2',
-    authority: 'developer'
-  }, {
-    id: 2,
-    name: 'original--3',
-    authority: 'guest'
-  }]
-}
-
-var Forms = {
-  count: 0,
-  data: []
-}
 
 function Hash(config) {
   this.algorithms = config.algorithms
@@ -72,6 +42,38 @@ var hash = new Hash({
   algorithms: 'RSA-SHA1-2',
   encoding: 'hex'
 })
+
+var Users = {
+  count: 3,
+  list: [{
+    id: 0,
+    name: 'original--1',
+    authority: 'admin'
+  }, {
+    id: 1,
+    name: 'original--2',
+    authority: 'developer'
+  }, {
+    id: 2,
+    name: 'original--3',
+    authority: 'guest'
+  }]
+}
+
+var Forms = {
+  count: 0,
+  data: []
+}
+
+var app = express()
+
+app.use(express.static('asset'))
+app.use('/images', express.static('asset/images'))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 app.get('/users/list', function (req, res) {
   var result = JSON.stringify({
@@ -140,45 +142,66 @@ app.get('/pages/formdata.html', function (req, res) {
 
 app.post('/users/formdata', function (req, res) {
   var uploadDir = 'asset/images'
+  var base = 'http://localhost:8080/images/'
+
   var form = new multiparty.Form({
     'uploadDir': uploadDir
   })
 
   form.parse(req, function (err, fields, files) {
-    var links = []
-    var base = 'http://localhost:8080/images/'
-    var length = files.files.length
-    var current = 0
-
-    files.files.forEach(function (file) {
-      var prefix = hash.gen(file.originalFilename)
-      var full = [prefix, file.originalFilename].join('_')
-      var convert = [prefix, file.originalFilename.replace(/\.png$/, '.jpg')].join('_')
-
-      links.push(base + convert)
-
-      var oldPath = path.join(__dirname, file.path)
-      var newPath = path.join(__dirname, uploadDir, full)
-      var convertPath = path.join(__dirname, uploadDir, convert)
-
-      fs.renameAsync(oldPath, newPath).then(function () {
-        console.log('[Uploaded] --- '.green + full + ' has been uploaded'.green)
-        imageMagick(newPath)
-          .resize(200, 200)
-          .noProfile()
-          .write(convertPath, function (err) {
-            console.log('[Converted] --- '.white + convert + ' has been converted'.white)
-            current++
-            if (current == length) {
-              res.send({
-                links: links
-              })
-            }
-          })
+    if (err) {
+      res.send({
+        links: [],
+        code: '404'
       })
-    })
+    }
 
-    console.log((req.headers['user-agent'] + '-----' + req.url).bold.yellow)
+    Promise.reduce(files.files, function (links, file) {
+        var prefix = hash.gen(file.originalFilename)
+        var full = [prefix, file.originalFilename].join('_')
+        var convert = [prefix, file.originalFilename.replace(/\.png$/, '.jpg')].join('_')
+
+        links.push({
+          url: base + convert,
+          original: file.originalFilename,
+          path: file.path,
+          rename: null,
+          convert: null
+        })
+
+        var oldPath = path.join(__dirname, file.path)
+        var newPath = path.join(__dirname, uploadDir, full)
+        var convertPath = path.join(__dirname, uploadDir, convert)
+
+        return fs.renameAsync(oldPath, newPath)
+          .then(function () {
+            console.log('[Uploaded] --- '.green + full + ' has been uploaded'.green)
+            links[links.length - 1].rename = full
+
+            return new Promise(function (resolve) {
+              imageMagick(newPath).write(convertPath, resolve)
+            })
+          })
+          .then(function () {
+            links[links.length - 1].convert = convert
+            console.log('[Converted] --- '.white + convert + ' has been converted'.white)
+
+            return new Promise(function (resolve) {
+              resolve(links)
+            })
+          })
+      }, [])
+      .then(function (links) {
+        console.log(
+          util.inspect(links, {
+            showHidden: false,
+            depth: null
+          })
+        )
+        res.send({
+          links: links
+        })
+      })
   })
 })
 
