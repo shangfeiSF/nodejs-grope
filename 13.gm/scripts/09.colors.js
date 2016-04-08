@@ -4,19 +4,17 @@ var imageMagick = require('gm').subClass({
   imageMagick: true
 })
 
-function Append(images) {
+function Colors(images) {
   var images = common.prepare(images)
 
   imageMagick(images.src[0])
-    .append(images.src[1])
-    .append()
-    .background('#00ff00')
+    .colors(4)
     .write(images.dst[0], function () {
       common.log.apply(this, arguments)
     })
 }
 
-new Append({
-  src: ['lost.png', 'original.jpg'],
-  dst: ['01.append.png']
+new Colors({
+  src: ['original.png'],
+  dst: ['09.colors.jpg']
 })
