@@ -1,4 +1,8 @@
+var Promise = require("bluebird")
+
 var fs = require('fs')
+Promise.promisifyAll(fs)
+
 var util = require('util')
 var path = require('path')
 var crypto = require('crypto')
@@ -10,10 +14,6 @@ var multiparty = require('multiparty')
 var bodyParser = require('body-parser')
 
 var gm = require('gm')
-
-var Promise = require("bluebird")
-Promise.promisifyAll(fs)
-
 var imageMagick = gm.subClass({
   imageMagick: true
 })
@@ -143,7 +143,6 @@ app.get('/pages/formdata.html', function (req, res) {
 app.post('/users/formdata', function (req, res) {
   var uploadDir = 'asset/images'
   var base = 'http://localhost:8080/images/'
-
   var form = new multiparty.Form({
     'uploadDir': uploadDir
   })
