@@ -185,9 +185,7 @@ app.post('/users/formdata', function (req, res) {
             links[links.length - 1].convert = convert
             console.log('[Converted] --- '.white + convert + ' has been converted'.white)
 
-            return new Promise(function (resolve) {
-              resolve(links)
-            })
+            return links
           })
       }, [])
       .then(function (links) {

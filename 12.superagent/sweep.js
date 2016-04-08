@@ -11,7 +11,7 @@ var colors = require('colors')
 fs.readdirAsync(path.join(__dirname, 'asset/images'))
   .then(function (files) {
     var images = files.filter(function (file) {
-      return /\.jpg|\.png$/.test(file)
+      return /\.jpg|\.png$/i.test(file)
     })
 
     if (images.length == 0) {
