@@ -45,21 +45,25 @@ module.exports = {
     var error = arguments[0]
     var arg_1 = arguments[1]
     var arg_2 = arguments[2]
-    var commands = arguments[3].split(/\s/g)
+    var commands = this._original ? arguments[3] : arguments[3].split(/\s+/g)
 
     console.log('[Error] --- ' + error)
     console.log('[Arg1] --- ' + arg_1)
     console.log('[Arg2] --- ' + arg_2)
-    console.log('[Commands] --- ')
-    commands.forEach(function (cmd) {
-      console.log(cmd.green)
-    })
+    console.log('[Commands or Info] --- ')
+    if (this._original) {
+      console.log(commands.green)
+    } else {
+      commands.forEach(function (cmd) {
+        console.log(cmd.green)
+      })
+    }
+
 
     var log = fs.openSync('./log/commands.log', 'a')
     fs.writeSync(log, arguments[3])
     fs.writeSync(log, '\r')
     fs.close(log)
-
-    console.log('[Create] --- ' + (this.outname + '').yellow)
+    this.outname && console.log('[Create] --- ' + (this.outname + '').yellow)
   }
 }

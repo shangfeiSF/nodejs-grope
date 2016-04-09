@@ -1,16 +1,14 @@
 #!/usr/bin/env node
+var gm = require('gm')
 var common = require('./00.common')
-var imageMagick = require('gm').subClass({
-  imageMagick: true
-})
 
 function Background(images) {
   var images = common.prepare(images)
 
-  imageMagick(images.src[0])
-    .crop(140, 100)
-    .background('#FF0000')
-    .extent(240, 200)
+  gm(images.src[0])
+    .crop(100, 100, 20, 40)
+    .extent(200, 200, '-100-100')
+    .background('#36AEC0')
     .write(images.dst[0], function () {
       common.log.apply(this, arguments)
     })

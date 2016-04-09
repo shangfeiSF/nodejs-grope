@@ -1,14 +1,12 @@
 #!/usr/bin/env node
+var gm = require('gm')
 var common = require('./00.common')
-var imageMagick = require('gm').subClass({
-  imageMagick: true
-})
 
 function Bitdepth(images) {
   var images = common.prepare(images)
 
-  imageMagick(images.src[0])
-    .bitdepth(4)
+  gm(images.src[0])
+    .bitdepth(2)
     .write(images.dst[0], function () {
       common.log.apply(this, arguments)
     })

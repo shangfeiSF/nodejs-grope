@@ -2,17 +2,18 @@
 var gm = require('gm')
 var common = require('./00.common')
 
-function Colorize(images) {
+function Comment(images) {
   var images = common.prepare(images)
 
   gm(images.src[0])
-    .colorize(80, 0, 30)
+    .comment('%m:%f %wx%h')
+    .comment('original pic')
     .write(images.dst[0], function () {
       common.log.apply(this, arguments)
     })
 }
 
-new Colorize({
+new Comment({
   src: ['original.png'],
-  dst: ['08.colorize.jpg']
+  dst: ['10.comment.jpg']
 })
