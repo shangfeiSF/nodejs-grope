@@ -14,9 +14,6 @@ var multiparty = require('multiparty')
 var bodyParser = require('body-parser')
 
 var gm = require('gm')
-var imageMagick = gm.subClass({
-  imageMagick: true
-})
 
 function Hash(config) {
   this.algorithms = config.algorithms
@@ -178,7 +175,7 @@ app.post('/users/formdata', function (req, res) {
             links[links.length - 1].rename = full
 
             return new Promise(function (resolve) {
-              imageMagick(newPath).write(convertPath, resolve)
+              gm(newPath).write(convertPath, resolve)
             })
           })
           .then(function () {
