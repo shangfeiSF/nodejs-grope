@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+var path = require('path')
+
+var Promise = require('bluebird')
+var fs = Promise.promisifyAll(require("fs"))
+
+var colors = require('colors')
+
+var common = require('./00.common')
+
+fs.readdirAsync(process.cwd())
+  .then(function (names) {
+    var files = []
+
+    for (var index = 0; index < names.length; index++) {
+      console.log(('[#' + index + '] --- ' + names[index]).green)
+      files.push({
+        name: names[index],
+        stamp: common.stamp()
+      })
+    }
+
+    return files
+  })
+  .then(function (files) {
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i]
+      console.log(file.stamp + ' --- ' + file.name)
+    }
+  })
