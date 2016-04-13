@@ -13,7 +13,6 @@ fs.readdirAsync(process.cwd())
     var files = []
 
     for (var index = 0; index < names.length; index++) {
-      console.log(('[#' + index + '] --- ' + names[index]).green)
       files.push({
         name: names[index],
         stamp: common.stamp()
@@ -22,17 +21,23 @@ fs.readdirAsync(process.cwd())
 
     return files
   })
-  .then(function (files) {
-    var tasks = []
+  .filter(function (file) {
+    var item = fs.statAsync(file.name)
+      .then(function (stat) {
+        return !stat.isDirectory()
+      })
 
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i]
+    return item
+  })
+  .then(function (files) {
+    return Promise.each(files, function (file, index) {
       var filePath = path.join(__dirname, file.name)
 
       var info = new Promise(function (resolve) {
         resolve({
           name: file.name,
-          stamp: file.stamp
+          stamp: file.stamp,
+          index: index
         })
       })
         .then(function (info) {
@@ -43,21 +48,17 @@ fs.readdirAsync(process.cwd())
 
       var contents = fs.readFileAsync(filePath)
 
-      tasks.push(
-        Promise.join(info, stat, contents, function (info, stat, contents) {
-          return {
-            name: info.name,
-            stamp: info.stamp,
-            size: stat.size,
-            length: contents.length
-          }
-        })
-      )
-    }
+      var result = Promise.join(info, stat, contents, function (info, stat, contents) {
+        console.dir(info)
+        console.log(('[Contents.length] --- ' + contents.length).cyan)
+        console.log(('[Stat.size] --- ' + stat.size).cyan)
+      })
 
-    return Promise.any(tasks)
+      return result
+    })
   })
-  .then(function (file) {
-    console.log('isObject?', file instanceof Object)
-    console.log(file)
+  .then(function (files) {
+    console.log('-----------------------------------')
+    console.log(files)  // each 返回输入的数组
+    console.log('-----------------------------------')
   })

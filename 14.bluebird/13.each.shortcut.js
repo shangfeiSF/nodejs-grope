@@ -13,7 +13,6 @@ fs.readdirAsync(process.cwd())
     var files = []
 
     for (var index = 0; index < names.length; index++) {
-      console.log(('[#' + index + '] --- ' + names[index]).green)
       files.push({
         name: names[index],
         stamp: common.stamp()
@@ -23,39 +22,41 @@ fs.readdirAsync(process.cwd())
     return files
   })
   .filter(function (file) {
-    var files = fs.statAsync(file.name)
+    var item = fs.statAsync(file.name)
       .then(function (stat) {
         return !stat.isDirectory()
       })
 
-    return files
+    return item
   })
-  .map(function (file) {
+  .each(function (file, index) {
     var filePath = path.join(__dirname, file.name)
+
+    var info = new Promise(function (resolve) {
+      resolve({
+        name: file.name,
+        stamp: file.stamp,
+        index: index
+      })
+    })
+      .then(function (info) {
+        return info
+      })
 
     var stat = fs.statAsync(filePath)
 
     var contents = fs.readFileAsync(filePath)
 
-    var files = Promise.join(stat, contents, function (stat, contents) {
-      return {
-        name: file.name,
-        stamp: file.stamp,
-        stat: stat,
-        contents: contents
-      }
+    var result = Promise.join(info, stat, contents, function (info, stat, contents) {
+      console.dir(info)
+      console.log(('[Contents.length] --- ' + contents.length).cyan)
+      console.log(('[Stat.size] --- ' + stat.size).cyan)
     })
 
-    return files
-  })
-  .call("sort", function (file1, file2) {
-    return file1.name.localeCompare(file2.name)
+    return result
   })
   .then(function (files) {
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i]
-      console.log((file.stamp + ' --- ' + file.name).yellow)
-      console.log(('[Stat.size] --- ' + file.stat.size).cyan)
-      console.log(('[Contents.length] --- ' + file.contents.length).cyan)
-    }
+    console.log('-----------------------------------')
+    console.log(files)  // each 返回输入的数组
+    console.log('-----------------------------------')
   })

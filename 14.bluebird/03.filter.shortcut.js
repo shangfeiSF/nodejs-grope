@@ -21,6 +21,14 @@ fs.readdirAsync(process.cwd())
 
     return files
   })
+  .filter(function (file) {
+    var item = fs.statAsync(file.name)
+      .then(function (stat) {
+        return !stat.isDirectory()
+      })
+
+    return item
+  })
   .then(function (files) {
     for (var i = 0; i < files.length; i++) {
       var file = files[i]

@@ -13,7 +13,6 @@ fs.readdirAsync(process.cwd())
     var files = []
 
     for (var index = 0; index < names.length; index++) {
-      console.log(('[#' + index + '] --- ' + names[index]).green)
       files.push({
         name: names[index],
         stamp: common.stamp()
@@ -55,9 +54,9 @@ fs.readdirAsync(process.cwd())
       )
     }
 
-    return Promise.some(tasks, 1)
+    return Promise.any(tasks)
   })
-  .then(function (files) {
-    console.log('isArray?', files instanceof Array)
-    console.log(files)
+  .then(function (file) {
+    console.log('isObject?', file instanceof Object)
+    console.log(file)
   })

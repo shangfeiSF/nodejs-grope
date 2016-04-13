@@ -13,7 +13,6 @@ fs.readdirAsync(process.cwd())
     var files = []
 
     for (var index = 0; index < names.length; index++) {
-      console.log(('[#' + index + '] --- ' + names[index]).green)
       files.push({
         name: names[index],
         stamp: common.stamp()
@@ -22,17 +21,19 @@ fs.readdirAsync(process.cwd())
 
     return files
   })
-  .filter(function (file) {
-    var files = fs.statAsync(file.name)
-      .then(function (stat) {
-        return !stat.isDirectory()
-      })
+  .then(function (files) {
+    return Promise.filter(files, function (file) {
+      var item = fs.statAsync(file.name)
+        .then(function (stat) {
+          return !stat.isDirectory()
+        })
 
-    return files
+      return item
+    })
   })
   .then(function (files) {
     for (var i = 0; i < files.length; i++) {
       var file = files[i]
-      console.log(file.stamp + ' --- ' + file.name)
+      console.log((file.stamp + ' --- ' + file.name).yellow)
     }
   })
