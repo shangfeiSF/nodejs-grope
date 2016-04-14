@@ -22,7 +22,9 @@ fs.readdirAsync(process.cwd())
     return files
   })
   .filter(function (file) {
-    var item = fs.statAsync(file.name)
+    var filePath = path.join(__dirname, file.name)
+
+    var item = fs.statAsync(filePath)
       .then(function (stat) {
         return !stat.isDirectory()
       })
@@ -49,8 +51,8 @@ fs.readdirAsync(process.cwd())
 
     var result = Promise.join(info, stat, contents, function (info, stat, contents) {
       console.dir(info)
-      console.log(('[Contents.length] --- ' + contents.length).cyan)
-      console.log(('[Stat.size] --- ' + stat.size).cyan)
+      var log = [contents.length, '---', stat.size].join(' ')
+      console.log((log).yellow)
     })
 
     return result

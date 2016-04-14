@@ -22,7 +22,9 @@ fs.readdirAsync(process.cwd())
     return files
   })
   .filter(function (file) {
-    var item = fs.statAsync(file.name)
+    var filePath = path.join(__dirname, file.name)
+
+    var item = fs.statAsync(filePath)
       .then(function (stat) {
         return !stat.isDirectory()
       })
@@ -48,15 +50,14 @@ fs.readdirAsync(process.cwd())
     return item
   })
   .then(function (files) {
-    return files['sort'].call(files, function (file1, file2) {
-      return file1.name.localeCompare(file2.name)
+    return files.sort.call(files, function (file1, file2) {
+      return file2.name.localeCompare(file1.name)
     })
   })
   .then(function (files) {
     for (var i = 0; i < files.length; i++) {
       var file = files[i]
-      console.log((file.stamp + ' --- ' + file.name).yellow)
-      console.log(('[Stat.size] --- ' + file.stat.size).cyan)
-      console.log(('[Contents.length] --- ' + file.contents.length).cyan)
+      var log= [file.stamp, '---', file.name, '---', file.stat.size, '---',  file.contents.length].join(' ')
+      console.log((log).yellow)
     }
   })

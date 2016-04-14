@@ -23,7 +23,9 @@ fs.readdirAsync(process.cwd())
   })
   .then(function (files) {
     return Promise.filter(files, function (file) {
-      var item = fs.statAsync(file.name)
+      var filePath = path.join(__dirname, file.name)
+      
+      var item = fs.statAsync(filePath)
         .then(function (stat) {
           return !stat.isDirectory()
         })

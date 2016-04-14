@@ -9,6 +9,16 @@ var colors = require('colors')
 var common = require('./00.common')
 
 fs.readdirAsync(process.cwd())
+  .filter(function (name) {
+    var filePath = path.join(__dirname, name)
+
+    var item = fs.statAsync(filePath)
+      .then(function (stat) {
+        return !stat.isDirectory()
+      })
+
+    return item
+  })
   .then(function (names) {
     var tasks = []
 

@@ -21,6 +21,16 @@ fs.readdirAsync(process.cwd())
 
     return files
   })
+  .filter(function (file) {
+    var filePath = path.join(__dirname, file.name)
+
+    var item = fs.statAsync(filePath)
+      .then(function (stat) {
+        return !stat.isDirectory()
+      })
+
+    return item
+  })
   .then(function (files) {
     var tasks = []
 

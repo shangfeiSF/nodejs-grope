@@ -22,7 +22,9 @@ fs.readdirAsync(process.cwd())
     return files
   })
   .filter(function (file) {
-    var item = fs.statAsync(file.name)
+    var filePath = path.join(__dirname, file.name)
+
+    var item = fs.statAsync(filePath)
       .then(function (stat) {
         return !stat.isDirectory()
       })
@@ -30,7 +32,7 @@ fs.readdirAsync(process.cwd())
     return item
   })
   .then(function (files) {
-    return Promise.map(files, function(file){
+    return Promise.map(files, function (file) {
       var filePath = path.join(__dirname, file.name)
 
       var stat = fs.statAsync(filePath)
@@ -52,8 +54,7 @@ fs.readdirAsync(process.cwd())
   .then(function (files) {
     for (var i = 0; i < files.length; i++) {
       var file = files[i]
-      console.log((file.stamp + ' --- ' + file.name).yellow)
-      console.log(('[Stat.size] --- ' + file.stat.size).cyan)
-      console.log(('[Contents.length] --- ' + file.contents.length).cyan)
+      var log = [file.stamp, '---', file.name, '---', file.stat.size, '---', file.contents.length].join(' ')
+      console.log((log).yellow)
     }
   })
