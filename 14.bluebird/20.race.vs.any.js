@@ -23,13 +23,6 @@ var pormise = [
     code: 502
   })
 ]
-var list = [2, 1, 2, 3]
-
-var Iteration = (function (list) {
-  return list.map(function (index) {
-    return pormise[index]
-  })
-})(list)
 
 var success = function (response) {
   var log = ['race', '---', response.code, '---', response.text].join(' ')
@@ -41,6 +34,14 @@ var error = function (error) {
   console.log((log).red)
 
 }
+
+var list = [2, 1, 2, 3]
+
+var Iteration = (function (list) {
+  return list.map(function (index) {
+    return pormise[index]
+  })
+})(list)
 
 Promise.race(Iteration)
   .then(success)

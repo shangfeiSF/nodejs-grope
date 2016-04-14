@@ -1,59 +1,60 @@
 var Promise = require('bluebird')
-var fs      = Promise.promisifyAll(require("fs"));
-var join    = Promise.join;
+var fs = Promise.promisifyAll(require("fs"));
+var join = Promise.join;
 
 var files = []
 var seq = 1
-function timeStamp(){
+function timeStamp() {
   var date = new Date()
   var stampfn = ["getHours", "getMinutes", "getSeconds", "getMilliseconds"]
   var timestamp = []
-  stampfn.forEach(function(value, index, array){
+  stampfn.forEach(function (value, index, array) {
     timestamp.push(date[value]())
   })
   return timestamp.join(":")
 }
 
-fs.readdirAsync(".").then(function(fss){
-  console.log("current directory includes:")
-  fss.map(function(value, index, array){
-    console.log(timeStamp() + "---fileIndex---"+ index + "---fileName---" +  value)
-  })
-  //这里then方法自动返回Promise对象(包含fss数组)
-  return fss
-}).map(function(fileName){
-  var stat = fs.statAsync(fileName);
-  var contents = fs.readFileAsync(fileName).catch(function ignore() {});
-  //then方法自动返回Promise对象(包含一个map返回的数组)
-  //map返回一个数组，元素是join方法处理stat和contents的object
-  return join(stat, contents, function(stat, contents) {
-    files.push({
-      stat: stat,
-      fileName: fileName,
-      contents: contents
-    })
-    return {
-      stat: stat,
-      fileName: fileName,
-      contents: contents
-    }
-  });
-}).then(function(data){
-  console.log("------Promise.settle(data)------")
-  console.log(Promise.settle(data))
-  console.log("------Promise.settle(data).isFulfilled------")
-  console.log(Promise.settle(data).isFulfilled())
-  console.log("------data.pop()------")
-  console.log(data.pop())
-  return data
-}).call("sort", function(a, b){
-  return a.fileName.localeCompare(b.fileName);
-}).then(function(data){
-  data.forEach(function(value, index, array){
-    var contentLength = value.stat.isDirectory() ? "(directory)" : value.contents.length + " bytes";
-    console.log(value.fileName + "---size---" + contentLength)
-  })
-})
+/*fs.readdirAsync(".").then(function (fss) {
+ console.log("current directory includes:")
+ fss.map(function (value, index, array) {
+ console.log(timeStamp() + "---fileIndex---" + index + "---fileName---" + value)
+ })
+ //这里then方法自动返回Promise对象(包含fss数组)
+ return fss
+ }).map(function (fileName) {
+ var stat = fs.statAsync(fileName);
+ var contents = fs.readFileAsync(fileName).catch(function ignore() {
+ });
+ //then方法自动返回Promise对象(包含一个map返回的数组)
+ //map返回一个数组，元素是join方法处理stat和contents的object
+ return join(stat, contents, function (stat, contents) {
+ files.push({
+ stat: stat,
+ fileName: fileName,
+ contents: contents
+ })
+ return {
+ stat: stat,
+ fileName: fileName,
+ contents: contents
+ }
+ });
+ }).then(function (data) {
+ console.log("------Promise.settle(data)------")
+ console.log(Promise.settle(data))
+ console.log("------Promise.settle(data).isFulfilled------")
+ console.log(Promise.settle(data).isFulfilled())
+ console.log("------data.pop()------")
+ console.log(data.pop())
+ return data
+ }).call("sort", function (a, b) {
+ return a.fileName.localeCompare(b.fileName);
+ }).then(function (data) {
+ data.forEach(function (value, index, array) {
+ var contentLength = value.stat.isDirectory() ? "(directory)" : value.contents.length + " bytes";
+ console.log(value.fileName + "---size---" + contentLength)
+ })
+ })*/
 
 // some&spread&settle method:
 // Promise.some([fs.statAsync("app.js"), fs.statAsync("app-1.js"),fs.statAsync("package.json")], 2).spread(function(file1s, file2s){
@@ -214,7 +215,8 @@ fs.readdirAsync(".").then(function(fss){
 
 //any&race method:
 
-var data = [
+/*
+ var data = [
  Promise.reject({
  url: "this is url",
  name: "this is name"
@@ -229,32 +231,39 @@ var data = [
  day: 24
  })]
  // change any to race will see console change
- Promise.any(data).then(function(data){
+ Promise.any(data).then(function (data) {
  console.log(data)
- }).catch(function(e){
+ }).catch(function (e) {
  console.log(e)
  })
+ */
 
 //map option: concurrency, control concurrency amount
 
-/*var concurrency = parseFloat(process.argv[2] || "Infinity");
- console.time("reading files");
- fs.readdirAsync(".").map(function(fileName) {
- var stat = fs.statAsync(fileName);
- var contents = fs.readFileAsync(fileName).catch(function ignore() {});
- return join(stat, contents, function(stat, contents) {
- return {
- stat: stat,
- fileName: fileName,
- contents: contents
- }
- });
- }, {concurrency: concurrency}).call("sort", function(a, b) {
- return a.fileName.localeCompare(b.fileName);
- }).then(function(data) {
- console.log(data.length)
- console.timeEnd("reading files");
- });*/
+var concurrency = parseFloat(process.argv[2] || "Infinity");
+
+console.time("reading files");
+
+fs.readdirAsync(".")
+  .map(function (fileName) {
+    var stat = fs.statAsync(fileName);
+    var contents = fs.readFileAsync(fileName).catch(function ignore() {
+    });
+    return join(stat, contents, function (stat, contents) {
+      return {
+        stat: stat,
+        fileName: fileName,
+        contents: contents
+      }
+    });
+  }, {concurrency: concurrency})
+  .call("sort", function (a, b) {
+    return a.fileName.localeCompare(b.fileName);
+  })
+  .then(function (data) {
+    console.log(data.length)
+    console.timeEnd("reading files");
+  });
 
 //reduce method:
 
@@ -278,17 +287,18 @@ var data = [
 
 
 // .return()
+
 var fs = Promise.promisifyAll(require("fs"));
 var baseDir = process.argv[2] || ".";
 
 function writeFile(path, contents) {
   var fullpath = require("path").join(baseDir, path);
-  return fs.writeFileAsync(fullpath, contents).then(function(){
+  return fs.writeFileAsync(fullpath, contents).then(function () {
     var data = "test"
     console.log(data)
   }).return(fullpath);
 }
 
-writeFile("text.txt", "this is text-11").then(function(fullPath) {
+writeFile("text.txt", "this is text-11").then(function (fullPath) {
   console.log("Successfully file at: " + fullPath);
 })
