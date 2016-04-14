@@ -33,17 +33,12 @@ fs.readdirAsync(process.cwd())
   })
   .each(function (file, index) {
     var filePath = path.join(__dirname, file.name)
-
-    var info = new Promise(function (resolve) {
-      resolve({
-        name: file.name,
-        stamp: file.stamp,
-        index: index
-      })
+    
+    var info = Promise.resolve({
+      name: file.name,
+      stamp: file.stamp,
+      index: index
     })
-      .then(function (info) {
-        return info
-      })
 
     var stat = fs.statAsync(filePath)
 

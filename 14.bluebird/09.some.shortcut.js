@@ -25,17 +25,11 @@ fs.readdirAsync(process.cwd())
     for (var i = 0; i < names.length; i++) {
       var name = names[i]
       var filePath = path.join(__dirname, name)
-
-      // info 这个promise是必须的, 否则name只会取到最后一个
-      var info = new Promise(function (resolve) {
-        resolve({
-          name: name,
-          stamp: common.stamp()
-        })
+      
+      var info = Promise.resolve({
+        name: name,
+        stamp: common.stamp()
       })
-        .then(function (info) {
-          return info
-        })
 
       var stat = fs.statAsync(filePath)
 

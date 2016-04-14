@@ -31,31 +31,38 @@ fs.readdirAsync(process.cwd())
 
     return item
   })
-  .then(function (files) {
-    return Promise.each(files, function (file, index) {
-      var filePath = path.join(__dirname, file.name)
+  .reduce(function (census, file, index, length) {
+    var filePath = path.join(__dirname, file.name)
 
-      var info = Promise.resolve({
-        name: file.name,
-        stamp: file.stamp,
-        index: index
-      })
-      
-      var stat = fs.statAsync(filePath)
-
-      var contents = fs.readFileAsync(filePath)
-
-      var result = Promise.join(info, stat, contents, function (info, stat, contents) {
-        console.dir(info)
-        var log = [contents.length, '---', stat.size].join(' ')
-        console.log((log).yellow)
-      })
-
-      return result
+    var info = Promise.resolve({
+      name: file.name,
+      stamp: file.stamp,
+      index: index
     })
-  })
-  .then(function (files) {
+
+    var stat = fs.statAsync(filePath)
+
+    var contents = fs.readFileAsync(filePath)
+
+    return Promise.join(info, stat, contents, function (info, stat, contents) {
+      console.dir(info)
+      var log = [contents.length, '---', stat.size].join(' ')
+      console.log((log).yellow)
+
+      census.push({
+        original: file,
+        extention: {
+          squence: index + '/' + length,
+          size: stat.size,
+          length: contents.length
+        }
+      })
+
+      return census
+    })
+  }, [])
+  .then(function (census) {
     console.log('-----------------------------------')
-    console.log(files)  // each 返回输入的数组
+    console.log(census)
     console.log('-----------------------------------')
   })

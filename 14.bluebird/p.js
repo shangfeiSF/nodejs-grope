@@ -214,7 +214,7 @@ fs.readdirAsync(".").then(function(fss){
 
 //any&race method:
 
-/*var data = [
+var data = [
  Promise.reject({
  url: "this is url",
  name: "this is name"
@@ -233,7 +233,7 @@ fs.readdirAsync(".").then(function(fss){
  console.log(data)
  }).catch(function(e){
  console.log(e)
- })*/
+ })
 
 //map option: concurrency, control concurrency amount
 

@@ -32,52 +32,41 @@ fs.readdirAsync(process.cwd())
     return item
   })
   .then(function (files) {
-    var tasks = []
-
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i]
+    var cencus = Promise.reduce(files, function (census, file, index, length) {
       var filePath = path.join(__dirname, file.name)
 
-      /*
-      var info = new Promise(function (resolve) {
-          resolve({
-            name: file.name,
-            stamp: file.stamp
-          })
-        })
-          .then(function (info) {
-            return info
-          })
-      */
-
-      // 上面注释代码的shortcut code style
-      // Create a promise that is resolved with the given value.
-      // If value is already a trusted Promise, it is returned as is.
-      // If value is not a thenable, a fulfilled Promise is returned with value as its fulfillment value
       var info = Promise.resolve({
         name: file.name,
-        stamp: file.stamp
+        stamp: file.stamp,
+        index: index
       })
 
       var stat = fs.statAsync(filePath)
 
       var contents = fs.readFileAsync(filePath)
 
-      tasks.push(
-        Promise.join(info, stat, contents, function (info, stat, contents) {
-          return {
-            name: info.name,
-            stamp: info.stamp,
+      return Promise.join(info, stat, contents, function (info, stat, contents) {
+        console.dir(info)
+        var log = [contents.length, '---', stat.size].join(' ')
+        console.log((log).yellow)
+
+        census.push({
+          original: info,
+          extention: {
+            squence: index + '/' + length,
             size: stat.size,
             length: contents.length
           }
         })
-      )
-    }
 
-    return Promise.some(tasks, 3)
+        return census
+      })
+    }, [])
+
+    return cencus
   })
-  .then(function (files) {
-    console.log('isArray?', files instanceof Array)
-    console.log(files)
+  .then(function (census) {
+    console.log('-----------------------------------')
+    console.log(census)
+    console.log('-----------------------------------')
   })

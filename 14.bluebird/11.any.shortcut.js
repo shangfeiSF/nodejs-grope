@@ -26,15 +26,10 @@ fs.readdirAsync(process.cwd())
       var name = names[i]
       var filePath = path.join(__dirname, name)
 
-      var info = new Promise(function (resolve) {
-        resolve({
-          name: name,
-          stamp: common.stamp()
-        })
+      var info = Promise.resolve({
+        name: name,
+        stamp: common.stamp()
       })
-        .then(function (info) {
-          return info
-        })
 
       var stat = fs.statAsync(filePath)
 
