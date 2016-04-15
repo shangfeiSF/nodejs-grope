@@ -60,7 +60,7 @@ module.exports = {
     }
 
 
-    var log = fs.openSync('./log/commands.log', 'a')
+    var log = fs.openSync('./log/commands.log', 'a+')
     fs.writeSync(log, arguments[3])
     fs.writeSync(log, '\r')
     fs.close(log)
