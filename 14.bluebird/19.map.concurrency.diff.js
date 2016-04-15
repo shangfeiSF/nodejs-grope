@@ -25,12 +25,30 @@ var concurrency = options.concurrency ?
 
 console.time("START")
 var MAP = {
-  p1: []
+  p1: [],
+  p2: []
 }
 
 fs.readdirAsync(process.cwd())
-  .map(function (name) {
-    MAP.p1.push(name)
+  .then(function (names) {
+    var files = []
+
+    for (var index = 0; index < names.length; index++) {
+      MAP.p1.push(names[index])
+
+      files.push({
+        name: names[index],
+        stamp: common.stamp()
+      })
+    }
+
+    return files
+  })
+  .map(function (file) {
+    var name = file.name
+    var stamp = file.stamp
+
+    MAP.p2.push(name)
 
     var filePath = path.join(__dirname, name)
 
@@ -43,6 +61,7 @@ fs.readdirAsync(process.cwd())
     return Promise.join(stat, contents, function (stat, contents) {
       return {
         name: name,
+        stamp: stamp,
         stat: stat,
         contents: contents
       }
@@ -57,15 +76,16 @@ fs.readdirAsync(process.cwd())
     for (var index = 0; index < files.length; index++) {
       var file = files[index]
       var p1Index = MAP.p1.indexOf(file.name)
+      var p2Index = MAP.p2.indexOf(file.name)
 
-      var log = [[p1Index, index].join('---'), [file.name, file.stat.size].join('---')].join(' ==> ')
+      var log = [[p1Index, p2Index, index].join('---'), [file.name, file.stamp, file.stat.size].join('---')].join(' ==> ')
       var ckeck = (function (indexs) {
         var first = indexs[0]
 
         return indexs.every(function (i) {
           return i === first
         })
-      })([p1Index, index])
+      })([p1Index, p2Index, index])
 
       log = ckeck ? log.green : log.yellow
 
@@ -77,10 +97,10 @@ fs.readdirAsync(process.cwd())
   })
 
 
-// 18.map.concurrency.js
-// 18.map.concurrency.js -co1
-// 18.map.concurrency.js -co2
-// 18.map.concurrency.js -co3
-// 18.map.concurrency.js -co4
-// 18.map.concurrency.js -co 10
-// 18.map.concurrency.js -coi
+// 19.map.concurrency.diff.js
+// 19.map.concurrency.diff.js -co1
+// 19.map.concurrency.diff.js -co2
+// 19.map.concurrency.diff.js -co3
+// 19.map.concurrency.diff.js -co4
+// 19.map.concurrency.diff.js -co 10
+// 19.map.concurrency.diff.js -coi

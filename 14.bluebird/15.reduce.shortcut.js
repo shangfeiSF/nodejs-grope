@@ -31,13 +31,12 @@ fs.readdirAsync(process.cwd())
 
     return item
   })
-  .reduce(function (census, file, index, length) {
+  .map(function (file) {
     var filePath = path.join(__dirname, file.name)
 
     var info = Promise.resolve({
       name: file.name,
       stamp: file.stamp,
-      index: index
     })
 
     var stat = fs.statAsync(filePath)
@@ -49,20 +48,22 @@ fs.readdirAsync(process.cwd())
       var log = [contents.length, '---', stat.size].join(' ')
       console.log((log).yellow)
 
-      census.push({
+      return {
         original: file,
         extention: {
-          squence: index + '/' + length,
           size: stat.size,
           length: contents.length
         }
-      })
-
-      return census
+      }
     })
+  })
+  .reduce(function (census, task, index, length) {
+    task.extention.squence = index + '/' + length
+    census.push(task)
+    return census
   }, [])
   .then(function (census) {
-    console.log('-----------------------------------')
+    console.log('-----------------------------------'.white)
     console.log(census)
-    console.log('-----------------------------------')
+    console.log('-----------------------------------'.white)
   })

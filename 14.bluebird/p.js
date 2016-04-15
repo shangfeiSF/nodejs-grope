@@ -125,25 +125,25 @@ function timeStamp() {
 
 // bind method
 
-/*fs.readdirAsync(".").map(function(file){
- var stat = fs.statAsync(file);
- return join(stat, file, function(stat, file) {
- return {
- stat: stat,
- file: file
- }
- })
- }).then(function(data){
- return Promise.some(data, 2)
- }).bind({}).spread(function (aValue, bValue) {
- this.aValue = aValue;
- this.bValue = bValue;
- console.log(this)
- return this
- })
- .then(function (data) {
- console.log(this.aValue.stat.size + "---"+ this.bValue.stat.size)
- });*/
+fs.readdirAsync(".").map(function (file) {
+  var stat = fs.statAsync(file);
+  return join(stat, file, function (stat, file) {
+    return {
+      stat: stat,
+      file: file
+    }
+  })
+}).then(function (data) {
+  return Promise.some(data, 2)
+}).bind({}).spread(function (aValue, bValue) {
+    this.aValue = aValue;
+    this.bValue = bValue;
+    console.log(this)
+    return this
+  })
+  .then(function (data) {
+    console.log(this.aValue.stat.size + "---" + this.bValue.stat.size)
+  });
 
 // resolve method:
 
@@ -240,12 +240,14 @@ function timeStamp() {
 
 //map option: concurrency, control concurrency amount
 
+/*
 var concurrency = parseFloat(process.argv[2] || "Infinity");
 
 console.time("reading files");
 
 fs.readdirAsync(".")
   .map(function (fileName) {
+    console.log(fileName)
     var stat = fs.statAsync(fileName);
     var contents = fs.readFileAsync(fileName).catch(function ignore() {
     });
@@ -257,13 +259,15 @@ fs.readdirAsync(".")
       }
     });
   }, {concurrency: concurrency})
-  .call("sort", function (a, b) {
-    return a.fileName.localeCompare(b.fileName);
-  })
   .then(function (data) {
-    console.log(data.length)
+    console.log('-------------------------')
+    data.forEach(function(item){
+      console.log(item.fileName)
+    })
+    console.log('-------------------------')
     console.timeEnd("reading files");
   });
+*/
 
 //reduce method:
 
@@ -288,7 +292,7 @@ fs.readdirAsync(".")
 
 // .return()
 
-var fs = Promise.promisifyAll(require("fs"));
+/*var fs = Promise.promisifyAll(require("fs"));
 var baseDir = process.argv[2] || ".";
 
 function writeFile(path, contents) {
@@ -301,4 +305,4 @@ function writeFile(path, contents) {
 
 writeFile("text.txt", "this is text-11").then(function (fullPath) {
   console.log("Successfully file at: " + fullPath);
-})
+})*/
