@@ -45,7 +45,7 @@ Query.prototype.find = function () {
 
   if (self.cache.hasOwnProperty(input)) {
     return Promise.resolve({
-      message: 'Read in cache',
+      message: '[Server] --- Read in cache',
       name: this.cache[input]
     })
   }
@@ -54,7 +54,7 @@ Query.prototype.find = function () {
     .then(function (data) {
       var data = JSON.parse(data)
       var result = {
-        message: 'Read in dataBase',
+        message: '[Server] --- Read in dataBase',
         name: 'None field named ' + input,
       }
 
@@ -71,16 +71,16 @@ Query.prototype.findPromise = Promise.method(function () {
   var input = self.options.input ? self.options.input : null
 
   if (input === null) {
-    return new Error("need input")
+    throw new Error("need input")
   }
 
   if (input > 10) {
-    return new Error("input is beyond " + self.limit)
+    throw new Error("input is beyond " + self.limit)
   }
 
   if (self.cache.hasOwnProperty(input)) {
     return {
-      message: 'Read in cache',
+      message: '[Server] --- Read in cache',
       name: this.cache[input]
     }
   }
@@ -89,7 +89,7 @@ Query.prototype.findPromise = Promise.method(function () {
     .then(function (data) {
       var data = JSON.parse(data)
       var result = {
-        message: 'Read in dataBase',
+        message: '[Server] --- Read in dataBase',
         name: 'None field named ' + input,
       }
 
@@ -104,19 +104,23 @@ Query.prototype.findPromise = Promise.method(function () {
 new Query()
   .find()
   .then(function (result) {
+    console.log('---------------------------------------'.white)
     console.log(result.message.yellow)
     console.log(('Name --- ' + result.name).yellow)
   })
   .catch(function (err) {
-    console.log(err)
+    console.log('---------------------------------------'.white)
+    console.log((err + '').yellow)
   })
 
 new Query()
   .findPromise()
   .then(function (result) {
+    console.log('---------------------------------------'.white)
     console.log(result.message.green)
     console.log(('Name --- ' + result.name).green)
   })
   .catch(function (err) {
-    console.log(err)
+    console.log('---------------------------------------'.white)
+    console.log((err + '').green)
   })
