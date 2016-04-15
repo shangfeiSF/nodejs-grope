@@ -12,6 +12,7 @@ var logFileName = '27.bind.diff.' + common.stamp().replace(/\:/g, '-') + '.json'
 var global = fs.openAsync(path.join(__dirname, 'log', logFileName), 'a+')
   .then(function (fd) {
     return fs.writeAsync(fd, '[\r')
+      // Promise 提供的return
       .return({
         fd: fd,
         paths: []
