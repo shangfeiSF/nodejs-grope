@@ -77,10 +77,9 @@ new Query()
   .find()
   .then(function (result) {
     console.log('---------------------------------------'.white)
-    console.log(result.message.yellow)
-    console.log(('Name --- ' + result.name).yellow)
-  })
-  .catch(function (err) {
+    console.log(result.message.green)
+    console.log(('Name --- ' + result.name).green)
+  }, function (err) {
     console.log('---------------------------------------'.white)
-    console.log((err + '').yellow)
+    console.log((err + '').red)
   })

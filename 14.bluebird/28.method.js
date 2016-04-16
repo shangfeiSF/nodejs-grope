@@ -107,11 +107,11 @@ new Query()
     console.log('---------------------------------------'.white)
     console.log(result.message.yellow)
     console.log(('Name --- ' + result.name).yellow)
-  })
-  .catch(function (err) {
+  }, function (err) {
     console.log('---------------------------------------'.white)
-    console.log((err + '').yellow)
+    console.log((err + '').red)
   })
+
 
 new Query()
   .findPromise()
@@ -119,8 +119,7 @@ new Query()
     console.log('---------------------------------------'.white)
     console.log(result.message.green)
     console.log(('Name --- ' + result.name).green)
-  })
-  .catch(function (err) {
+  }, function (err) {
     console.log('---------------------------------------'.white)
-    console.log((err + '').green)
+    console.log((err + '').red)
   })
