@@ -26,15 +26,24 @@ var colors = require('colors')
  （4）Always use the same suffix everywhere in your application（create a wrapper to make this easier）
  */
 
-function promisifyAllWapper(module) {
-  return Promise.promisifyAll(module, {
-    suffix: "CustomSuffix"
+function promisifyAllWapper(module, config) {
+  var promisifyModule = Promise.promisifyAll(module, {
+    suffix: config.suffix
   })
+
+  promisifyModule._suffix = config.suffix
+  promisifyModule._invoke = function (func) {
+    return this[func + this._suffix]
+  }
+
+  return promisifyModule
 }
 
-var fs = promisifyAllWapper(require('fs'))
+var fs = promisifyAllWapper(require('fs'), {
+  suffix: 'CustomSuffix'
+})
 
-fs.readdirCustomSuffix(path.join(__dirname, 'asset'))
+fs._invoke('readdir')(path.join(__dirname, 'asset'))
   .then(function (names) {
     console.log(('[Files is asset directory:]').green)
     console.log(names)
