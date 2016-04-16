@@ -27,11 +27,11 @@ function Getters(name) {
     }, {})
     .then(function (census) {
       var data = JSON.stringify({census: census}, null, 2)
-      return fs.writeFileAsync('./log/28.promisify.json', data, {encoding: 'utf-8', flag: 'w+'}).return(census)
+      return fs.writeFileAsync('./log/30.promisify.gm.json', data, {encoding: 'utf-8', flag: 'w+'}).return(census)
     })
 }
 
-new Getters('30.promisify.jpg')
+new Getters('30.promisify.gm.jpg')
   .then(function (census) {
     var data = JSON.stringify({census: census}, null, 2)
     console.log((data).green)
