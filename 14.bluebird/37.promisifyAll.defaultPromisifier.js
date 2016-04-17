@@ -2,6 +2,7 @@
 var path = require('path')
 
 var Promise = require('bluebird')
+var fs = Promise.promisifyAll(require('fs'))
 
 var nopt = require('nopt')
 var colors = require('colors')
@@ -10,12 +11,13 @@ function Search() {
   this.version = function () {
     return '0.1.0'
   }
-  this.author = 'xiaoshao'
+  this.author = 'yuncong'
 
   this.options = nopt({
     basename: Boolean,
     extname: Boolean,
-    dirname: Boolean
+    dirname: Boolean,
+    multiArgs: Boolean,
   }, {
     'b': ['--basename'],
     'b1': ['--basename', 'true'],
@@ -25,48 +27,51 @@ function Search() {
     'e0': ['--extname', 'false'],
     'd': ['--dirname'],
     'd1': ['--dirname', 'true'],
-    'd0': ['--dirname', 'false']
+    'd0': ['--dirname', 'false'],
+    'm': ['--multiArgs'],
+    'm1': ['--multiArgs', 'true'],
+    'm0': ['--multiArgs', 'false']
   }, process.argv, 2)
 }
 
-Search.prototype.getBasename = function (filename, onsuccess, onerror) {
+Search.prototype.getBasename = function (filename, asyncData, callback) {
   var self = this
   var basename = path.basename(filename)
   var option = self.options.hasOwnProperty('basename') ? self.options.basename : true
 
   setTimeout(function () {
     if (option) {
-      onsuccess(basename, self.version(), self.author)
+      callback(null, basename, asyncData, self.version(), self.author)
     } else {
-      onerror(new Error('getBasename is failed'))
+      callback(new Error('getBasename is failed'))
     }
   }, 2000)
 }
 
-Search.prototype.getExtname = function (filename, onsuccess, onerror) {
+Search.prototype.getExtname = function (filename, asyncData, callback) {
   var self = this
   var extname = path.extname(filename)
   var option = self.options.hasOwnProperty('extname') ? self.options.extname : true
 
   setTimeout(function () {
     if (option) {
-      onsuccess([extname, self.version(), self.author])
+      callback(null, extname, asyncData, self.version(), self.author)
     } else {
-      onerror(new Error('getExtname is failed'))
+      callback(new Error('getExtname is failed'))
     }
   }, 2000)
 }
 
-Search.prototype.getDirname = function (filename, onsuccess, onerror) {
+Search.prototype.getDirname = function (filename, asyncData, callback) {
   var self = this
   var dirname = path.dirname(filename)
   var option = self.options.hasOwnProperty('dirname') ? self.options.dirname : true
 
   setTimeout(function () {
     if (option) {
-      onsuccess(dirname, self.version(), self.author)
+      callback(null, dirname, asyncData, self.version(), self.author)
     } else {
-      onerror(new Error('getDirname is failed'))
+      callback(new Error('getDirname is failed'))
     }
   }, 2000)
 }
@@ -116,9 +121,11 @@ var partial = promisifyAllWapper(search, {
     return name === 'getExtname' || name === 'getDirname'
   },
 
-  multiArgs: true,  // 无法影响 search 中方法的promise返回值
+  multiArgs: search.options.multiArgs || false,
 
-  promisifier: function (originalMethod) {
+  promisifier: function (originalMethod, defaultPromisifier) {
+    var promisified = defaultPromisifier(originalMethod)
+
     return function () {
       // return an anonymous function
       var args = [].slice.call(arguments)
@@ -127,21 +134,24 @@ var partial = promisifyAllWapper(search, {
       var self = this
 
       // this anonymous function need return a promise
-      return new Promise(function (resolve, reject) {
-        args.push(resolve, reject)
-        originalMethod.apply(self, args)
+      return Promise.all(args).then(function (awaitedArgs) {
+        return promisified.apply(self, awaitedArgs)
       })
     }
   }
 })
 
 try {
-  partial.getBasenameCustomPartial(__filename)
+  var type = fs.readFileAsync("./asset/37.promisifyAll.defaultPromisifier.json", "utf8")
+    .then(JSON.parse)
+    .get('type')
+
+  partial.getBasenameCustomPartial(__filename, type)
     .then(function (result) {
       console.log('--------------------------------------'.green)
       console.log(('[isArray?]').green)
       console.log(result instanceof Array)
-      console.log(('[Basename of ' + __filename + ']').green)
+      console.log(('[Basename type version author').green)
       console.log((result))
       console.log('--------------------------------------\n'.green)
     }, function (err) {
@@ -156,12 +166,16 @@ try {
 }
 
 try {
-  partial.getExtnameCustomPartial(__filename)
+  var username = fs.readFileAsync("./asset/37.promisifyAll.defaultPromisifier.json", "utf8")
+    .then(JSON.parse)
+    .get('username')
+
+  partial.getExtnameCustomPartial(__filename, username)
     .then(function (result) {
       console.log('--------------------------------------'.green)
       console.log(('[isArray?]').green)
       console.log(result instanceof Array)
-      console.log(('[Extname of ' + __filename + ']').green)
+      console.log(('[Extname username version author]').green)
       console.log((result))
       console.log('--------------------------------------\n'.green)
     }, function (err) {
@@ -176,12 +190,16 @@ try {
 }
 
 try {
-  partial.getDirnameCustomPartial(__filename)
+  var usernickname = fs.readFileAsync("./asset/37.promisifyAll.defaultPromisifier.json", "utf8")
+    .then(JSON.parse)
+    .get('usernickname')
+
+  partial.getDirnameCustomPartial(__filename, usernickname)
     .then(function (result) {
       console.log('--------------------------------------'.green)
       console.log(('[isArray?]').green)
       console.log(result instanceof Array)
-      console.log(('[Dirname of ' + __filename + ']').green)
+      console.log(('[Dirname usernickname version author]').green)
       console.log((result))
       console.log('--------------------------------------\n'.green)
     }, function (err) {
