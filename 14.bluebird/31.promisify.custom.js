@@ -29,7 +29,7 @@ function files(dirname, callback) {
 }
 
 function Search() {
-  this.vision = function () {
+  this.version = function () {
     return '0.1.0'
   }
 }
@@ -39,7 +39,7 @@ Search.prototype.getPath = function (filename, callback) {
   var filePath = path.join(__dirname, 'asset', filename)
 
   setTimeout(function () {
-    callback(null, filePath, self.vision())
+    callback(null, filePath, self.version())
   }, 2000)
 }
 
