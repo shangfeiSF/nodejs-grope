@@ -33,14 +33,19 @@ function Search() {
   }, process.argv, 2)
 }
 
-Search.prototype.getBasename = function (filename, callback) {
+// Promise.promisifyAll 支持转换的模块中的方法需要满足以下：
+// （1）The  function should conform to node.js convention of accepting a callback as last argument
+// （2）and calling that callback with error as the first argument
+// （3）and success value on the second argument.
+
+Search.prototype.getBasename = function (filename, callback) {  // （1）
   var self = this
   var basename = path.basename(filename)
   var option = self.options.hasOwnProperty('basename') ? self.options.basename : true
 
   setTimeout(function () {
     if (option) {
-      callback(null, basename, self.version(), self.author)
+      callback(null, basename, self.version(), self.author)   // （2）（3）
     } else {
       callback(new Error('getBasename is failed'))
     }
@@ -133,6 +138,7 @@ var partial = promisifyAllWapper(search, {
       var self = this
 
       // this anonymous function need return a promise
+      // and arguments can any value including promise
       return Promise.all(args).then(function (awaitedArgs) {
         return promisified.apply(self, awaitedArgs)
       })

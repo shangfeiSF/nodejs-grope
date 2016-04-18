@@ -10,18 +10,18 @@ var colors = require('colors')
 // （1）The  function should conform to node.js convention of accepting a callback as last argument
 // （2）and calling that callback with error as the first argument
 // （3）and success value on the second argument.
-function file(filename, callback) {
+function file(filename, callback) { //（1）
   var filePath = path.join(__dirname, 'asset', filename)
 
   setTimeout(function () {
-    callback(null, filePath)
+    callback(null, filePath) // （2）（3）
   }, 2000)
 }
 
 // Setting multiArgs to true means the resulting promise will always fulfill with an array of the callback's success value(s).
 function files(dirname, callback) {
   var file_1 = path.join(__dirname, dirname, '28.method.json')
-  var file_2 = path.join(__dirname, dirname, '30.promisify.jpg')
+  var file_2 = path.join(__dirname, dirname, '30.promisify.gm.jpg')
 
   setTimeout(function () {
     callback(null, file_1, file_2)
