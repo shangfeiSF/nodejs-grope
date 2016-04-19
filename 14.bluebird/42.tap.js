@@ -82,29 +82,6 @@ Search.prototype.getDirname = function (filename, callback) {
   }, 2000)
 }
 
-Search.prototype.logger = function (data, callback) {
-  var self = this
-
-  var convert = {}
-  if (data instanceof Array) {
-    data.forEach(function (item, index) {
-      convert[index] = item
-    })
-  } else {
-    convert = data
-  }
-  var option = self.options.hasOwnProperty('logger') ? self.options.logger : true
-
-  setTimeout(function () {
-    if (option) {
-      // a node style callback function.
-      callback(null, convert, self.version(), self.author, common.stamp())
-    } else {
-      callback(new Error('logger is failed'))
-    }
-  }, 2000)
-}
-
 var search = new Search()
 
 var getBasenameAsync = Promise.promisify(search.getBasename, {
@@ -122,51 +99,32 @@ var getDirnameAsync = Promise.promisify(search.getDirname, {
   multiArgs: true
 })
 
-/*
- Register a node-style callback on this promise.
-
- When this promise is either fulfilled or rejected,
- the node callback will be called back with the node.js habit
- means error reason is the first argument and success value is the second argument.
-
- The error argument will be null in case of success.
-
- Returns back this promise instead of creating a new one.
- If the callback argument is not a function, this method does not do anything.
-
- This can be used to create APIs that both accept node-style callbacks and return promises:
- */
+var middle = function (result) {
+  return fs.readFileAsync(path.join(__dirname, 'log', '42.tap.json'), 'utf-8')
+    .then(JSON.parse)
+    .then(function (data) {
+      var data = data
+      data.count = data.count + 1
+      data.array.push(result)
+      console.log(data)
+      return fs.writeFileAsync(path.join(__dirname, 'log', '42.tap.json'), JSON.stringify(data, null, 2))
+    })
+}
 
 getBasenameAsync(__filename)
-  .asCallback(function (error, result) {
-    // asCallback 相当定义并执行一个中间件
-    if (error) {
-      // 同步代码正常执行
-      error.stat = 'asCallback handle error sync!'
-    } else {
-      // 异步代码失败
-      fs.statAsync(path.join(__dirname, result['0']))
-        .then(function (stat) {
-          console.log(stat)
-          result.push(stat)
-        })
-      // 同步代码正常执行
-      result.push('asCallback handle result sync!')
-    }
+  .tap(function (result) {
+    return fs.readFileAsync("./asset/42.tap.json", "utf8")
+      .then(JSON.parse)
+      .get('type')
+      .then(function (type) {
+        console.log((type).blue)
+        return type
+      })
   })
   .then(function (result) {
     console.log('--------------getBasenameAsync--------------'.green)
     console.log(result)
     console.log('--------------------------------------------\n'.green)
-
-    return Promise.fromCallback(function (callback) {
-        return search.logger(result, callback)
-      }, {multiArgs: true})
-      .then(function (info) {
-        console.log('--------------getBasenameAsync--------------'.green)
-        console.log(info)
-        console.log('--------------------------------------------\n'.green)
-      })
   }, function (error) {
     console.log('----------------------------'.red)
     console.log(error)
@@ -174,19 +132,19 @@ getBasenameAsync(__filename)
   })
 
 getExtnameAsync(__filename)
+  .tap(function (result) {
+    return fs.readFileAsync("./asset/42.tap.json", "utf8")
+      .then(JSON.parse)
+      .get('username')
+      .then(function (username) {
+        console.log((username).blue)
+        return username
+      })
+  })
   .then(function (result) {
     console.log('--------------getExtnameAsync--------------'.yellow)
     console.log(result)
     console.log('-------------------------------------------\n'.yellow)
-
-    return Promise.fromCallback(function (callback) {
-        return search.logger(result, callback)
-      }, {multiArgs: true})
-      .then(function (info) {
-        console.log('--------------getExtnameAsync--------------'.yellow)
-        console.log(info)
-        console.log('-------------------------------------------\n'.yellow)
-      })
   }, function (error) {
     console.log('----------------------------'.red)
     console.log(error)
@@ -194,18 +152,20 @@ getExtnameAsync(__filename)
   })
 
 getDirnameAsync(__filename)
+  .tap(function (result) {
+    return fs.readFileAsync("./asset/42.tap.json", "utf8")
+      .then(JSON.parse)
+      .get('usernickname')
+      .then(function (usernickname) {
+        console.log((usernickname).blue)
+        return usernickname
+      })
+  })
+  .tap(middle)
   .then(function (result) {
     console.log('--------------getDirnameAsync--------------'.white)
     console.log(result)
     console.log('-------------------------------------------\n'.white)
-
-    // written more concisely with Function.prototype.bind
-    return Promise.fromCallback(search.logger.bind(search, result), {multiArgs: true})
-      .then(function (info) {
-        console.log('--------------getDirnameAsync--------------'.white)
-        console.log(info)
-        console.log('-------------------------------------------\n'.white)
-      })
   }, function (error) {
     console.log('----------------------------'.red)
     console.log(error)

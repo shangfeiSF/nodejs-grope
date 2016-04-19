@@ -82,29 +82,6 @@ Search.prototype.getDirname = function (filename, callback) {
   }, 2000)
 }
 
-Search.prototype.logger = function (data, callback) {
-  var self = this
-
-  var convert = {}
-  if (data instanceof Array) {
-    data.forEach(function (item, index) {
-      convert[index] = item
-    })
-  } else {
-    convert = data
-  }
-  var option = self.options.hasOwnProperty('logger') ? self.options.logger : true
-
-  setTimeout(function () {
-    if (option) {
-      // a node style callback function.
-      callback(null, convert, self.version(), self.author, common.stamp())
-    } else {
-      callback(new Error('logger is failed'))
-    }
-  }, 2000)
-}
-
 var search = new Search()
 
 var getBasenameAsync = Promise.promisify(search.getBasename, {
@@ -122,90 +99,62 @@ var getDirnameAsync = Promise.promisify(search.getDirname, {
   multiArgs: true
 })
 
-/*
- Register a node-style callback on this promise.
+var type = fs.readFileAsync("./asset/40.delay.json", "utf8")
+  .then(JSON.parse)
+  .get('type')
 
- When this promise is either fulfilled or rejected,
- the node callback will be called back with the node.js habit
- means error reason is the first argument and success value is the second argument.
-
- The error argument will be null in case of success.
-
- Returns back this promise instead of creating a new one.
- If the callback argument is not a function, this method does not do anything.
-
- This can be used to create APIs that both accept node-style callbacks and return promises:
- */
-
+// type 虽然是promise，但是不会影响result，只是延时1000ms
 getBasenameAsync(__filename)
-  .asCallback(function (error, result) {
-    // asCallback 相当定义并执行一个中间件
-    if (error) {
-      // 同步代码正常执行
-      error.stat = 'asCallback handle error sync!'
-    } else {
-      // 异步代码失败
-      fs.statAsync(path.join(__dirname, result['0']))
-        .then(function (stat) {
-          console.log(stat)
-          result.push(stat)
-        })
-      // 同步代码正常执行
-      result.push('asCallback handle result sync!')
-    }
-  })
+  .delay(1000, type)
   .then(function (result) {
     console.log('--------------getBasenameAsync--------------'.green)
     console.log(result)
     console.log('--------------------------------------------\n'.green)
-
-    return Promise.fromCallback(function (callback) {
-        return search.logger(result, callback)
-      }, {multiArgs: true})
-      .then(function (info) {
-        console.log('--------------getBasenameAsync--------------'.green)
-        console.log(info)
-        console.log('--------------------------------------------\n'.green)
-      })
   }, function (error) {
     console.log('----------------------------'.red)
     console.log(error)
     console.log('----------------------------\n'.red)
   })
 
+// username是promise，而且是延时4000ms后传递给then执行promise
+var username = fs.readFileAsync("./asset/37.promisifyAll.defaultPromisifier.json", "utf8")
+  .then(JSON.parse)
+  .get('username')
+Promise.delay(4000, username).then(function (name) {
+  console.log('----------------------------------------'.cyan)
+  console.log((name).cyan)
+  console.log('----------------------------------------\n'.cyan)
+})
+
+// delay延时2000ms
 getExtnameAsync(__filename)
+  .delay(2000)
   .then(function (result) {
     console.log('--------------getExtnameAsync--------------'.yellow)
     console.log(result)
     console.log('-------------------------------------------\n'.yellow)
-
-    return Promise.fromCallback(function (callback) {
-        return search.logger(result, callback)
-      }, {multiArgs: true})
-      .then(function (info) {
-        console.log('--------------getExtnameAsync--------------'.yellow)
-        console.log(info)
-        console.log('-------------------------------------------\n'.yellow)
-      })
   }, function (error) {
     console.log('----------------------------'.red)
     console.log(error)
     console.log('----------------------------\n'.red)
   })
 
+// usernickname是promise，而且是延时6000ms后传递给then执行promise
+var usernickname = fs.readFileAsync("./asset/37.promisifyAll.defaultPromisifier.json", "utf8")
+  .then(JSON.parse)
+  .get('usernickname')
+Promise.delay(6000, usernickname).then(function (nickname) {
+  console.log('----------------------------------------'.cyan)
+  console.log((nickname).cyan)
+  console.log('----------------------------------------\n'.cyan)
+})
+
 getDirnameAsync(__filename)
+  .delay(3000, 'something')
   .then(function (result) {
     console.log('--------------getDirnameAsync--------------'.white)
     console.log(result)
     console.log('-------------------------------------------\n'.white)
-
-    // written more concisely with Function.prototype.bind
-    return Promise.fromCallback(search.logger.bind(search, result), {multiArgs: true})
-      .then(function (info) {
-        console.log('--------------getDirnameAsync--------------'.white)
-        console.log(info)
-        console.log('-------------------------------------------\n'.white)
-      })
   }, function (error) {
     console.log('----------------------------'.red)
     console.log(error)
