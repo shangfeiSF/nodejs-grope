@@ -1,7 +1,7 @@
 | key | spec | key | spec | key | spec | key | spec |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | F1 | Terminal | Alt+F1 | Select In | Ctrl+F1 | Preview File in | Shift+F1 | Open |
-| Ctrl+Shift+F1 | - | Alt+Shift+F1 | - | Ctrl+Alt+F1 | - | | |
+| Ctrl+Shift+F1 | Open Recent | Alt+Shift+F1 | - | Ctrl+Alt+F1 | - | | |
 | F2 | Debug Panel | Alt+F2 | Run Panel | Ctrl+F2 | Declaration | Shift+F2 | New |
 | Ctrl+Shift+F2 | - | Alt+Shift+F2 | - | Ctrl+Alt+F2 | - | | |
 | F3 | Debug | Alt+F3 | Run | Ctrl+F3 | Edit Configurations | Shift+F3 | Fold Selection |
