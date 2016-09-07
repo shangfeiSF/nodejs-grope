@@ -9,6 +9,18 @@ console.log('选择测试stdio的模式')
 var out = fs.openSync('./log-out.log', 'a');
 var err = fs.openSync('./log-err.log', 'a');
 
+/*
+ * The options.stdio option is used to configure the pipes that are established between the parent and child process.
+ * By default, the child's stdin, stdout, and stderr are redirected to corresponding child.stdin, child.stdout, and child.stderr streams on the ChildProcess object.
+ * This is equivalent to setting the options.stdio equal to ['pipe', 'pipe', 'pipe'].
+ * */
+
+/*
+ * 'pipe' - equivalent to ['pipe', 'pipe', 'pipe'] (the default)
+ * 'ignore' - equivalent to ['ignore', 'ignore', 'ignore']
+ * 'inherit' - equivalent to [process.stdin, process.stdout, process.stderr] or [0,1,2]
+ * */
+
 var model = {
   1: {
     msg: 'inherit',

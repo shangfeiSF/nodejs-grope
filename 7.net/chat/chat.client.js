@@ -127,7 +127,7 @@ ChatClient.prototype.connect = function (userName) {
 
 ChatClient.prototype.tcp = function () {
   var self = this
-  self.socket = io.connect(self.remote)
+  self.socket = io(self.remote)
 
   self.socket.emit('login', {
     userId: self.userId,

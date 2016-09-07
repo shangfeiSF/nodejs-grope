@@ -2,7 +2,7 @@ var child_process = require('child_process')
 var spawn = child_process.spawn
 
 /*
- * 实现 ps -a | grep /bin | grep /bins/sh 的管道
+ * 实现 ps -a | grep /bin | grep /bin/sh 的管道
  * 利用 spawn options.stdio 实现管道
  * 注意：step_1 step_2 监听的 data event
  * 注意：step_3 需要引用step_2，step_2 需要引用 step_1
