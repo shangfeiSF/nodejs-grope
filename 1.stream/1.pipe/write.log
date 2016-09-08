@@ -1,6 +1,0 @@
- Nodejs Stream 兼容性:
- As a Stream, process.stdin can also be used in "old" mode that is compatible with scripts written for node.js prior to v0.10.
- For more information see Stream compatibility. see /node-v5.6.0/doc/api/stream.html#stream_compatibility_with_older_node_js_versions
- In "old" Streams mode the stdin stream is paused by default, so one must call process.stdin.resume() to read from it.
- Note also that calling process.stdin.resume() itself would switch stream to "old" mode.
-This content is append after read.log end
