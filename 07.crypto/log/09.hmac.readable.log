@@ -1,0 +1,92 @@
+0    DSA    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+1    DSA-SHA    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+2    DSA-SHA1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+3    DSA-SHA1-old    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+4    RSA-MD4    rabbit    hex    228775df8e424c3e8735599e7aa4768f
+
+5    RSA-MD5    rabbit    hex    9354be62ec493ced70f5abe5c4acb179
+
+6    RSA-MDC2    rabbit    hex    a627d1aaabde297d60fb5af8c00e31ae
+
+7    RSA-RIPEMD160    rabbit    hex    2fc5ccaec216d195effcb410690b3a24c282b909
+
+8    RSA-SHA    rabbit    hex    08d57357f1821bf8d91f66306483003ac7b54561
+
+9    RSA-SHA1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+10    RSA-SHA1-2    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+11    RSA-SHA224    rabbit    hex    66cedc86bada16e54e4083fd6bb64b910a80f59e97533b426b6142d1
+
+12    RSA-SHA256    rabbit    hex    1bf5a6abd0d9da72e3e791a72663b1b09db458f9eeafb835522e2d4a566b172d
+
+13    RSA-SHA384    rabbit    hex    dec98601e866e450519e6972f67821826a7c05da586c745eadadbd0a10650227c25493d3c86b7cabcba2f2847cff143c
+
+14    RSA-SHA512    rabbit    hex    a2341f646cf89d1eb3e84026a42839960170f20611eb5fbe4021ea78fceb86663ae0c5e65b7402d0b5290cc9bc1fa7132c8186476cc62efb53f1620ad631affb
+
+15    dsaEncryption    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+16    dsaWithSHA    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+17    dsaWithSHA1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+18    dss1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+19    ecdsa-with-SHA1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+20    md4    rabbit    hex    228775df8e424c3e8735599e7aa4768f
+
+21    md4WithRSAEncryption    rabbit    hex    228775df8e424c3e8735599e7aa4768f
+
+22    md5    rabbit    hex    9354be62ec493ced70f5abe5c4acb179
+
+23    md5WithRSAEncryption    rabbit    hex    9354be62ec493ced70f5abe5c4acb179
+
+24    mdc2    rabbit    hex    a627d1aaabde297d60fb5af8c00e31ae
+
+25    mdc2WithRSA    rabbit    hex    a627d1aaabde297d60fb5af8c00e31ae
+
+26    ripemd    rabbit    hex    2fc5ccaec216d195effcb410690b3a24c282b909
+
+27    ripemd160    rabbit    hex    2fc5ccaec216d195effcb410690b3a24c282b909
+
+28    ripemd160WithRSA    rabbit    hex    2fc5ccaec216d195effcb410690b3a24c282b909
+
+29    rmd160    rabbit    hex    2fc5ccaec216d195effcb410690b3a24c282b909
+
+30    sha    rabbit    hex    08d57357f1821bf8d91f66306483003ac7b54561
+
+31    sha1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+32    sha1WithRSAEncryption    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+33    sha224    rabbit    hex    66cedc86bada16e54e4083fd6bb64b910a80f59e97533b426b6142d1
+
+34    sha224WithRSAEncryption    rabbit    hex    66cedc86bada16e54e4083fd6bb64b910a80f59e97533b426b6142d1
+
+35    sha256    rabbit    hex    1bf5a6abd0d9da72e3e791a72663b1b09db458f9eeafb835522e2d4a566b172d
+
+36    sha256WithRSAEncryption    rabbit    hex    1bf5a6abd0d9da72e3e791a72663b1b09db458f9eeafb835522e2d4a566b172d
+
+37    sha384    rabbit    hex    dec98601e866e450519e6972f67821826a7c05da586c745eadadbd0a10650227c25493d3c86b7cabcba2f2847cff143c
+
+38    sha384WithRSAEncryption    rabbit    hex    dec98601e866e450519e6972f67821826a7c05da586c745eadadbd0a10650227c25493d3c86b7cabcba2f2847cff143c
+
+39    sha512    rabbit    hex    a2341f646cf89d1eb3e84026a42839960170f20611eb5fbe4021ea78fceb86663ae0c5e65b7402d0b5290cc9bc1fa7132c8186476cc62efb53f1620ad631affb
+
+40    sha512WithRSAEncryption    rabbit    hex    a2341f646cf89d1eb3e84026a42839960170f20611eb5fbe4021ea78fceb86663ae0c5e65b7402d0b5290cc9bc1fa7132c8186476cc62efb53f1620ad631affb
+
+41    shaWithRSAEncryption    rabbit    hex    08d57357f1821bf8d91f66306483003ac7b54561
+
+42    ssl2-md5    rabbit    hex    9354be62ec493ced70f5abe5c4acb179
+
+43    ssl3-md5    rabbit    hex    9354be62ec493ced70f5abe5c4acb179
+
+44    ssl3-sha1    rabbit    hex    1b434c501653c1af98408ed2f481a6c8b23f6084
+
+45    whirlpool    rabbit    hex    f40b2a277da4a70cc3c6a5435971dd421d3071a8d509245bc52d068a37c63653b90679cd61cc5ca87d8849a58a3af11e8f45a1690a465b4fc93d2ce03f1fdc02
+
