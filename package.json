@@ -1,15 +1,6 @@
 {
   "name": "nodejs-grope",
   "version": "2.0.0",
-  "keywords": [
-    "nodejs",
-    "nopt",
-    "express",
-    "socket.io",
-    "tap",
-    "mocha",
-    "superagent"
-  ],
   "description": "JavaScript, NodeJS",
   "dependencies": {
     "bluebird": "^3.3.4",
@@ -31,6 +22,15 @@
     "type": "git",
     "url": "git@github.com:shangfeiSF/nodejs-grope.git"
   },
+  "keywords": [
+    "nodejs",
+    "nopt",
+    "express",
+    "socket.io",
+    "tap",
+    "mocha",
+    "superagent"
+  ],
   "author": "shangfeiSF",
   "license": "ISC"
 }
