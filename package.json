@@ -1,16 +1,22 @@
 {
   "name": "nodejs-grope",
-  "version": "1.0.0",
-  "description": "nodejs grope",
-  "main": "index.js",
+  "version": "2.0.0",
+  "keywords": [
+    "nodejs",
+    "nopt",
+    "express",
+    "socket.io",
+    "tap",
+    "mocha",
+    "superagent"
+  ],
+  "description": "JavaScript, NodeJS",
   "dependencies": {
     "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
     "colors": "^0.6.2",
     "express": "^4.13.4",
-    "gm": "^1.22.0",
-    "grunt-cli": "^1.1.0",
     "mocha": "^2.4.5",
     "mochawesome": "^1.3.2",
     "multiparty": "^4.1.2",
@@ -20,24 +26,10 @@
     "superagent": "^1.8.3",
     "tap": "^5.7.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:shangfei.sf/nodejs-grope.git"
+    "url": "git@github.com:shangfeiSF/nodejs-grope.git"
   },
-  "keywords": [
-    "node",
-    "socket.io",
-    "express",
-    "nopt",
-    "tap",
-    "mocha",
-    "superagent",
-    "multiparty",
-    "gm",
-    "imageMagick",
-    "bluebird"
-  ],
-  "author": "shangfei.sf",
+  "author": "shangfeiSF",
   "license": "ISC"
 }
